@@ -1,33 +1,71 @@
-class Pepe {
-  constructor(x,y) {
-    //todo get x y from mouse location
+class Tower [
+    constructor(x,y) {
     this.x = x;
     this.y = y;
 
     this.damage = 1;
-    this.firerate = 5; // wouldve used cooldown but js doesnt have delta time cause it sucks
+    this.shootcharge = 0; // once it hits primeshoot it fires
+    this.chargebuild = 5
+    this.primeshoot = 100;
+    this.range = 60;
+    }
+    
+    show() {
+      image(this.image, this.x, this.y);
+  }
+    
+]
 
+class Pepe extends Tower {
+  constructor(x,y) {
+    //todo get x y from mouse location
+    super(x,y);
+
+    this.damage = 1;
+    this.chargebuild = 5
+    this.primeshoot = 100;
+    this.range = 60;
+    this.image = pepe;
 
   }
   //called every frame
   getTarget() {
-    muscles.forEach()
+      if(firerate <= primeshoot) {
+          this.shootcharge += this.chargebuild;
+          
+      }
+      
+      shootAt(); 
+      
+    
+    
+            
 
-            float dist = Mathf.Infinity;
-
-            foreach(Enemy e in enemies) {
-                float d = Vector3.Distance(this.transform.position, e.transform.position);
-                if(nearestEnemy == null || d < dist) {
-                    nearestEnemy = e;
-                    dist = d;
+            foreach(NormieMuscle enemy in muscles) {
+                var dist = Mathf.Infinity;
+                targetPos = createVector(enemy.x,enemy.y);
+                if(nearestEnemy == null || targetPos < dist ) {
+                    nearestEnemy = enemy;
+                    dist = targetPos;
                 }
             }
 
 
   }
+    
+  
 
   shootAt(x,y) {
-
+      enemyX = x;
+      enemyY = y;
+      if(dist(this.x,this.y,enemyX, enemyY) <= this.range && this.shootcharge >= this.primeshoot) {
+          this.shootcharge = 0;
+          var pepebullet = array.push(new TearBullet(this.x,this.y)) {
+        }
+      }
+        
   }
 
 }
+
+
