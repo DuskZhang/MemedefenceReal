@@ -11,7 +11,7 @@ class NormieMuscle {
 
      // once every 1/2 second if running at 60fps
   }
-
+    
   show() {
     image(muscleImg, this.x, this.y , this.width, this.height);
   }

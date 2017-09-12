@@ -37,13 +37,15 @@ class Pepe extends Tower {
       
       shootAt(); 
       
+      
+      
+    muscles.forEach()
     
-    
-            
+            var dist = Mathf.Infinity;
 
             foreach(NormieMuscle enemy in muscles) {
-                var dist = Mathf.Infinity;
-                targetPos = createVector(enemy.x,enemy.y);
+                
+                closestPos = createVector(enemy.x,enemy.y);
                 if(nearestEnemy == null || targetPos < dist ) {
                     nearestEnemy = enemy;
                     dist = targetPos;
