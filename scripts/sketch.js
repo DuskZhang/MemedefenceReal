@@ -1,5 +1,5 @@
 //meme defence is cool
-var roadDesired = true;
+var roadsBuilt = 0;
 var pepeTowerDesired = false;
 var waveMuscle; // variable for deciding the max muscle per wave
 var numMuscle; // how many muscles have spawned in a wave
@@ -25,7 +25,7 @@ function setup() {
     //creating all the scarce tiles
     for (var tillageX = 0; tillageX <= 27; tillageX++ ) {
         for( var tillageY = 0; tillageY <= 18; tillageY++ ) {
-            tiles.push(new Tile((tillageX * 40,tillageY * 40)))
+            tiles.push(new Tile(tillageX * 40,tillageY * 40))
         }
         
     }
