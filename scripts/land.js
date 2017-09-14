@@ -20,14 +20,14 @@ class Tile {
                 if (roadsBuilt < roadAmount && (tiles[this.arraySlot + 13].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen)) {
                     //less 45
                     console.log("ok");
-                    tiles[this.arraySlot] = new Road;
+                    tiles[this.arraySlot] = new Road(this.x,this.y);
                     nodes.push(tiles[this.arraySlot]);
                     roadsBuilt++
                 }
             } else if (roadsBuilt < roadAmount && (tiles[this.arraySlot - 13].connectionOpen || tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen)) {
                 //less 45
                 console.log("ok");
-                tiles[this.arraySlot] = new Road;
+                tiles[this.arraySlot] = new Road(this.x,this.y);
                 nodes.push(tiles[this.arraySlot]);
                 roadsBuilt++
             }
@@ -41,7 +41,7 @@ class Tile {
 
 class Road extends Tile {
     constructor(x, y) {
-        super(x, y)
+        super()
         this.x = x;
         this.y = y;
         this.connectionOpen = true;
@@ -54,6 +54,5 @@ class Road extends Tile {
     }
 
     clicked() {
-        return true;
     }
 }

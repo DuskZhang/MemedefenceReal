@@ -1,8 +1,6 @@
 class NormieMuscle {
     constructor(x, y) {
-        //    this.x = x;
-        //    this.y = y;
-        this.vector = (x, y);
+        this.pector = createVector(x, y);
         this.hp = 3
         this.speed = 5;
 
@@ -15,45 +13,59 @@ class NormieMuscle {
         this.distFrame;
         this.reachedGoal = false;
         // once every 1/2 second if running at 60fps
+        this.iam;
+        this.image = muscleImg
     }
 
     show() {
-        image(muscleImg, this.x, this.y, this.width, this.height);
+        image(this.image, this.pector.x, this.pector.y, this.width, this.height);
     }
-    //called once
-    getPathNode() {
-        this.targetVec = createVector(nodes[this.nodeIndex].x, nodes[this.nodeIndex].y);
-        this.nodeIndex++
-
+    
+    
+     getPathNode() {
+         if(this.nodeIndex < nodes.length) {
+             this.nodeIndex++;
+             this.targetVec = createVector(nodes[this.nodeIndex].x, nodes[this.nodeIndex].y);   
+             
+         }
+         else {
+             targetVec = null;
+             this.reachedGoal = true;
+         }
+    
+        
     }
+    
     //called 60fps
-    move(x, y) {
+    move() {
         if (this.targetVec == null) {
             this.getPathNode();
-            if (this.targetVec == null) {
-                this.reachedGoal = true;
-            }
         }
-
-        this.movementVector = this.targetVec - this.vector;
+        //getting the x and y values of the target 
+        this.movementVector = this.targetVec - this.pector;
 
         this.distFrame = this.speed * (1 / 60);
 
-        if (this.movementVector <= this.distFrame) {
+        if (dist(this.x,this.y, this.targetVec.x, this.targetVec.y) <= 0.1 ) {
             this.targetVec = null; //reached node
         } else {
-            this.vector.add(this.targetVec * this.distFrame);
+            this.pector.add((this.targetVec * this.distFrame));
+            
         }
 
     }
 
+    //called once
+   
+    
     checkExits(i) {
+        this.iam = i;
         if (this.hp <= 0) {
             gold += 1;
-            enemies[iam].splice;
+            enemies[this.iam].splice;
         } else if (this.reachedGoal) {
             lives--;
-            enemies[iam].splice;
+            enemies[this.iam].splice;
         }
     }
 }
