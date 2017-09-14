@@ -15,16 +15,16 @@ class Tile {
     clicked(i) {
         this.arraySlot = i;
         //todo
-        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
-            if (tiles[this.arraySlot - 13] == null) {
-                if (roadsBuilt < roadAmount && (tiles[this.arraySlot + 13].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen)) {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && roadsBuilt < roadAmount) {
+            if (tiles[this.arraySlot - 12] == null) {
+                if (tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen) {
                     //less 45
-                    console.log("ok");
+                    console.log("first");
                     tiles[this.arraySlot] = new Road(this.x,this.y);
                     nodes.push(tiles[this.arraySlot]);
                     roadsBuilt++
                 }
-            } else if (roadsBuilt < roadAmount && (tiles[this.arraySlot - 13].connectionOpen || tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen)) {
+            } else if (tiles[this.arraySlot - 12].connectionOpen || tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen) {
                 //less 45
                 console.log("ok");
                 tiles[this.arraySlot] = new Road(this.x,this.y);
@@ -56,3 +56,22 @@ class Road extends Tile {
     clicked() {
     }
 }
+
+class BuyPepe extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = true;
+        this.image = stars;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+    }
+}
+

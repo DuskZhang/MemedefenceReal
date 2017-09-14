@@ -8,6 +8,7 @@ class Tower [
     this.chargebuild = 5
     this.primeshoot = 100;
     this.range = 60;
+    this.image;
     }
     
     show() {
