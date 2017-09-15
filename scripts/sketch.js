@@ -3,7 +3,7 @@ var roadsBuilt = 1;
 var pepeTowerDesired = false;
 var waveMuscle = 0; // variable for deciding the max muscle per wave
 var numMuscle = 0; // how many muscles have spawned in a wave
-var muscles = [];
+var muscles = []; //slang for all enemies
 var spawnrate = 60; // once every second new guy 60fps
 var wavestart = false;
 var tearBullets = [];
@@ -17,10 +17,11 @@ var wave = 1;
 //standard public hud
 
 var lives = 20;
-var gold = 150;
+var gold = 3000;
 // towers
 var towers = [];
 var shops = [];
+var bullets = [];
 
 var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
 
@@ -51,15 +52,15 @@ function initializeTiles() {
     tiles[204] = new BuyPepe(tiles[204].x, tiles[204].y);
     tiles[205] = new BuyPepe(tiles[205].x, tiles[205].y);
     tiles[206] = new BuyPepe(tiles[206].x, tiles[206].y);
-    
+
     tiles[207] = new BuyPepe(tiles[207].x, tiles[207].y);
     tiles[208] = new BuyPepe(tiles[208].x, tiles[208].y);
     tiles[209] = new BuyPepe(tiles[209].x, tiles[209].y);
-    
+
     tiles[210] = new BuyPepe(tiles[210].x, tiles[210].y);
     tiles[211] = new BuyPepe(tiles[211].x, tiles[211].y);
     tiles[212] = new BuyPepe(tiles[212].x, tiles[212].y);
-    
+
     tiles[213] = new BuyPepe(tiles[213].x, tiles[213].y);
     tiles[214] = new BuyPepe(tiles[214].x, tiles[214].y);
     tiles[215] = new BuyPepe(tiles[215].x, tiles[215].y);
@@ -78,23 +79,13 @@ function draw() {
             decideWave();
         }
 
-        //tower functions
-        for (t = 0; t < towers.length; t++) {
-            towers[t].show();
-
-        }
-
-
-        if (roadsBuilt == roadAmount) {
-            wavestart = true;
-        }
 
         if (boolinitializeTiles) {
             initializeTiles();
 
             boolinitializeTiles = false;
         }
-
+        //spawning muscle
         if (frameCount % spawnrate == 0 && numMuscle < waveMuscle) {
             muscles.push(new NormieMuscle(0, 0));
             numMuscle++;
@@ -109,7 +100,11 @@ function draw() {
 
         }
 
-
+        //tower functions
+        for (t = 0; t < towers.length; t++) {
+            towers[t].show();
+            towers[t].lockon();
+        }
 
 
 
@@ -118,15 +113,16 @@ function draw() {
             muscles[m].show();
             muscles[m].move(m);
         }
-        //
-        //    for (var bulleti = 0; bulleti <= tearBullets.length; bulleti++) {
-        //
-        //        tearBullets[bulleti].show();
-        //        tearBullets[bulleti].move();
-        //    }
-        //
-        //    //spawning muscle
-        //
+
+        for (var bindex = 0; bindex < tearBullets.length; bindex++) {
+
+            bullets[bindex].show();
+            bullets[bindex].move(bindex);
+            bullets[bindex].checkExits(bindex);
+        }
+
+
+
 
 
         drawHud();
@@ -159,8 +155,13 @@ function bringInstructions() {
 //
 function keyPressed() {
     if (keyCode == 27) {
-
+        //esc
+    } 
+    if (keyCode == 13 && roadsBuilt == roadAmount) {
+        wavestart = true;
     }
+    
+    
 }
 
 function startScreen() {

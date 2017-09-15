@@ -19,30 +19,24 @@ class Tile {
             if (roadsBuilt < roadAmount) {
                 if (tiles[this.arraySlot - 12] == null) {
                     if (tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen) {
-                        //less 45
-                        console.log("first");
                         tiles[this.arraySlot] = new Road(this.x, this.y);
                         nodes.push(tiles[this.arraySlot]);
                         roadsBuilt++
                     }
                 } else if (tiles[this.arraySlot - 12].connectionOpen || tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen) {
-                    //less 45
-                    console.log("ok");
                     tiles[this.arraySlot] = new Road(this.x, this.y);
                     nodes.push(tiles[this.arraySlot]);
                     roadsBuilt++
+                } //towers
+            } else if (pepeTowerDesired) {
+                if (gold >= 150) {
+                    gold -= 150;
+                    towers.push(new Pepe(this.x, this.y));
+                    pepeTowerDesired = false;
                 }
             }
         }
-        //towers
 
-        if (pepeTowerDesired) {
-            if (gold >= 150) {
-                gold -= 150;
-                towers.push(new Pepe(this.x, this.y));
-                pepeTowerDesired = false;
-            }
-        }
     }
 }
 
