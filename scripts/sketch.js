@@ -5,7 +5,7 @@ var waveMuscle = 0; // variable for deciding the max muscle per wave
 var numMuscle = 0; // how many muscles have spawned in a wave
 var muscles = []; //slang for all enemies
 var spawnrate = 60; // once every second new guy 60fps
-var wavestart = false;
+var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
@@ -74,15 +74,13 @@ function draw() {
     } else if (gamemode == 1) {
         background(200); //todo replace with scarce
         //show and functions for the tiles including roads and whatnot
-        if (wavestart) {
-            //decide spawn numbers
-            decideWave();
-        }
+
+
+        isWaveFinished();
 
 
         if (boolinitializeTiles) {
             initializeTiles();
-
             boolinitializeTiles = false;
         }
         //spawning muscle
@@ -92,39 +90,7 @@ function draw() {
 
         }
 
-        for (i = 0; i < tiles.length; i++) {
-            tiles[i].show();
-            if (tiles[i].clicked(i)) {
-                tiles[i] = new Road;
-            }
-
-        }
-
-        //tower functions
-        for (t = 0; t < towers.length; t++) {
-            towers[t].show();
-            towers[t].lockon();
-        }
-
-
-
-
-        for (var m = 0; m < muscles.length; m++) {
-            muscles[m].show();
-            muscles[m].move(m);
-        }
-
-        for (var bindex = 0; bindex < tearBullets.length; bindex++) {
-
-            bullets[bindex].show();
-            bullets[bindex].move(bindex);
-            bullets[bindex].checkExits(bindex);
-        }
-
-
-
-
-
+        objectFunctions();
         drawHud();
 
     }
@@ -156,14 +122,49 @@ function bringInstructions() {
 function keyPressed() {
     if (keyCode == 27) {
         //esc
-    } 
-    if (keyCode == 13 && roadsBuilt == roadAmount) {
-        wavestart = true;
     }
-    
-    
+
+    if (waveOn == false && keyCode == 13 && roadsBuilt == roadAmount) {
+        //decide spawn numbers
+        decideWave();
+    }
+
 }
 
 function startScreen() {
 
+}
+
+function objectFunctions() {
+    //tile functions
+    for (i = 0; i < tiles.length; i++) {
+        tiles[i].show();
+        if (tiles[i].clicked(i)) {
+            tiles[i] = new Road;
+        }
+
+    }
+    //tower functions
+    for (t = 0; t < towers.length; t++) {
+        towers[t].show();
+        towers[t].lockon();
+    }
+    if(waveOn) {
+    //enemy functions
+    for (var m = 0; m < muscles.length; m++) {
+        
+        muscles[m].show();
+        muscles[m].move(m);
+        muscles[m].checkExits(m);
+
+    }
+    }
+    //bullet functions
+    for (var bindex = 0; bindex < bullets.length; bindex++) {
+
+        bullets[bindex].show();
+        bullets[bindex].move();
+        bullets[bindex].getIndexAndDie(bindex);
+
+    }
 }

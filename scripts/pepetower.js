@@ -37,13 +37,10 @@ class Pepe extends Tower {
             this.shootcharge += this.chargebuild;
 
         }
-
-
+//shoots at first enemy in muscles array to meet if statement
         for (var i = 0; i < muscles.length; i++) {
-            if (this.checkInRange(muscles[i]) && this.shootcharge == this.primeshoot)  {
+            if(dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range)  {
                 this.shootAt(muscles[i]);
-                this.shootcharge = 0;
-                console.log("ye")
                 break;
             }
         }
@@ -54,23 +51,15 @@ class Pepe extends Tower {
         image(this.image, this.x, this.y, this.width, this.width);
     }
 
-    checkInRange(object) {
-        if(dist(this.x, this.y, object.pector.x, object.pector.y) <= this.range && this.shootcharge == this.primeshoot) {
-            console.log(object.pector.x) 
-            return true;
+    //called every frame by obj
+    shootAt(object) {
+        if(this.shootcharge == this.primeshoot) {
+            this.shootcharge = 0;
+            bullets.push(new TearBullet(this.x, this.y,object))
+            console.log("fok");
+            
         }
         
     }
-            //create a new bullet
-        shootAt(object) {
-            console.log(object.pector);
-//            enemyX = x;
-//            enemyY = y;
-//            if (dist(this.x, this.y, enemyX, enemyY) <= this.range && this.shootcharge == this.primeshoot) {
-//                this.shootcharge = 0;
-//                var pepebullet = array.push(new TearBullet(this.x, this.y)) {}
-//            }
-    
-        }
-
+         
 }

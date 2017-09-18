@@ -2,7 +2,8 @@ class NormieMuscle {
     constructor(x, y) {
         this.pector = createVector(x, y);
         this.hp = 3
-        this.speed = 4; // dont go over 4 or it gets all buggy
+        this.max = 3;
+        this.speed = 2; // dont go over 4 or it gets all buggy
 
         this.width = 50;
         this.height = 50;
@@ -19,6 +20,12 @@ class NormieMuscle {
 
     show() {
         image(this.image, this.pector.x, this.pector.y, this.width, this.height);
+        //hp bars
+        
+        fill("red");
+        rect(this.pector.x, this.pector.y + this.width,this.max * 10, 10);
+        fill(30,223,23);
+        rect(this.pector.x, this.pector.y + this.width,this.hp * 10, 10);
     }
 
 
@@ -71,10 +78,9 @@ class NormieMuscle {
         this.iam = i;
         if (this.hp <= 0) {
             gold += 1;
-
+            muscles.splice(this.iam,1);
         } else if (this.reachedGoal) {
             lives--;
-            console.log("sh")
             muscles.splice(this.iam,1);
 
         }
