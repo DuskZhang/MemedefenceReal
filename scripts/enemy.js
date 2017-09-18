@@ -12,7 +12,6 @@ class NormieMuscle {
         this.targetVec;
         this.movementVector;
         this.distFrame;
-        this.reachedGoal = false;
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = muscleImg
@@ -21,11 +20,16 @@ class NormieMuscle {
     show() {
         image(this.image, this.pector.x, this.pector.y, this.width, this.height);
         //hp bars
-        
+
         fill("red");
-        rect(this.pector.x, this.pector.y + this.width,this.max * 10, 10);
-        fill(30,223,23);
-        rect(this.pector.x, this.pector.y + this.width,this.hp * 10, 10);
+        rect(this.pector.x, this.pector.y + this.width, this.max * 10, 10);
+        fill(30, 223, 23);
+        rect(this.pector.x, this.pector.y + this.width, this.hp * 10, 10);
+
+        if (this.hp <= 0) {
+            gold += 1;
+            muscles.splice(this.iam, 1);
+        }
     }
 
 
@@ -38,7 +42,9 @@ class NormieMuscle {
 
         } else {
             this.targetVec = null;
-            this.reachedGoal = true;
+            lives--;
+            muscles.splice(this.iam, 1);
+
         }
 
 
@@ -49,10 +55,6 @@ class NormieMuscle {
         this.iam = i;
         if (this.targetVec == null) {
             this.getPathNode();
-
-            if (this.targetVec == null) {
-                this.checkExits(this.iam);
-            }
         }
 
         if (this.targetVec !== null) {
@@ -71,18 +73,27 @@ class NormieMuscle {
         }
     }
 
-    //called once
-
-
-    checkExits(i) {
-        this.iam = i;
-        if (this.hp <= 0) {
-            gold += 1;
-            muscles.splice(this.iam,1);
-        } else if (this.reachedGoal) {
-            lives--;
-            muscles.splice(this.iam,1);
-
-        }
-    }
 }
+
+//class GameObject {
+//    constructor(x, y) {
+//        this.pector = createVector(x, y);
+//        this.width = 50;
+//        this.height = 50;
+//
+//        this.nodeIndex = 0;
+//        this.targetVec;
+//        this.movementVector;
+//        this.distFrame;
+//        // once every 1/2 second if running at 60fps
+//        this.iam;
+//    }
+//    
+//    show() {
+//        
+//    }
+//     move(i) {
+//         this.pector.x++
+//        this.iam = i; 
+//     }
+//}

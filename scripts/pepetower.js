@@ -15,6 +15,14 @@ class Tower {
     show() {
         image(this.image, this.x, this.y, this.width, this.width);
     }
+    
+    lockon() {
+        
+    }
+    
+    shootAt() {
+        
+    }
 
 }
 
@@ -56,10 +64,13 @@ class Pepe extends Tower {
         if(this.shootcharge == this.primeshoot) {
             this.shootcharge = 0;
             bullets.push(new TearBullet(this.x, this.y,object))
-            console.log("fok");
             
         }
         
     }
          
+}
+
+class Doge extends Tower{
+    
 }

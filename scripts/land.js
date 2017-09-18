@@ -17,6 +17,8 @@ class Tile {
         //roads
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (roadsBuilt < roadAmount) {
+
+
                 if (tiles[this.arraySlot - 12] == null) {
                     if (tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen) {
                         tiles[this.arraySlot] = new Road(this.x, this.y);
@@ -28,13 +30,15 @@ class Tile {
                     nodes.push(tiles[this.arraySlot]);
                     roadsBuilt++
                 } //towers
+
+
             } else if (pepeTowerDesired) {
                 if (gold >= 150) {
                     gold -= 150;
                     towers.push(new Pepe(this.x, this.y));
                     pepeTowerDesired = false;
                 }
-            }
+            } // add more towers here
         }
 
     }
@@ -47,9 +51,11 @@ class Road extends Tile {
         this.y = y;
         this.connectionOpen = true;
         this.image = stars;
+
     }
 
     show() {
+
         image(this.image, this.x, this.y, this.width, this.width);
 
     }
@@ -74,10 +80,42 @@ class BuyPepe extends Tile {
 
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
-
-            pepeTowerDesired = !pepeTowerDesired;
+            if (noSpammerino >= 18) {
+                pepeTowerDesired = !pepeTowerDesired;
+                noSpammerino = 0;
+            }
+            
 
 
         }
     }
+}
+
+class BuyDoge extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = buyDoge;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino > 20) {
+                dogeTowerDesired = !dogeTowerDesired;
+                noSpammerino = 0;
+            }
+
+
+        }
+    }
+
+
+
 }

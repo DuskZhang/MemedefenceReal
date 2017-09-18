@@ -9,11 +9,12 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 8;
+var roadAmount = 7;
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemies = []
 var wave = 1;
+var noSpammerino = 0;
 //standard public hud
 
 var lives = 20;
@@ -35,6 +36,9 @@ function setup() {
     water = loadImage("assets/water.jpg");
     stars = loadImage("assets/stars.jpg");
     buypepe = loadImage("assets/buypepe.jpg");
+    weabland = loadImage("assets/weabland.jpg");
+    doge = loadImage("assets/doge.jpg")
+    BuyDoge = loadImage("assets/buyDoge.png")
 }
 
 function initializeTiles() {
@@ -47,6 +51,7 @@ function initializeTiles() {
     }
     tiles[0] = new Road(0, 0);
     nodes.push(tiles[0]);
+    
 
     // shop tiles
     tiles[204] = new BuyPepe(tiles[204].x, tiles[204].y);
@@ -65,6 +70,9 @@ function initializeTiles() {
     tiles[214] = new BuyPepe(tiles[214].x, tiles[214].y);
     tiles[215] = new BuyPepe(tiles[215].x, tiles[215].y);
 
+    //needed for the muscles
+    //    muscles.push(new GameObject( -500, -500));
+
 }
 
 function draw() {
@@ -77,8 +85,15 @@ function draw() {
 
 
         isWaveFinished();
-
-
+        
+        if(roadAmount == roadsBuilt) {
+            nodes[roadAmount-1].image = weabland;
+        }
+        
+        if(noSpammerino < 20) [
+            noSpammerino++
+        ]
+        
         if (boolinitializeTiles) {
             initializeTiles();
             boolinitializeTiles = false;
@@ -89,12 +104,13 @@ function draw() {
             numMuscle++;
 
         }
-
+        
         objectFunctions();
         drawHud();
 
     }
 
+    
 }
 
 function drawHud() {
@@ -136,6 +152,9 @@ function startScreen() {
 }
 
 function objectFunctions() {
+    if (muscles.length == 0 && numMuscle == waveMuscle) {
+        waveOn = false;
+    }
     //tile functions
     for (i = 0; i < tiles.length; i++) {
         tiles[i].show();
@@ -149,22 +168,27 @@ function objectFunctions() {
         towers[t].show();
         towers[t].lockon();
     }
-    if(waveOn) {
-    //enemy functions
-    for (var m = 0; m < muscles.length; m++) {
-        
-        muscles[m].show();
-        muscles[m].move(m);
-        muscles[m].checkExits(m);
+
+    if (waveOn) {
+        //enemy functions
+        for (var m = 0; m < muscles.length; m++) {
+
+            muscles[m].move(m);
+            muscles[m].show();
+
+        }
 
     }
-    }
+
     //bullet functions
     for (var bindex = 0; bindex < bullets.length; bindex++) {
 
+
         bullets[bindex].show();
-        bullets[bindex].move();
-        bullets[bindex].getIndexAndDie(bindex);
+        bullets[bindex].move(bindex);
+
 
     }
+
+
 }

@@ -2,7 +2,7 @@ function decideWave() {
     if (keyCode) {
         if (wave == 1) {
             waveOn = true;
-            waveMuscle = 10;
+            waveMuscle = 3;
             wave++
         }
     }
