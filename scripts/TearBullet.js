@@ -21,8 +21,10 @@ class TearBullet {
         this.dir = p5.Vector.sub(this.target.pector,this.position);
         this.dir = this.dir.mult(this.speed / this.dir.mag());
 
-
-        if ((this.position.dist(this.target.pector)) <= 15) {
+        if(this.target == null) {
+             bullets.splice(this.iam, 1);
+        }
+        if ((this.position.dist(this.target.pector)) <= 15 ) {
             //hit
             this.iam = i;
             this.target.hp -= this.damage;

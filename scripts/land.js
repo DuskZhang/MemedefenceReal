@@ -38,10 +38,16 @@ class Tile {
                     towers.push(new Pepe(this.x, this.y));
                     pepeTowerDesired = false;
                 }
-            } // add more towers here
+            }  else if (dogeTowerDesired) {
+                if (gold >= 350) {
+                    gold -= 350;
+                    towers.push(new Doge(this.x, this.y));
+                    dogeTowerDesired = false;
+                }// add more towers here
         }
 
     }
+}
 }
 
 class Road extends Tile {
@@ -107,15 +113,12 @@ class BuyDoge extends Tile {
 
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
-            if (noSpammerino > 20) {
+            if (noSpammerino >= 18) {
                 dogeTowerDesired = !dogeTowerDesired;
                 noSpammerino = 0;
             }
-
-
         }
     }
 
-
-
 }
+

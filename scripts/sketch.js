@@ -1,6 +1,7 @@
 //meme defence is cool
 var roadsBuilt = 1;
 var pepeTowerDesired = false;
+var dogeTowerDesired = false;
 var waveMuscle = 0; // variable for deciding the max muscle per wave
 var numMuscle = 0; // how many muscles have spawned in a wave
 var muscles = []; //slang for all enemies
@@ -38,7 +39,7 @@ function setup() {
     buypepe = loadImage("assets/buypepe.jpg");
     weabland = loadImage("assets/weabland.jpg");
     doge = loadImage("assets/doge.jpg")
-    BuyDoge = loadImage("assets/buyDoge.png")
+    buyDoge = loadImage("assets/buyDoge.png")
 }
 
 function initializeTiles() {
@@ -55,7 +56,7 @@ function initializeTiles() {
 
     // shop tiles
     tiles[204] = new BuyPepe(tiles[204].x, tiles[204].y);
-    tiles[205] = new BuyPepe(tiles[205].x, tiles[205].y);
+    tiles[205] = new BuyDoge(tiles[205].x, tiles[205].y);
     tiles[206] = new BuyPepe(tiles[206].x, tiles[206].y);
 
     tiles[207] = new BuyPepe(tiles[207].x, tiles[207].y);
@@ -69,9 +70,6 @@ function initializeTiles() {
     tiles[213] = new BuyPepe(tiles[213].x, tiles[213].y);
     tiles[214] = new BuyPepe(tiles[214].x, tiles[214].y);
     tiles[215] = new BuyPepe(tiles[215].x, tiles[215].y);
-
-    //needed for the muscles
-    //    muscles.push(new GameObject( -500, -500));
 
 }
 
@@ -108,6 +106,8 @@ function draw() {
         objectFunctions();
         drawHud();
 
+    } else if (gamemode == 2) {
+        gameover();
     }
 
     
@@ -122,6 +122,10 @@ function drawHud() {
 
     if (pepeTowerDesired) {
         image(pepe, mouseX, mouseY, 60, 60);
+    }
+    
+    if (dogeTowerDesired) {
+        image(doge, mouseX, mouseY, 60, 60);
     }
 }
 
@@ -148,12 +152,14 @@ function keyPressed() {
 }
 
 function startScreen() {
-
+    background(0);
+    text("Start", width/2,height/2);
 }
 
 function objectFunctions() {
     if (muscles.length == 0 && numMuscle == waveMuscle) {
         waveOn = false;
+        numMuscle = 0;
     }
     //tile functions
     for (i = 0; i < tiles.length; i++) {
@@ -172,9 +178,12 @@ function objectFunctions() {
     if (waveOn) {
         //enemy functions
         for (var m = 0; m < muscles.length; m++) {
-
+            
             muscles[m].move(m);
+            if(muscles[0] != null) {
             muscles[m].show();
+            }
+            
 
         }
 
@@ -191,4 +200,9 @@ function objectFunctions() {
     }
 
 
+}
+
+function gameover() {
+    background(0);
+    text("Game Over", width/2,height/2);
 }

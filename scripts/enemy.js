@@ -75,25 +75,3 @@ class NormieMuscle {
 
 }
 
-//class GameObject {
-//    constructor(x, y) {
-//        this.pector = createVector(x, y);
-//        this.width = 50;
-//        this.height = 50;
-//
-//        this.nodeIndex = 0;
-//        this.targetVec;
-//        this.movementVector;
-//        this.distFrame;
-//        // once every 1/2 second if running at 60fps
-//        this.iam;
-//    }
-//    
-//    show() {
-//        
-//    }
-//     move(i) {
-//         this.pector.x++
-//        this.iam = i; 
-//     }
-//}
