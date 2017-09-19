@@ -106,7 +106,7 @@ class Workers extends NormieMuscle{
         fill(30, 223, 23);
         rect(this.pector.x, this.pector.y + this.width, this.hp /5, 10);
 
-         this.hp -= 0.1;
+         this.hp -= 0.05;
          
         if (this.hp <= 0) {
             gold += 75;

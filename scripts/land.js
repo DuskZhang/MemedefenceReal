@@ -38,16 +38,16 @@ class Tile {
                     towers.push(new Pepe(this.x, this.y));
                     pepeTowerDesired = false;
                 }
-            }  else if (dogeTowerDesired) {
-                if (gold >= 350) {
-                    gold -= 350;
+            } else if (dogeTowerDesired) {
+                if (gold >= 300) {
+                    gold -= 300;
                     towers.push(new Doge(this.x, this.y));
                     dogeTowerDesired = false;
-                }// add more towers here
-        }
+                } // add more towers here
+            }
 
+        }
     }
-}
 }
 
 class Road extends Tile {
@@ -66,7 +66,17 @@ class Road extends Tile {
 
     }
 
-    clicked() {}
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (grumpDesired) {
+                if (gold >= 40) {
+                    gold -= 40;
+                    towers.push(new Grump(this.x, this.y));
+                    grumpDesired = false;
+                }
+            }
+        }
+    }
 }
 
 
@@ -87,10 +97,14 @@ class BuyPepe extends Tile {
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (noSpammerino >= 18) {
-                pepeTowerDesired = !pepeTowerDesired;
-                noSpammerino = 0;
+                if(pepeTowerDesired) { 
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    pepeTowerDesired = true;
+                }
             }
-            
+
 
 
         }
@@ -114,8 +128,14 @@ class BuyDoge extends Tile {
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (noSpammerino >= 18) {
-                dogeTowerDesired = !dogeTowerDesired;
-                noSpammerino = 0;
+                if(dogeTowerDesired) { 
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    dogeTowerDesired = true;
+                }
+                
+                
             }
         }
     }
@@ -128,7 +148,7 @@ class BuyGrump extends Tile {
         this.x = x;
         this.y = y;
         this.connectionOpen = false;
-        this.image = buyDoge;
+        this.image = grump;
     }
 
     show() {
@@ -139,19 +159,17 @@ class BuyGrump extends Tile {
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (noSpammerino >= 18) {
-                dogeTowerDesired = !dogeTowerDesired;
-                noSpammerino = 0;
+                if(grumpDesired) { 
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    grumpDesired = true;
+                }
             }
         }
     }
 
 }
 
+
 //temporary road augmentation that does damage to close enemies for a certain amount of damage pts
-
-class Grump extends Tile {
-    //might not even need a class
-}
-
-
-

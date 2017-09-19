@@ -5,30 +5,36 @@ function decideWave() {
             waveMuscle = 5;
             waveWorkers = 0;
             wave++
+            
         } else if (wave == 2) {
+            spawnrate = 0;
             waveOn = true;
             waveMuscle = 15;
             waveWorkers = 1;
             spawnrate = 45;
             wave++
         } else if (wave == 3) {
+            spawnrate = 0;
             waveOn = true;
             waveMuscle = 35;
             waveWorkers = 2;
             spawnrate = 25;
             wave++
         } else if (wave == 4) {
+            spawnrate = 0;
             waveOn = true;
             waveMuscle = 55;
             waveWorkers = 1;
             spawnrate = 25;
             wave++
         } else if (wave == 5) {
+            spawnrate = 0;
             waveOn = true;
             waveMuscle = 75;
             spawnrate = 25;
             wave++
         } else if (wave == 6) {
+            spawnrate = 0;
             waveOn = true;
             waveMuscle = 85;
             spawnrate = 25;

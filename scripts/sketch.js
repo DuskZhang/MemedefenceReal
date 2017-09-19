@@ -2,6 +2,7 @@
 var roadsBuilt = 1;
 var pepeTowerDesired = false;
 var dogeTowerDesired = false;
+var grumpDesired = false;
 var waveMuscle = 0; // variable for deciding the max muscle per wave
 var numMuscle = 0; // how many muscles have spawned in a wave
 
@@ -14,7 +15,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 40;
+var roadAmount = 6;
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
@@ -45,6 +46,8 @@ function setup() {
     doge = loadImage("assets/doge.jpg");
     buyDoge = loadImage("assets/buyDoge.png");
     japsover = loadImage("assets/Workers.jpg");
+    grump = loadImage("assets/grump.jpg");
+    attackgrump = loadImage("assets/attackgrump.jpg");
 }
 
 function initializeTiles() {
@@ -62,7 +65,7 @@ function initializeTiles() {
     // shop tiles
     tiles[204] = new BuyPepe(tiles[204].x, tiles[204].y);
     tiles[205] = new BuyDoge(tiles[205].x, tiles[205].y);
-    tiles[206] = new BuyPepe(tiles[206].x, tiles[206].y);
+    tiles[206] = new BuyGrump(tiles[206].x, tiles[206].y);
 
     tiles[207] = new BuyPepe(tiles[207].x, tiles[207].y);
     tiles[208] = new BuyPepe(tiles[208].x, tiles[208].y);
@@ -76,6 +79,13 @@ function initializeTiles() {
     tiles[214] = new BuyPepe(tiles[214].x, tiles[214].y);
     tiles[215] = new BuyPepe(tiles[215].x, tiles[215].y);
 
+}
+
+function clearDesire() {
+    grumpDesired = false;
+    dogeTowerDesired = false;
+    pepeTowerDesired = false;
+    noSpammerino = 0;
 }
 
 function draw() {
@@ -139,6 +149,10 @@ function drawHud() {
     if (dogeTowerDesired) {
         image(doge, mouseX, mouseY, 60, 60);
     }
+    
+    if (grumpDesired) {
+        image(attackgrump, mouseX, mouseY, 60, 60);
+    }
 }
 
 function bringInstructions() {
@@ -154,6 +168,7 @@ function bringInstructions() {
 function keyPressed() {
     if (keyCode == 27) {
         //esc
+        rect(0,0,width,height);
     }
 
     if (waveOn == false && keyCode == 13 && roadsBuilt == roadAmount) {
