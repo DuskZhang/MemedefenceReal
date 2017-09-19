@@ -31,7 +31,7 @@ class Tile {
                     roadsBuilt++
                 } //towers
 
-
+                //todo make it so u cant stack towers
             } else if (pepeTowerDesired) {
                 if (gold >= 150) {
                     gold -= 150;
@@ -121,4 +121,37 @@ class BuyDoge extends Tile {
     }
 
 }
+
+class BuyGrump extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = buyDoge;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                dogeTowerDesired = !dogeTowerDesired;
+                noSpammerino = 0;
+            }
+        }
+    }
+
+}
+
+//temporary road augmentation that does damage to close enemies for a certain amount of damage pts
+
+class Grump extends Tile {
+    //might not even need a class
+}
+
+
 

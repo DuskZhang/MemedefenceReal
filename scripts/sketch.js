@@ -4,22 +4,26 @@ var pepeTowerDesired = false;
 var dogeTowerDesired = false;
 var waveMuscle = 0; // variable for deciding the max muscle per wave
 var numMuscle = 0; // how many muscles have spawned in a wave
+
+var waveWorkers = 0;
+var numWorkers = 0;
+
 var muscles = []; //slang for all enemies
 var spawnrate = 60; // once every second new guy 60fps
 var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 7;
+var roadAmount = 40;
 var nearestEnemy;
 var boolinitializeTiles = true;
-var enemies = []
+var enemyQueue = []
 var wave = 1;
 var noSpammerino = 0;
 //standard public hud
 
 var lives = 20;
-var gold = 3000;
+var gold = 400;
 // towers
 var towers = [];
 var shops = [];
@@ -38,8 +42,9 @@ function setup() {
     stars = loadImage("assets/stars.jpg");
     buypepe = loadImage("assets/buypepe.jpg");
     weabland = loadImage("assets/weabland.jpg");
-    doge = loadImage("assets/doge.jpg")
-    buyDoge = loadImage("assets/buyDoge.png")
+    doge = loadImage("assets/doge.jpg");
+    buyDoge = loadImage("assets/buyDoge.png");
+    japsover = loadImage("assets/Workers.jpg");
 }
 
 function initializeTiles() {
@@ -52,7 +57,7 @@ function initializeTiles() {
     }
     tiles[0] = new Road(0, 0);
     nodes.push(tiles[0]);
-    
+
 
     // shop tiles
     tiles[204] = new BuyPepe(tiles[204].x, tiles[204].y);
@@ -83,26 +88,33 @@ function draw() {
 
 
         isWaveFinished();
-        
-        if(roadAmount == roadsBuilt) {
-            nodes[roadAmount-1].image = weabland;
+
+        if (roadAmount == roadsBuilt) {
+            nodes[roadAmount - 1].image = weabland;
         }
-        
-        if(noSpammerino < 20) [
+
+        if (noSpammerino < 20)[
             noSpammerino++
-        ]
-        
+            ]
+
         if (boolinitializeTiles) {
             initializeTiles();
             boolinitializeTiles = false;
         }
         //spawning muscle
-        if (frameCount % spawnrate == 0 && numMuscle < waveMuscle) {
-            muscles.push(new NormieMuscle(0, 0));
-            numMuscle++;
+
+        if (frameCount % spawnrate == 0) {
+            if (numMuscle < waveMuscle) {
+                muscles.push(new NormieMuscle(0, 0));
+                numMuscle++;
+            } else if (numWorkers < waveWorkers) {
+                muscles.push(new Workers(0, 0));
+                numWorkers++;
+            }
+
 
         }
-        
+
         objectFunctions();
         drawHud();
 
@@ -110,7 +122,7 @@ function draw() {
         gameover();
     }
 
-    
+
 }
 
 function drawHud() {
@@ -123,7 +135,7 @@ function drawHud() {
     if (pepeTowerDesired) {
         image(pepe, mouseX, mouseY, 60, 60);
     }
-    
+
     if (dogeTowerDesired) {
         image(doge, mouseX, mouseY, 60, 60);
     }
@@ -153,17 +165,19 @@ function keyPressed() {
 
 function startScreen() {
     background(0);
-    text("Start", width/2,height/2);
+    text("Start", width / 2, height / 2);
 }
 
 function objectFunctions() {
     if (muscles.length == 0 && numMuscle == waveMuscle) {
         waveOn = false;
         numMuscle = 0;
+        numWorkers = 0;
     }
     //tile functions
     for (i = 0; i < tiles.length; i++) {
         tiles[i].show();
+        
         if (tiles[i].clicked(i)) {
             tiles[i] = new Road;
         }
@@ -178,12 +192,14 @@ function objectFunctions() {
     if (waveOn) {
         //enemy functions
         for (var m = 0; m < muscles.length; m++) {
-            
-            muscles[m].move(m);
-            if(muscles[0] != null) {
-            muscles[m].show();
+            if (muscles[0] != null) {
+                muscles[m].move(m);
             }
-            
+
+            if (muscles[0] != null) {
+                muscles[m].show();
+            }
+
 
         }
 
@@ -204,5 +220,5 @@ function objectFunctions() {
 
 function gameover() {
     background(0);
-    text("Game Over", width/2,height/2);
+    text("Game Over", width / 2, height / 2);
 }

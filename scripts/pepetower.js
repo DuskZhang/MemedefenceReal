@@ -46,11 +46,13 @@ class Pepe extends Tower {
 
         }
         //shoots at first enemy in muscles array to meet if statement
+        if(muscles[0] != null) {
         for (var i = 0; i < muscles.length; i++) {
             if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range) {
                 this.shootAt(muscles[i]);
                 break;
             }
+        }
         }
 
     }
@@ -96,11 +98,13 @@ class Doge extends Tower {
 
         }
         //shoots at first enemy in muscles array to meet if statement
+        if(muscles[0] != null) {
         for (var i = 0; i < muscles.length; i++) {
             if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range) {
                 this.shootAt(muscles[i]);
                 break;
             }
+        }
         }
 
     }
@@ -133,3 +137,21 @@ class Doge extends Tower {
 
     
 }
+//
+//class BobBuilder
+//long range sniper that does decent wrench damage 
+
+//class WillyWonka
+//tower that purely slows nearby enemies up to 75% doesnt stack
+
+//class WinterIsComing
+//tower that creates swordsmen to defend nearby road tile until they die
+
+//class animeGrill
+//tower that hunts down enemies moving around the map until the wave is finished doesnt really do much damage though
+
+//class LazyRedEyeDude 
+//toewr that does super slow medium damage
+
+//class DabbingSquidward
+//aoe damage 
