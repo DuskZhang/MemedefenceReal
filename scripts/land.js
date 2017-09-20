@@ -32,22 +32,34 @@ class Tile {
                 } //towers
 
                 //todo make it so u cant stack towers
-            } else if (pepeTowerDesired) {
-                if (gold >= 150) {
-                    gold -= 150;
-                    towers.push(new Pepe(this.x, this.y));
-                    pepeTowerDesired = false;
-                }
-            } else if (dogeTowerDesired) {
-                if (gold >= 300) {
-                    gold -= 300;
-                    towers.push(new Doge(this.x, this.y));
-                    dogeTowerDesired = false;
-                } // add more towers here
+            } else {
+                this.towerPlace();
             }
 
         }
     }
+    
+    towerPlace() {
+    if (pepeTowerDesired) {
+        if (gold >= 150) {
+            gold -= 150;
+            towers.push(new Pepe(this.x, this.y));
+            pepeTowerDesired = false;
+        }
+    } else if (dogeTowerDesired) {
+        if (gold >= 220) {
+            gold -= 220;
+            towers.push(new Doge(this.x, this.y));
+            dogeTowerDesired = false;
+        }
+    } else if (wonkaTowerDesired) {
+        if (gold >= 320) {
+            gold -= 320;
+            towers.push(new Wonka(this.x, this.y));
+            wonkaTowerDesired = false;
+        } // add more towers here
+    }
+}
 }
 
 class Road extends Tile {
@@ -69,8 +81,8 @@ class Road extends Tile {
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (grumpDesired) {
-                if (gold >= 40) {
-                    gold -= 40;
+                if (gold >= 45) {
+                    gold -= 45;
                     towers.push(new Grump(this.x, this.y));
                     grumpDesired = false;
                 }
@@ -97,7 +109,7 @@ class BuyPepe extends Tile {
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (noSpammerino >= 18) {
-                if(pepeTowerDesired) { 
+                if (pepeTowerDesired) {
                     clearDesire();
                 } else {
                     clearDesire();
@@ -128,14 +140,14 @@ class BuyDoge extends Tile {
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (noSpammerino >= 18) {
-                if(dogeTowerDesired) { 
+                if (dogeTowerDesired) {
                     clearDesire();
                 } else {
                     clearDesire();
                     dogeTowerDesired = true;
                 }
-                
-                
+
+
             }
         }
     }
@@ -159,11 +171,40 @@ class BuyGrump extends Tile {
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (noSpammerino >= 18) {
-                if(grumpDesired) { 
+                if (grumpDesired) {
                     clearDesire();
                 } else {
                     clearDesire();
                     grumpDesired = true;
+                }
+            }
+        }
+    }
+
+}
+
+class BuyWonka extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = wonkafactory;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (wonkaTowerDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    wonkaTowerDesired = true;
                 }
             }
         }

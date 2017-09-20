@@ -40,7 +40,7 @@ function decideWave() {
             spawnrate = 25;
             wave++
         }
-
+//21 waves
     }
 }
 
