@@ -7,7 +7,9 @@ var dogeTowerDesired = false;
 var wonkaTowerDesired = false;
 var grumpDesired = false;
 var weabooDesired = false;
+var hudDesired = false;
 
+var anotherTowerClicked = false;
 
 var waveMuscle = 0; // variable for deciding the max muscle per wave
 var numMuscle = 0; // how many muscles have spawned in a wave
@@ -25,7 +27,7 @@ var roadAmount = 10;
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
-var wave = 1;
+var wave = 0;
 var noSpammerino = 0;
 //standard public hud
 
@@ -58,7 +60,8 @@ function setup() {
     wonkabar = loadImage("assets/wonkabar.jpg");
     wonkafactory = loadImage("assets/wonkafactory.jpg");
     angryweab = loadImage("assets/anime-memes3.jpg");
-    buyweaboo = loadImage("assets/weabooman.jpg")
+    buyweaboo = loadImage("assets/weabooman.jpg");
+    katana = loadImage("assets/katana.png");
 }
 
 function initializeTiles() {
@@ -148,48 +151,82 @@ function draw() {
 
 }
 
-function drawHud() {
-    textSize(30);
-    fill("yellow");
-    text("G: " + gold, mouseX, mouseY);
-    fill(230, 150, 120);
-    text("Lives: " + lives, mouseX, mouseY - 40);
 
+
+function drawHud() {
     if (pepeTowerDesired) {
         image(pepe, mouseX, mouseY, 60, 60);
+        fill(230, 150, 120);
+        textSize(24);
+        text("A midrange rapid-fire killer ", mouseX, mouseY);
+        fill(40,130,130,40);
+        ellipse(mouseX+30, mouseY+30, 120*2);
     }
 
     if (dogeTowerDesired) {
         image(doge, mouseX, mouseY, 60, 60);
+        fill(230, 150, 120);
+        textSize(24);
+        text("A ferocious melee fighter ", mouseX, mouseY);
+        fill(40,130,130,40);
+        ellipse(mouseX+30, mouseY+30, 120*2);
+        
     }
-    
+
     if (grumpDesired) {
         image(attackgrump, mouseX, mouseY, 60, 60);
+        fill(230, 150, 220);
+        textSize(24);
+        text("Lies on the road waiting to kill crossers ", mouseX, mouseY);
+        fill(40,130,130,40);
+        ellipse(mouseX+30, mouseY+30, 60);
     }
-    
+
     if (wonkaTowerDesired) {
         image(wonka, mouseX, mouseY, 60, 60);
+        fill(230, 150, 220);
+        textSize(24);
+        text("Max range sniper slows speed to 10%", mouseX, mouseY);
+        fill(40,130,130,40);
+        ellipse(mouseX+30, mouseY+30, 9000);
     }
-    
+
     if (weabooDesired) {
         image(angryweab, mouseX, mouseY, 60, 60);
+        fill(230, 150, 220);
+        textSize(24);
+        text("Aggressive phantom follows the invaders", mouseX, mouseY);
+        fill(40,130,130,40);
+        ellipse(mouseX+30, mouseY+30, 130*2);
+    }
+
+    if (hudDesired) {
+        fill(0);
+        rect(400, 0, 700, height / 4);
+        textSize(30);
+        fill("yellow");
+        text("G: " + gold, 550, 80);
+        fill(230, 150, 120);
+        text("Lives: " + lives, 550, 120);
+        text("Wave: " + wave, 550, 40);
+        text("Description", 1000, 120);
+        
+        
+//        if() {
+//           towers[t].selected = upgrade 1 
+//           }
     }
 }
 
-function bringInstructions() {
-    textSize(30);
-    fill("yellow");
-    text("G: " + gold, mouseX, mouseY);
-    fill(230, 150, 120);
-    text("Lives: " + lives, mouseX, mouseY - 40);
-}
+//function bringInstructions() {
+//    
+//}
 
-//instructions, towers etc
-//
+
 function keyPressed() {
-    if (keyCode == 27) {
-        //esc
-        rect(0,0,width,height);
+    if (keyCode == 27 && noSpammerino >= 18) {
+        hudDesired = !hudDesired;
+        noSpammerino = 0;
     }
 
     if (waveOn == false && keyCode == 13 && roadsBuilt == roadAmount) {
@@ -199,61 +236,16 @@ function keyPressed() {
 
 }
 
+
+
+
+
 function startScreen() {
     background(0);
     text("Start", width / 2, height / 2);
 }
 
-function objectFunctions() {
-    if (muscles.length == 0 && numMuscle == waveMuscle) {
-        waveOn = false;
-        numMuscle = 0;
-        numWorkers = 0;
-    }
-    //tile functions
-    for (i = 0; i < tiles.length; i++) {
-        tiles[i].show();
-        
-        if (tiles[i].clicked(i)) {
-            tiles[i] = new Road;
-        }
 
-    }
-    
-    //tower functions
-    for (t = towers.length - 1; t >= 0; t--) {
-        towers[t].show(t);
-        towers[t].lockon();
-    }
-
-    if (waveOn) {
-        //enemy functions
-        for (var m = 0; m < muscles.length; m++) {
-            if (muscles[0] != null) {
-                muscles[m].move(m);
-            }
-
-            if (muscles[0] != null) {
-                muscles[m].show();
-            }
-
-
-        }
-
-    }
-
-    //bullet functions
-    for (var bindex = 0; bindex < bullets.length; bindex++) {
-
-
-        bullets[bindex].show();
-        bullets[bindex].move(bindex);
-
-
-    }
-
-
-}
 
 function gameover() {
     background(0);

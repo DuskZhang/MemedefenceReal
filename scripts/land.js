@@ -55,14 +55,14 @@ class Tile {
                 dogeTowerDesired = false;
                 this.tileTaken = true;
             }
-        } else if (wonkaTowerDesired) {
+        } else if (wonkaTowerDesired && this.tileTaken == false) {
             if (gold >= 320) {
                 gold -= 320;
                 towers.push(new Wonka(this.x, this.y));
                 wonkaTowerDesired = false;
                 this.tileTaken = true;
             }
-        } else if (weabooDesired) {
+        } else if (weabooDesired && this.tileTaken == false) {
             if (gold >= 240) {
                 gold -= 240;
                 towers.push(new AngryWeaboo(this.x, this.y));

@@ -1,10 +1,15 @@
 function decideWave() {
     if (keyCode) {
-        if (wave == 1) {
+        if(wave == 0) {
             waveOn = true;
             waveMuscle = 5;
             waveWorkers = 0;
-            wave++
+            wave++;
+        } else if (wave == 1) {
+            waveOn = true;
+            waveMuscle = 5;
+            waveWorkers = 0;
+            wave++;
             
         } else if (wave == 2) {
             spawnrate = 0;
