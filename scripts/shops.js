@@ -1,0 +1,148 @@
+class BuyPepe extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = buypepe;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (pepeTowerDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    pepeTowerDesired = true;
+                }
+            }
+
+
+
+        }
+    }
+}
+
+class BuyDoge extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = buyDoge;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (dogeTowerDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    dogeTowerDesired = true;
+                }
+
+
+            }
+        }
+    }
+
+}
+
+class BuyGrump extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = grump;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (grumpDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    grumpDesired = true;
+                }
+            }
+        }
+    }
+
+}
+
+class BuyWonka extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = wonkafactory;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (wonkaTowerDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    wonkaTowerDesired = true;
+                }
+            }
+        }
+    }
+
+}
+
+class BuyWeaboo extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = buyweaboo;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (weabooDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    weabooDesired = true;
+                }
+            }
+        }
+    }
+
+}

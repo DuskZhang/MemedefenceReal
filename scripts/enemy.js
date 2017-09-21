@@ -239,5 +239,6 @@ class BabyBoomer extends NormieMuscle{
     }
     
     //make the guy lose hp over time lol from killing himself
+    //todo make 4 more enemies
 }
 

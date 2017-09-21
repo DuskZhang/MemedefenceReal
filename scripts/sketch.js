@@ -1,9 +1,14 @@
 //meme defence is cool
+
+
 var roadsBuilt = 1;
 var pepeTowerDesired = false;
 var dogeTowerDesired = false;
 var wonkaTowerDesired = false;
 var grumpDesired = false;
+var weabooDesired = false;
+
+
 var waveMuscle = 0; // variable for deciding the max muscle per wave
 var numMuscle = 0; // how many muscles have spawned in a wave
 
@@ -25,7 +30,7 @@ var noSpammerino = 0;
 //standard public hud
 
 var lives = 20;
-var gold = 400;
+var gold = 800;
 // towers
 var towers = [];
 var shops = [];
@@ -52,6 +57,8 @@ function setup() {
     wonka = loadImage("assets/wonka.jpg");
     wonkabar = loadImage("assets/wonkabar.jpg");
     wonkafactory = loadImage("assets/wonkafactory.jpg");
+    angryweab = loadImage("assets/anime-memes3.jpg");
+    buyweaboo = loadImage("assets/weabooman.jpg")
 }
 
 function initializeTiles() {
@@ -72,7 +79,7 @@ function initializeTiles() {
     tiles[206] = new BuyGrump(tiles[206].x, tiles[206].y);
 
     tiles[207] = new BuyWonka(tiles[207].x, tiles[207].y);
-    tiles[208] = new BuyPepe(tiles[208].x, tiles[208].y);
+    tiles[208] = new BuyWeaboo(tiles[208].x, tiles[208].y);
     tiles[209] = new BuyPepe(tiles[209].x, tiles[209].y);
 
     tiles[210] = new BuyPepe(tiles[210].x, tiles[210].y);
@@ -90,6 +97,7 @@ function clearDesire() {
     dogeTowerDesired = false;
     pepeTowerDesired = false;
     wonkaTowerDesired = false;
+    weabooDesired = false;
     noSpammerino = 0;
 }
 
@@ -161,6 +169,10 @@ function drawHud() {
     
     if (wonkaTowerDesired) {
         image(wonka, mouseX, mouseY, 60, 60);
+    }
+    
+    if (weabooDesired) {
+        image(angryweab, mouseX, mouseY, 60, 60);
     }
 }
 

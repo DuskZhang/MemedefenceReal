@@ -15,22 +15,22 @@ class TearBullet {
         image(this.image, this.position.x, this.position.y, 30, 30);
     }
 
-    
-    
+
+
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
         //movement
-        
-        if(this.target == null) {
+
+        if (this.target == null) {
             bullets.splice(this.iam, 1);
         }
-        this.dir = p5.Vector.sub(this.target.pector,this.position);
+        this.dir = p5.Vector.sub(this.target.pector, this.position);
         this.dir = this.dir.mult(this.speed / this.dir.mag());
-
-        if(this.target == null) {
-             bullets.splice(this.iam, 1);
+        if (this.target.hp <= 0) {
+            bullets.splice(this.iam, 1);
         }
-        if ((this.position.dist(this.target.pector)) <= 15 ) {
+
+        if ((this.position.dist(this.target.pector)) <= 15) {
             //hit
             this.iam = i;
             this.target.hp -= this.damage;
@@ -56,8 +56,8 @@ class WonkaBar {
     }
 
     show() {
-        if(this.target != null) {
-        image(this.image, this.position.x, this.position.y, 30, 30);
+        if (this.target != null) {
+            image(this.image, this.position.x, this.position.y, 30, 30);
         }
     }
 
@@ -65,20 +65,25 @@ class WonkaBar {
     move(i) {
         this.iam = i;
         //movement
-        this.dir = p5.Vector.sub(this.target.pector,this.position);
+        this.dir = p5.Vector.sub(this.target.pector, this.position);
         this.dir = this.dir.mult(this.speed / this.dir.mag());
-
-        if(this.target == null) {
-             bullets.splice(this.iam, 1);
+        if (this.target.hp <= 0) {
+            bullets.splice(this.iam, 1);
         }
-        if ((this.position.dist(this.target.pector)) <= 15 ) {
+        if (this.target == null) {
+            bullets.splice(this.iam, 1);
+        }
+        if ((this.position.dist(this.target.pector)) <= 15) {
             //hit
-            this.target.speed -= 1
+            if(this.target.speed > 0.4) { 
+                this.target.speed = this.target.speed * 0.5;
+            }
+            
             this.target.hp -= this.damage;
             bullets.splice(this.iam, 1);
         } else {
             this.position.add(this.dir);
-            if(this.target.pector == null) {
+            if (this.target.pector == null) {
                 bullets.splice(this.iam, 1);
             }
         }
