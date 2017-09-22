@@ -10,8 +10,8 @@ class AngryWeaboo extends Tower {
         this.neutralPositiony = this.y;
         this.damage = 0.6;
         this.shootcharge = 0;
-        this.chargebuild = 5
-        this.primeshoot = 80;
+        this.chargebuild = 8
+        this.primeshoot = 100;
         this.range = 130;
         this.image = angryweab;
         this.dir;
@@ -54,7 +54,7 @@ class AngryWeaboo extends Tower {
 
     //called every frame by obj
     shootAt(object) {
-        if (this.shootcharge == this.primeshoot) {
+        if (this.shootcharge >= this.primeshoot) {
             this.dir = p5.Vector.sub(object.pector, this.position);
             this.dir = this.dir.mult(this.speed / this.dir.mag());
             //meleeswordbullet

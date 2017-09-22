@@ -1,4 +1,6 @@
 function objectFunctions() {
+    
+    
     if (muscles.length == 0 && numMuscle == waveMuscle) {
         waveOn = false;
         numMuscle = 0;
@@ -14,12 +16,28 @@ function objectFunctions() {
 
     }
     
+    drawHud();
+    
+    //bullet functions
+    for (var bindex = 0; bindex < bullets.length; bindex++) {
+
+
+        bullets[bindex].show();
+        bullets[bindex].move(bindex);
+
+
+    }
+    
     //tower functions
     for (t = towers.length - 1; t >= 0; t--) {
         towers[t].show(t);
         towers[t].lockon();
         if(towers[t] != null) {
         towers[t].onClick(t);
+        }
+        
+        if(towers[t].selected) {
+            towers[t].hudInfo();
         }
     }
 
@@ -39,15 +57,7 @@ function objectFunctions() {
 
     }
 
-    //bullet functions
-    for (var bindex = 0; bindex < bullets.length; bindex++) {
-
-
-        bullets[bindex].show();
-        bullets[bindex].move(bindex);
-
-
-    }
+    
 
 
 }

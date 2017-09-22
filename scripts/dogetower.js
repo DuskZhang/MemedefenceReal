@@ -7,8 +7,8 @@ class Doge extends Tower {
         this.neutralPositiony = this.y;
         this.damage = 5; // Will need this because doge wont be producing any bullets for damage
         this.shootcharge = 0;
-        this.chargebuild = 5
-        this.primeshoot = 280;
+        this.chargebuild = 3
+        this.primeshoot = 160;
         this.range = 100;
         this.image = doge;
         this.speed = 20;
@@ -43,7 +43,7 @@ class Doge extends Tower {
     //called every frame by obj
     shootAt(object) {
         //charge at enemy instead of pushing a new bullet
-        if (this.shootcharge == this.primeshoot) {
+        if (this.shootcharge >= this.primeshoot) {
             this.dir = p5.Vector.sub(object.pector, this.position);
             this.dir = this.dir.mult(this.speed / this.dir.mag());
 

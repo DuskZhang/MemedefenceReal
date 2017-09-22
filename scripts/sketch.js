@@ -9,7 +9,8 @@ var grumpDesired = false;
 var weabooDesired = false;
 var hudDesired = false;
 
-var anotherTowerClicked = false;
+//if hud desired stop people from buying towers
+//var hudReset = false;
 
 var waveMuscle = 0; // variable for deciding the max muscle per wave
 var numMuscle = 0; // how many muscles have spawned in a wave
@@ -37,6 +38,7 @@ var gold = 800;
 var towers = [];
 var shops = [];
 var bullets = [];
+var selectedTower; //make this not run first hud view and have it be the tower u  know
 
 var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
 
@@ -62,6 +64,8 @@ function setup() {
     angryweab = loadImage("assets/anime-memes3.jpg");
     buyweaboo = loadImage("assets/weabooman.jpg");
     katana = loadImage("assets/katana.png");
+    damagetears = loadImage("assets/hardertears.png");
+    rangepepe = loadImage("assets/sightpepe.jpg");
 }
 
 function initializeTiles() {
@@ -104,6 +108,12 @@ function clearDesire() {
     noSpammerino = 0;
 }
 
+function hudReset() {
+    for (selcheck = towers.length - 1; selcheck >= 0; selcheck--) {
+        towers[selcheck].selected = false;
+    }
+}
+
 function draw() {
     if (gamemode == 0) {
         startScreen();
@@ -141,8 +151,9 @@ function draw() {
 
         }
 
+
         objectFunctions();
-        drawHud();
+
 
     } else if (gamemode == 2) {
         gameover();
@@ -159,8 +170,8 @@ function drawHud() {
         fill(230, 150, 120);
         textSize(24);
         text("A midrange rapid-fire killer ", mouseX, mouseY);
-        fill(40,130,130,40);
-        ellipse(mouseX+30, mouseY+30, 120*2);
+        fill(40, 130, 130, 40);
+        ellipse(mouseX + 30, mouseY + 30, 120 * 2);
     }
 
     if (dogeTowerDesired) {
@@ -168,9 +179,9 @@ function drawHud() {
         fill(230, 150, 120);
         textSize(24);
         text("A ferocious melee fighter ", mouseX, mouseY);
-        fill(40,130,130,40);
-        ellipse(mouseX+30, mouseY+30, 120*2);
-        
+        fill(40, 130, 130, 40);
+        ellipse(mouseX + 30, mouseY + 30, 120 * 2);
+
     }
 
     if (grumpDesired) {
@@ -178,8 +189,8 @@ function drawHud() {
         fill(230, 150, 220);
         textSize(24);
         text("Lies on the road waiting to kill crossers ", mouseX, mouseY);
-        fill(40,130,130,40);
-        ellipse(mouseX+30, mouseY+30, 60);
+        fill(40, 130, 130, 40);
+        ellipse(mouseX + 30, mouseY + 30, 60);
     }
 
     if (wonkaTowerDesired) {
@@ -187,8 +198,8 @@ function drawHud() {
         fill(230, 150, 220);
         textSize(24);
         text("Max range sniper slows speed to 10%", mouseX, mouseY);
-        fill(40,130,130,40);
-        ellipse(mouseX+30, mouseY+30, 9000);
+        fill(40, 130, 130, 40);
+        ellipse(mouseX + 30, mouseY + 30, 9000);
     }
 
     if (weabooDesired) {
@@ -196,8 +207,8 @@ function drawHud() {
         fill(230, 150, 220);
         textSize(24);
         text("Aggressive phantom follows the invaders", mouseX, mouseY);
-        fill(40,130,130,40);
-        ellipse(mouseX+30, mouseY+30, 130*2);
+        fill(40, 130, 130, 40);
+        ellipse(mouseX + 30, mouseY + 30, 130 * 2);
     }
 
     if (hudDesired) {
@@ -205,16 +216,11 @@ function drawHud() {
         rect(400, 0, 700, height / 4);
         textSize(30);
         fill("yellow");
-        text("G: " + gold, 550, 80);
+        text("G: " + gold, 450, 80);
         fill(230, 150, 120);
-        text("Lives: " + lives, 550, 120);
-        text("Wave: " + wave, 550, 40);
-        text("Description", 1000, 120);
+        text("Lives: " + lives, 450, 120);
+        text("Wave: " + wave, 450, 40);
         
-        
-//        if() {
-//           towers[t].selected = upgrade 1 
-//           }
     }
 }
 
@@ -225,7 +231,9 @@ function drawHud() {
 
 function keyPressed() {
     if (keyCode == 27 && noSpammerino >= 18) {
+        hudReset();
         hudDesired = !hudDesired;
+        clearDesire();
         noSpammerino = 0;
     }
 

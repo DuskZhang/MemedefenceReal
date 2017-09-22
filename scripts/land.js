@@ -41,34 +41,36 @@ class Tile {
     }
 
     towerPlace() {
-        if (pepeTowerDesired && this.tileTaken == false) {
-            if (gold >= 150) {
-                gold -= 150;
-                towers.push(new Pepe(this.x, this.y));
-                pepeTowerDesired = false;
-                this.tileTaken = true;
+        if (!hudDesired) {
+            if (pepeTowerDesired && this.tileTaken == false) {
+                if (gold >= 150) {
+                    gold -= 150;
+                    towers.push(new Pepe(this.x, this.y));
+                    pepeTowerDesired = false;
+                    this.tileTaken = true;
+                }
+            } else if (dogeTowerDesired && this.tileTaken == false) {
+                if (gold >= 220) {
+                    gold -= 220;
+                    towers.push(new Doge(this.x, this.y));
+                    dogeTowerDesired = false;
+                    this.tileTaken = true;
+                }
+            } else if (wonkaTowerDesired && this.tileTaken == false) {
+                if (gold >= 320) {
+                    gold -= 320;
+                    towers.push(new Wonka(this.x, this.y));
+                    wonkaTowerDesired = false;
+                    this.tileTaken = true;
+                }
+            } else if (weabooDesired && this.tileTaken == false) {
+                if (gold >= 240) {
+                    gold -= 240;
+                    towers.push(new AngryWeaboo(this.x, this.y));
+                    weabooDesired = false;
+                    this.tileTaken = true;
+                } // add more towers here
             }
-        } else if (dogeTowerDesired && this.tileTaken == false) {
-            if (gold >= 220) {
-                gold -= 220;
-                towers.push(new Doge(this.x, this.y));
-                dogeTowerDesired = false;
-                this.tileTaken = true;
-            }
-        } else if (wonkaTowerDesired && this.tileTaken == false) {
-            if (gold >= 320) {
-                gold -= 320;
-                towers.push(new Wonka(this.x, this.y));
-                wonkaTowerDesired = false;
-                this.tileTaken = true;
-            }
-        } else if (weabooDesired && this.tileTaken == false) {
-            if (gold >= 240) {
-                gold -= 240;
-                towers.push(new AngryWeaboo(this.x, this.y));
-                weabooDesired = false;
-                this.tileTaken = true;
-            } // add more towers here
         }
     }
 }

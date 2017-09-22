@@ -1,10 +1,8 @@
-
-
 class Tower {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.position = createVector(this.x,this.y);
+        this.position = createVector(this.x, this.y);
         this.damage = 1;
         this.shootcharge = 0; // once it hits primeshoot it fires
         this.chargebuild = 5
@@ -13,7 +11,9 @@ class Tower {
         this.image;
         this.width = 60;
         this.iam;
-        this.showInfo = false;
+        this.selected = false;
+        this.upgradeLevelA = 0;
+        this.upgradeLevelB = 0;
     }
 
     show() {
@@ -28,21 +28,35 @@ class Tower {
 
     }
 
-    //on click show range and upgrades + stats
+    upgradeAclicked() {
+        if (mouseX > 750 && mouseX < 900 && mouseY < 150 && mouseY > 50 && mouseIsPressed && noSpammerino >= 18) {
+                return true;
 
-        onClick(i) {
-            this.iam = i;
-            if(mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
-//                if(anotherTowerClicked == false && showThisInfo == false) {
-//                    showThisInfo = !showThisInfo
-//                    anotherTowerClicked = true;
-//                    
-//                    
-//                }
-            showStats(towers[this.iam]);
-            showRange(towers[this.iam]);
         }
+    }
+
+    upgradeBclicked() {
+        if (mouseX > 900 && mouseX < 1050 && mouseY < 150 && mouseY > 50 && mouseIsPressed && noSpammerino >= 18) {
+                return true;
+
         }
+    }
+
+
+    onClick(i) {
+        this.iam = i;
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+            hudReset();
+            this.selected = true;
+
+        }
+    }
+
+    hudInfo() {
+        showStats(towers[this.iam]);
+        showRange(towers[this.iam]);
+        showUpgrades(towers[this.iam]);
+    }
 }
 
 class Pepe extends Tower {
@@ -56,7 +70,11 @@ class Pepe extends Tower {
         this.primeshoot = 100;
         this.range = 120;
         this.image = pepe;
-
+        this.selected = false;
+        this.upgradeA0Image = damagetears;
+        this.upgradeA0Description = "Hard Tears: \nDouble damage";
+        this.upgradeB0Image = rangepepe;
+        this.upgradeB0Description = "Grim Sights: \nDouble range";
 
     }
     //called every frame
@@ -84,22 +102,28 @@ class Pepe extends Tower {
 
     //called every frame by obj
     shootAt(object) {
-        if (this.shootcharge == this.primeshoot) {
+        if (this.shootcharge >= this.primeshoot) {
             this.shootcharge = 0;
-            bullets.push(new TearBullet(this.x, this.y, object))
+            bullets.push(new TearBullet(this.x, this.y, object, this.damage))
 
         }
 
     }
-    
+
+    hudInfo() {
+        showStats(towers[this.iam]);
+        showRange(towers[this.iam]);
+        showUpgrades(towers[this.iam]);
+    }
+
     onClick(i) {
-            this.iam = i;
-            if(mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
-                console.log("shit")
-            showStats(towers[this.iam]);
-            showRange(towers[this.iam]);
+        this.iam = i;
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+            hudReset();
+            this.selected = true;
+
         }
-        }
+    }
 
 }
 

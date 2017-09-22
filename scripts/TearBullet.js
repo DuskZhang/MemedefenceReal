@@ -1,8 +1,8 @@
 class TearBullet {
-    constructor(x, y, target) {
+    constructor(x, y, target,damage) {
         this.position = createVector(x, y);
         this.target = target;
-        this.damage = 1;
+        this.damage = damage;
         this.speed = 5;
         this.image = tear;
         this.iam;

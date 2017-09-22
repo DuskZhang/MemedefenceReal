@@ -7,8 +7,8 @@ class Wonka extends Tower {
 
         this.damage = 1; // prob will not need this on tower
         this.shootcharge = 0;
-        this.chargebuild = 5
-        this.primeshoot = 200;
+        this.chargebuild = 4
+        this.primeshoot = 150;
         this.range = 6969;
         this.image = wonka;
 
@@ -31,7 +31,7 @@ class Wonka extends Tower {
     }
     //called every frame by obj
     shootAt(object) {
-        if (this.shootcharge == this.primeshoot) {
+        if (this.shootcharge >= this.primeshoot) {
             this.shootcharge = 0;
             bullets.push(new WonkaBar(this.x, this.y, object))
 

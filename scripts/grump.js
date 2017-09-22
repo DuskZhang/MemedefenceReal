@@ -8,6 +8,7 @@ class Grump extends Tower {
         this.image = attackgrump;
         this.hits = 0;
         this.maxHits = 20;
+        this.chargebuild = 30;
     }
 
     //called every frame
