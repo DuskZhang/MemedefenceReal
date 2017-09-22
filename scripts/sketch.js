@@ -18,6 +18,9 @@ var numMuscle = 0; // how many muscles have spawned in a wave
 var waveWorkers = 0;
 var numWorkers = 0;
 
+var numBoom = 0;
+var waveBoom = 0;
+
 var muscles = []; //slang for all enemies
 var spawnrate = 60; // once every second new guy 60fps
 var waveOn = false;
@@ -30,6 +33,7 @@ var boolinitializeTiles = true;
 var enemyQueue = []
 var wave = 0;
 var noSpammerino = 0;
+var lastSpawn = false;
 //standard public hud
 
 var lives = 20;
@@ -41,6 +45,11 @@ var bullets = [];
 var selectedTower; //make this not run first hud view and have it be the tower u  know
 
 var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
+
+function preload() {
+//    soundFormats('mp3', 'ogg');
+//    mySound = loadSound('assets/Bag Raiders - Shooting Stars.mp3');
+}
 
 function setup() {
     //18 x 12
@@ -66,6 +75,17 @@ function setup() {
     katana = loadImage("assets/katana.png");
     damagetears = loadImage("assets/hardertears.png");
     rangepepe = loadImage("assets/sightpepe.jpg");
+    snoopdoge = loadImage("assets/snoopdoge.jpg");
+    icedoge = loadImage("assets/icecreamdoge.jpg");
+    blueberry = loadImage("assets/blueberry.jpg");
+    turnwonka = loadImage("assets/turnwonka.jpg");
+    ichigo = loadImage("assets/bleach.jpg");
+    kirito = loadImage("assets/kirito.jpg");
+    bigweab = loadImage("assets/theweaboo.jpg");
+    babyboomers = loadImage("assets/babyboomer.jpg");
+    
+//    mySound.setVolume(.3);
+//    mySound.play();
 }
 
 function initializeTiles() {
@@ -115,6 +135,7 @@ function hudReset() {
 }
 
 function draw() {
+    
     if (gamemode == 0) {
         startScreen();
 
@@ -146,6 +167,11 @@ function draw() {
             } else if (numWorkers < waveWorkers) {
                 muscles.push(new Workers(0, 0));
                 numWorkers++;
+            } else if (numBoom < waveBoom) {
+                muscles.push(new BabyBoomer(0,0))
+                numBoom++;
+            } else {
+                lastSpawn = true;
             }
 
 

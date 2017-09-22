@@ -9,6 +9,7 @@ class Grump extends Tower {
         this.hits = 0;
         this.maxHits = 20;
         this.chargebuild = 30;
+        this.selected = false;
     }
 
     //called every frame

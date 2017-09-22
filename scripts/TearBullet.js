@@ -43,7 +43,7 @@ class TearBullet {
 }
 
 class WonkaBar {
-    constructor(x, y, target) {
+    constructor(x, y, target,poison) {
         this.position = createVector(x, y);
         this.target = target;
         this.damage = 1;
@@ -52,6 +52,7 @@ class WonkaBar {
         this.iam;
         this.dir;
         this.reachedTarget = false;
+        this.poison = poison;
 
     }
 
@@ -78,7 +79,7 @@ class WonkaBar {
             if(this.target.speed > 0.4) { 
                 this.target.speed = this.target.speed * 0.5;
             }
-            
+                this.target.poisoned += this.poison;
             this.target.hp -= this.damage;
             bullets.splice(this.iam, 1);
         } else {

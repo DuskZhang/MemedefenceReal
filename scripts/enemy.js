@@ -15,6 +15,8 @@ class NormieMuscle {
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = muscleImg
+        this.poisoned = 0;
+        this.poisontick = 30;
     }
 
     show() {
@@ -54,6 +56,12 @@ class NormieMuscle {
 
     //called 60fps
     move(i) {
+        
+        //poisoned
+        this.hp -= this.poisoned / this.poisontick;
+        this.poisoned -= this.poisoned / this.poisontick;
+        
+        
         this.iam = i;
         if (this.hp <= 0) {
             gold += 4;
@@ -173,9 +181,9 @@ class BabyBoomer extends NormieMuscle{
         this.x = x;
         this.y = y;
         this.pector = createVector(this.x, this.y);
-        this.hp = 200;
-        this.max = 200;
-        this.speed = 1.8; // dont go over 4 or it gets all buggy
+        this.hp = 30;
+        this.max = 30;
+        this.speed = 1.4; // dont go over 4 or it gets all buggy
 
         this.width = 50;
         this.height = 50;
@@ -186,7 +194,7 @@ class BabyBoomer extends NormieMuscle{
         this.distFrame;
         // once every 1/2 second if running at 60fps
         this.iam;
-        this.image = japsover;
+        this.image = babyboomers;
     }
     
      show() {
@@ -194,9 +202,9 @@ class BabyBoomer extends NormieMuscle{
         //hp bars
 
         fill("red");
-        rect(this.pector.x, this.pector.y + this.width, this.max /5, 10);
+        rect(this.pector.x, this.pector.y + this.width, this.max, 10);
         fill(30, 223, 23);
-        rect(this.pector.x, this.pector.y + this.width, this.hp /5, 10);
+        rect(this.pector.x, this.pector.y + this.width, this.hp, 10);
 
          //make this guy get angry when he loses hp
          
@@ -214,7 +222,6 @@ class BabyBoomer extends NormieMuscle{
             this.movementVector = createVector(this.targetVec.x - this.pector.x, this.targetVec.y - this.pector.y)
             this.nodeIndex++;
 
-        } else {
             this.targetVec = null;
             lives--;
             muscles.splice(this.iam, 1);
