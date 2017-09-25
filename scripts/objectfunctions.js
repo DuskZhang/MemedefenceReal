@@ -1,11 +1,6 @@
 function objectFunctions() {
     
-    
-    if (muscles.length == 0 && numMuscle == waveMuscle) {
-        waveOn = false;
-        numMuscle = 0;
-        numWorkers = 0;
-    }
+ 
     //tile functions
     for (i = 0; i < tiles.length; i++) {
         tiles[i].show();
