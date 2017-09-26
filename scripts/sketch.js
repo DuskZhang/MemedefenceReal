@@ -7,6 +7,7 @@ var dogeTowerDesired = false;
 var wonkaTowerDesired = false;
 var grumpDesired = false;
 var weabooDesired = false;
+var rossTowerDesired = false;
 var hudDesired = false;
 
 //if hud desired stop people from buying towers
@@ -22,6 +23,8 @@ var numBoom = 0;
 var waveBoom = 0;
 var numTeacher = 0;
 var waveTeacher = 0;
+var numImprovedmus = 0;
+var waveImprovedmus = 0;
 
 var muscles = []; //slang for all enemies
 var spawnrate = 60; // once every second new guy 60fps
@@ -29,7 +32,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 40; // standard 40
+var roadAmount = 8; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
@@ -38,7 +41,7 @@ var noSpammerino = 0;
 var lastSpawn = false;
 //standard public hud
 
-var lives = 20;
+var lives = 120;
 var gold = 800; // standard 420
 // towers
 var towers = [];
@@ -87,6 +90,10 @@ function setup() {
     babyboomers = loadImage("assets/babyboomer.jpg");
     teacher = loadImage("assets/teacher.jpg");
     book = loadImage("assets/bookheal.png");
+    improvedmuscle = loadImage("assets/improvedmuscle.jpg");
+    buyRoss = loadImage("assets/bobross.jpg");
+    bobross = loadImage("assets/rosstower.jpg");
+    paintattack = loadImage("assets/animateattackross.png");
 
     //    mySound.setVolume(.3);
     //    mySound.play();
@@ -111,7 +118,7 @@ function initializeTiles() {
 
     tiles[207] = new BuyWonka(tiles[207].x, tiles[207].y);
     tiles[208] = new BuyWeaboo(tiles[208].x, tiles[208].y);
-    tiles[209] = new BuyPepe(tiles[209].x, tiles[209].y);
+    tiles[209] = new BuyRoss(tiles[209].x, tiles[209].y);
 
     tiles[210] = new BuyPepe(tiles[210].x, tiles[210].y);
     tiles[211] = new BuyPepe(tiles[211].x, tiles[211].y);
@@ -129,6 +136,7 @@ function clearDesire() {
     pepeTowerDesired = false;
     wonkaTowerDesired = false;
     weabooDesired = false;
+    rossTowerDesired = false;
     noSpammerino = 0;
 }
 
@@ -180,6 +188,9 @@ function draw() {
             } else if (numTeacher < waveTeacher) {
                 muscles.push(new Teacher(0, 0));
                 numTeacher++;
+            } else if (numImprovedmus < waveImprovedmus) {
+                muscles.push(new ImprovedMuscle(0, 0));
+                numImprovedmus++;
             } else {
                 lastSpawn = true;
             }
@@ -242,6 +253,15 @@ function draw() {
             fill(40, 130, 130, 40);
             ellipse(mouseX + 30, mouseY + 30, 130 * 2);
         }
+        
+        if (rossTowerDesired) {
+            image(bobross, mouseX, mouseY, 60, 60);
+            fill(230, 150, 220);
+            textSize(24);
+            text("Aoe damage in a circle", mouseX, mouseY);
+            fill(40, 130, 130, 40);
+            ellipse(mouseX + 30, mouseY + 30, 130 * 2);
+        }
 
         if (hudDesired) {
             fill(0);
@@ -255,11 +275,6 @@ function draw() {
 
         }
     }
-
-    //function bringInstructions() {
-    //    
-    //}
-
 
     function keyPressed() {
         if (keyCode == 27 && noSpammerino >= 18) {

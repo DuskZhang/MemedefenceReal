@@ -127,6 +127,83 @@ class Pepe extends Tower {
 
 }
 
+class Ross extends Tower {
+    constructor(x, y) {
+        //todo get x y from mouse location
+        super(x, y);
+        //cost 300
+        this.damage = 0.75; // prob will not need this on tower
+        this.shootcharge = 0;
+        this.chargebuild = 5;
+        this.primeshoot = 100;
+        this.range = 120;
+        this.image = bobross;
+        this.selected = false;
+        this.upgradeA0Image = damagetears;
+        this.upgradeA0Description = "BeatTheDevil: \ntriple rof";
+        this.upgradeB0Image = rangepepe;
+        this.upgradeB0Description = "RelaxingTheme: \nChangeTheMusic";
+        this.targets = [];
+        this.poison = 0;
+
+    }
+    //called every frame
+    lockon() {
+        if (this.shootcharge < this.primeshoot) {
+            this.shootcharge += this.chargebuild;
+
+        }
+        
+        
+        if (muscles[0] != null && this.shootcharge >= this.primeshoot) {
+            this.shootcharge = 0;
+            for (var i = 0; i < muscles.length; i++) {
+                if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range) {
+                    this.targets.push(muscles[i]);
+                    
+                }
+            }
+            this.shootAt(this.targets); 
+                this.targets = [];
+        }
+        
+    
+        
+
+    }
+
+    show(t) {
+        image(this.image, this.x, this.y, this.width, this.width);
+        this.iam = t;
+    }
+
+    //called every frame by obj
+    shootAt(objects) {
+        if(muscles.length > 0) {
+        for(var f = 0; f < this.targets.length; f++) {
+            bullets.push(new Brushy(this.targets[f], this.poison, this.damage))
+        }
+        }
+        
+    }
+
+    hudInfo() {
+        showStats(towers[this.iam]);
+        showRange(towers[this.iam]);
+        showUpgrades(towers[this.iam]);
+    }
+
+    onClick(i) {
+        this.iam = i;
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+            hudReset();
+            this.selected = true;
+
+        }
+    }
+
+}
+
 
 
 

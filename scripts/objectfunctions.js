@@ -25,15 +25,18 @@ function objectFunctions() {
     
     //tower functions
     for (t = towers.length - 1; t >= 0; t--) {
-        towers[t].show(t);
-        towers[t].lockon();
+       
         if(towers[t] != null) {
         towers[t].onClick(t);
+            if(towers[t].selected) {
+            towers[t].hudInfo();
+                
+        }
+             towers[t].show(t);
+        towers[t].lockon();
         }
         
-        if(towers[t].selected) {
-            towers[t].hudInfo();
-        }
+        
     }
 
     if (waveOn) {

@@ -41,7 +41,6 @@ class Tile {
     }
 
     towerPlace() {
-        if (!hudDesired) {
             if (pepeTowerDesired && this.tileTaken == false) {
                 if (gold >= 150) {
                     gold -= 150;
@@ -69,10 +68,17 @@ class Tile {
                     towers.push(new AngryWeaboo(this.x, this.y));
                     weabooDesired = false;
                     this.tileTaken = true;
-                } // add more towers here
-            }
+                } 
+            } else if (rossTowerDesired && this.tileTaken == false) {
+                if (gold >= 300) {
+                    gold -= 300;
+                    towers.push(new Ross(this.x, this.y));
+                    rossTowerDesired = false;
+                    this.tileTaken = true;
+                } 
+            }// add more towers here
         }
-    }
+    
 }
 
 class Road extends Tile {

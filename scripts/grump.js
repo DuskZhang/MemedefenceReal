@@ -45,6 +45,7 @@ class Grump extends Tower {
             object.hp -= this.damage;
             this.hits++
                 if (this.maxHits == this.hits) {
+                    this.selected = false;
                     towers.splice(this.iam, 1);
                 }
 
