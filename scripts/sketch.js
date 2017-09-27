@@ -8,6 +8,7 @@ var wonkaTowerDesired = false;
 var grumpDesired = false;
 var weabooDesired = false;
 var rossTowerDesired = false;
+var nedTowerDesired = false;
 var hudDesired = false;
 
 //if hud desired stop people from buying towers
@@ -32,22 +33,24 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 8; // standard 40
+var roadAmount = 5; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
 var wave = 0;
 var noSpammerino = 0;
 var lastSpawn = false;
+var enemySpawnType = 0;
 //standard public hud
 
-var lives = 120;
-var gold = 800; // standard 420
+var lives = 25;
+var gold = 420; // standard 420
 // towers
 var towers = [];
 var shops = [];
 var bullets = [];
- //make this not run first hud view and have it be the tower u  know
+var index;
+//make this not run first hud view and have it be the tower u  know
 
 var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
 
@@ -94,7 +97,9 @@ function setup() {
     buyRoss = loadImage("assets/bobross.jpg");
     bobross = loadImage("assets/rosstower.jpg");
     paintattack = loadImage("assets/animateattackross.png");
-
+    ned = loadImage("assets/ned.jpg");
+    snow = loadImage("assets/jonsnow.jpg");
+    winterfell = loadImage("assets/winterfell.jpg");
     //    mySound.setVolume(.3);
     //    mySound.play();
 }
@@ -120,7 +125,7 @@ function initializeTiles() {
     tiles[208] = new BuyWeaboo(tiles[208].x, tiles[208].y);
     tiles[209] = new BuyRoss(tiles[209].x, tiles[209].y);
 
-    tiles[210] = new BuyPepe(tiles[210].x, tiles[210].y);
+    tiles[210] = new BuyNed(tiles[210].x, tiles[210].y);
     tiles[211] = new BuyPepe(tiles[211].x, tiles[211].y);
     tiles[212] = new BuyPepe(tiles[212].x, tiles[212].y);
 
@@ -137,6 +142,7 @@ function clearDesire() {
     wonkaTowerDesired = false;
     weabooDesired = false;
     rossTowerDesired = false;
+    nedTowerDesired = false;
     noSpammerino = 0;
 }
 
@@ -155,8 +161,10 @@ function draw() {
         background(200); //todo replace with scarce
         //show and functions for the tiles including roads and whatnot
 
+        if (muscles.length = 0 && wave == 21 && enemyQueue.length == 0) {
+            gamemode = 3;
+        }
 
-        isWaveFinished();
 
         if (roadAmount == roadsBuilt) {
             nodes[roadAmount - 1].image = weabland;
@@ -176,32 +184,19 @@ function draw() {
         objectFunctions();
 
         if (frameCount % spawnrate == 0 && waveOn) {
-            if (numMuscle < waveMuscle) {
-                muscles.push(new NormieMuscle(0, 0));
-                numMuscle++;
-            } else if (numWorkers < waveWorkers) {
-                muscles.push(new Workers(0, 0));
-                numWorkers++;
-            } else if (numBoom < waveBoom) {
-                muscles.push(new BabyBoomer(0, 0));
-                numBoom++;
-            } else if (numTeacher < waveTeacher) {
-                muscles.push(new Teacher(0, 0));
-                numTeacher++;
-            } else if (numImprovedmus < waveImprovedmus) {
-                muscles.push(new ImprovedMuscle(0, 0));
-                numImprovedmus++;
-            } else {
-                lastSpawn = true;
-            }
-            
-        
+            index = Math.floor(Math.random() * enemyQueue.length);
+            muscles.push(enemyQueue[index]);
+            enemyQueue.splice(index, 1);
+            isWaveFinished();
+            console.log("1");
         }
 
-        if (gamemode == 2) {
-            gameover();
-        }
 
+
+    } else if (gamemode == 2) {
+        gameover();
+    } else if (gamemode == 3) {
+        winner();
     }
 }
 
@@ -253,7 +248,7 @@ function draw() {
             fill(40, 130, 130, 40);
             ellipse(mouseX + 30, mouseY + 30, 130 * 2);
         }
-        
+
         if (rossTowerDesired) {
             image(bobross, mouseX, mouseY, 60, 60);
             fill(230, 150, 220);
@@ -274,6 +269,15 @@ function draw() {
             text("Wave: " + wave, 450, 40);
 
         }
+
+        if (nedTowerDesired) {
+            image(ned, mouseX, mouseY, 60, 60);
+            fill(230, 150, 120);
+            textSize(24);
+            text("Protect the south ", mouseX, mouseY);
+            fill(40, 130, 130, 40);
+            ellipse(mouseX + 30, mouseY + 30, 120 * 2);
+        }
     }
 
     function keyPressed() {
@@ -285,8 +289,6 @@ function draw() {
         }
 
         if (waveOn == false && keyCode == 13 && roadsBuilt == roadAmount) {
-            //decide spawn numbers
-            console.log("kibji")
             decideWave();
         }
 
@@ -301,6 +303,10 @@ function draw() {
         text("Start", width / 2, height / 2);
     }
 
+    function winner() {
+        background(0);
+        text("woo win", width / 2, height / 2);
+    }
 
 
     function gameover() {

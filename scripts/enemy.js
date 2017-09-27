@@ -21,7 +21,10 @@ class Enemy {
 
     show() {
 
-
+        if(dist(this.pector.x,this.pector.y,0,0) > 100000) {
+             muscles.splice(this.iam, 1);
+        }
+        
         if (this.hp <= 0) {
             gold += 4;
             muscles.splice(this.iam, 1);
@@ -97,8 +100,8 @@ class NormieMuscle extends Enemy{
     constructor(x, y) {
         super();
         this.pector = createVector(x, y);
-        this.hp = 4
-        this.max = 4;
+        this.hp = 5;
+        this.max = 5;
         this.speed = 1.8; // dont go over 4 or it gets all buggy
 
         this.width = 50;
@@ -119,7 +122,7 @@ class NormieMuscle extends Enemy{
 
 
         if (this.hp <= 0) {
-            gold += 4;
+            gold += 5;
             muscles.splice(this.iam, 1);
         }
 
@@ -178,7 +181,7 @@ class NormieMuscle extends Enemy{
 
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
-            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 60) {
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
                 this.targetVec = null; //reached node
             } else {
                 this.pector.x += this.movementVector.x * this.distFrame;
@@ -266,7 +269,7 @@ class Workers extends Enemy {
 
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
-            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 60) {
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
                 this.targetVec = null; //reached node
             } else {
                 this.pector.x += this.movementVector.x * this.distFrame;
@@ -357,7 +360,7 @@ class BabyBoomer extends Enemy {
 
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
-            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 60) {
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
                 this.targetVec = null; //reached node
             } else {
                 this.pector.x += this.movementVector.x * this.distFrame;
@@ -450,7 +453,7 @@ class Teacher extends Enemy {
 
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
-            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 60) {
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
                 this.targetVec = null; //reached node
             } else {
                 this.pector.x += this.movementVector.x * this.distFrame;
@@ -553,7 +556,7 @@ class ImprovedMuscle extends Enemy {
 
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
-            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 60) {
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
                 this.targetVec = null; //reached node
             } else {
                 this.pector.x += this.movementVector.x * this.distFrame;

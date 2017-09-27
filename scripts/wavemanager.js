@@ -1,10 +1,13 @@
+//start with 269 gold
+//30 lives
+
 function decideWave() {
     if (wave == 0) {
         waveOn = true;
-        waveMuscle = 5; // norm 5
+        waveMuscle = 6; // norm 5
         waveWorkers = 0;
         waveBoom = 0;
-        waveTeacher = 1;
+        waveTeacher = 0;
         wave++;
     } else if (wave == 1) {
         waveOn = true;
@@ -17,7 +20,8 @@ function decideWave() {
         waveMuscle = 15;
         waveWorkers = 0;
         waveBoom = 3;
-        waveImprovedmus = 3;
+        waveImprovedmus = 0;
+        waveTeacher = 3;
         spawnrate = 52;
         wave++;
     } else if (wave == 3) {
@@ -25,12 +29,15 @@ function decideWave() {
         waveMuscle = 35;
         waveWorkers = 2;
         waveBoom = 3;
+        waveImprovedmus = 1;
         spawnrate = 45;
         wave++
     } else if (wave == 4) {
         waveOn = true;
         waveMuscle = 55;
-        waveWorkers = 1;
+        waveWorkers = 3;
+        waveBoom = 5;
+        waveImprovedmus = 3;
         spawnrate = 15;
         wave++;
     } else if (wave == 5) {
@@ -131,21 +138,18 @@ function decideWave() {
         waveWorkers = 1;
         spawnrate = 15;
         wave++;
-    } 
+    }
+
+    buildWave();
 }
 
 function isWaveFinished() {
 
     if (lives <= 0) {
         gamemode = 2;
-    } else if (muscles.length == 0 && waveOn && lastSpawn) {
-
+    } else if (waveOn && lastSpawn && enemyQueue.length == 0) {
         wavespawnReset();
         waveOn = false;
-
-
-
-
     }
 }
 
@@ -156,4 +160,28 @@ function wavespawnReset() {
     numTeacher = 0;
     numImprovedmus = 0;
     lastSpawn = false;
+    
+}
+
+function buildWave() {
+    while (lastSpawn == false) {
+        if (numMuscle < waveMuscle) {
+            enemyQueue.push(new NormieMuscle(0, 0));
+            numMuscle++;
+        } else if (numWorkers < waveWorkers) {
+            enemyQueue.push(new Workers(0, 0));
+            numWorkers++;
+        } else if (numBoom < waveBoom) {
+            enemyQueue.push(new BabyBoomer(0, 0));
+            numBoom++;
+        } else if (numTeacher < waveTeacher) {
+            enemyQueue.push(new Teacher(0, 0));
+            numTeacher++;
+        } else if (numImprovedmus < waveImprovedmus) {
+            enemyQueue.push(new ImprovedMuscle(0, 0));
+            numImprovedmus++;
+        } else {
+            lastSpawn = true;
+        }
+    }
 }

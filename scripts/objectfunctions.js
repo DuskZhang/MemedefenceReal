@@ -39,7 +39,6 @@ function objectFunctions() {
         
     }
 
-    if (waveOn) {
         //enemy functions
         for (var m = 0; m < muscles.length; m++) {
             if (muscles[m] != null) {
@@ -52,8 +51,6 @@ function objectFunctions() {
 
 
         }
-
-    }
 
     
 

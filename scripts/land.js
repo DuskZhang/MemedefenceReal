@@ -76,6 +76,13 @@ class Tile {
                     rossTowerDesired = false;
                     this.tileTaken = true;
                 } 
+            } else if (nedTowerDesired && this.tileTaken == false) {
+                if (gold >= 300) {
+                    gold -= 300;
+                    towers.push(new Ned(this.x, this.y));
+                    nedTowerDesired = false;
+                    this.tileTaken = true;
+                } 
             }// add more towers here
         }
     

@@ -14,6 +14,7 @@ class Tower {
         this.selected = false;
         this.upgradeLevelA = 0;
         this.upgradeLevelB = 0;
+        this.sell = false;
     }
 
     show() {
@@ -205,7 +206,177 @@ class Ross extends Tower {
 }
 
 
+//class Ned extends Tower{
+//    constructor(x, y) {
+//        //todo get x y from mouse location
+//        super(x, y);
+//        //cost 300
+//        this.shootcharge = 0;
+//        this.chargebuild = 5;
+//        this.primeshoot = 100;
+//        this.range = 120;
+//        this.image = bobross;
+//        this.selected = false;
+//        this.upgradeA0Image = damagetears;
+//        this.upgradeA0Description = "Better knights: \ntriple rof";
+//        this.upgradeB0Image = rangepepe;
+//        this.upgradeB0Description = "RelaxingTheme: \nChangeTheMusic";
+//        this.targets = [];
+//        this.knightImage = snow;
+//        this.knightActive = false;
+//        this.knight1.position = createVector(this.x,this.y);
+//        this.knightDamage = 1;
+//        this.knightHealth = 5;
+//    }
+//    //called every frame
+//    lockon() {
+//        
+//        if (muscles[0] != null && this.shootcharge >= this.primeshoot) {
+//            this.shootcharge = 0;
+//            for (var i = 0; i < muscles.length; i++) {
+//                if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range) {
+//                    this.targets.push(muscles[i]);
+//                    
+//                }
+//            }
+//            this.shootAt(this.targets); 
+//                this.targets = [];
+//        }
+//        
+//    
+//        
+//
+//    }
+//
+//    show(t) {
+//        image(this.image, this.x, this.y, this.width, this.width);
+//        this.iam = t;
+//        if(this.knightActive) {
+//            //walk()
+//        } else {
+//            this.shootcharge += this.chargebuild;
+//            if(this.chargebuild == this.primeshoot) {
+//                towers.push(new Knight(this.x,this.y, this.knightDamage,this.knightHealth,this.range)) {
+//                    
+//                }
+//            }
+//        }
+//        
+//        
+//    }
+//
+//    //called every frame by obj
+//    shootAt(objects) {
+//        if(muscles.length > 0) {
+//        for(var f = 0; f < this.targets.length; f++) {
+//            bullets.push(new Brushy(this.targets[f], this.poison, this.damage))
+//        }
+//        }
+//        
+//    }
+//
+//    hudInfo() {
+//        showStats(towers[this.iam]);
+//        showRange(towers[this.iam]);
+//        showUpgrades(towers[this.iam]);
+//    }
+//
+//    onClick(i) {
+//        this.iam = i;
+//        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+//            hudReset();
+//            this.selected = true;
+//
+//        }
+//    }
+//}
 
+//class Knight extends Ned{
+//    constructor(x, y, damage, health, range) {
+//        //todo get x y from mouse location
+//        this.alive = true;
+//        this.neutralX = x;
+//        this.neutralY = y;
+//        this.health = health;
+//        this.damage = damage;
+//        this.width = 30;
+//        this.position = createVector(x,y);
+//        this.selected = false;
+//        this.image = snow;
+//        this.radius = range;
+//        this.fight = false;
+//        this.target;
+//    }
+//    //called every frame
+//    lockon() {
+//        
+//        //chjeck if alive
+//        //challenge
+//        if(this.fight == false) {
+//            //search for a target
+//            for (var i = 0; i < muscles.length; i++) {
+//                if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range / 4) {
+//                    this.target
+//                    
+//                }
+//            }
+//        } else {
+//            
+//        }
+//        if (muscles[0] != null && this.shootcharge >= this.primeshoot) {
+//            this.shootcharge = 0;
+//            
+//            this.shootAt(this.targets); 
+//                this.targets = [];
+//        }
+//        
+//    
+//        
+//
+//    }
+//
+//    show(t) {
+//        image(this.image, this.position.x, this.position.y, this.width, this.width);
+//        this.iam = t;
+//        if(this.knightActive) {
+//            //walk()
+//        } else {
+//            this.shootcharge += this.chargebuild;
+//            if(this.chargebuild == this.primeshoot) {
+//                towers.push(new Knight(this.x,this.y, this.knightDamage,this.knightHealth)) {
+//                    
+//                }
+//            }
+//        }
+//        
+//        
+//    }
+//
+//    //called every frame by obj
+//    shootAt(objects) {
+//        if(muscles.length > 0) {
+//        for(var f = 0; f < this.targets.length; f++) {
+//            bullets.push(new Brushy(this.targets[f], this.poison, this.damage))
+//        }
+//        }
+//        
+//    }
+//
+//    hudInfo() {
+//        showStats(towers[this.iam]);
+//        showRange(towers[this.iam]);
+//        showUpgrades(towers[this.iam]);
+//    }
+//
+//    onClick(i) {
+//        this.iam = i;
+//        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+//            hudReset();
+//            this.selected = true;
+//
+//        }
+//    }
+//}
 
 // 7 more
 //might not even need a class
