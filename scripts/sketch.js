@@ -33,7 +33,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 5; // standard 40
+var roadAmount = 25; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
@@ -49,7 +49,6 @@ var gold = 420; // standard 420
 var towers = [];
 var shops = [];
 var bullets = [];
-var index;
 //make this not run first hud view and have it be the tower u  know
 
 var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
@@ -161,7 +160,7 @@ function draw() {
         background(200); //todo replace with scarce
         //show and functions for the tiles including roads and whatnot
 
-        if (muscles.length = 0 && wave == 21 && enemyQueue.length == 0) {
+        if (muscles.length == 0 && wave == 21 && enemyQueue.length == 0) {
             gamemode = 3;
         }
 
@@ -183,12 +182,22 @@ function draw() {
 
         objectFunctions();
 
+        //get the numMuscles etc then push all into an array then 
+
         if (frameCount % spawnrate == 0 && waveOn) {
-            index = Math.floor(Math.random() * enemyQueue.length);
-            muscles.push(enemyQueue[index]);
-            enemyQueue.splice(index, 1);
             isWaveFinished();
-            console.log("1");
+            let index = Math.floor(Math.random() * enemyQueue.length);
+            isWaveFinished();
+            
+            if(//queue isnjkdnkad)
+            muscles.push(enemyQueue[index]);
+            isWaveFinished();
+            enemyQueue.splice([index],1);
+            isWaveFinished();
+            if(enemyQueue.length == 0) {
+                lastSpawn = true;
+            }
+            isWaveFinished();
         }
 
 

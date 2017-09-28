@@ -20,10 +20,6 @@ class Enemy {
      }
 
     show() {
-
-        if(dist(this.pector.x,this.pector.y,0,0) > 100000) {
-             muscles.splice(this.iam, 1);
-        }
         
         if (this.hp <= 0) {
             gold += 4;

@@ -40,7 +40,7 @@ function objectFunctions() {
     }
 
         //enemy functions
-        for (var m = 0; m < muscles.length; m++) {
+        for (let m = 0; m < muscles.length; m++) {
             if (muscles[m] != null) {
                 muscles[m].move(m);
             }

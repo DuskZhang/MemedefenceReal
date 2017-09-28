@@ -147,7 +147,7 @@ function isWaveFinished() {
 
     if (lives <= 0) {
         gamemode = 2;
-    } else if (waveOn && lastSpawn && enemyQueue.length == 0) {
+    } else if (waveOn && lastSpawn && enemyQueue.length == 0 && muscles.length == 0) {
         wavespawnReset();
         waveOn = false;
     }
@@ -160,11 +160,11 @@ function wavespawnReset() {
     numTeacher = 0;
     numImprovedmus = 0;
     lastSpawn = false;
-    
 }
 
 function buildWave() {
-    while (lastSpawn == false) {
+    let keepgoing = true;
+    while (lastSpawn == false && keepgoing) {
         if (numMuscle < waveMuscle) {
             enemyQueue.push(new NormieMuscle(0, 0));
             numMuscle++;
@@ -181,7 +181,7 @@ function buildWave() {
             enemyQueue.push(new ImprovedMuscle(0, 0));
             numImprovedmus++;
         } else {
-            lastSpawn = true;
+            keepgoing = false;
         }
     }
 }
