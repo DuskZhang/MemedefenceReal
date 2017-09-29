@@ -188,26 +188,26 @@ function draw() {
             isWaveFinished();
             let index = Math.floor(Math.random() * enemyQueue.length);
             isWaveFinished();
-            
-            if(//queue isnjkdnkad)
-            muscles.push(enemyQueue[index]);
-            isWaveFinished();
-            enemyQueue.splice([index],1);
-            isWaveFinished();
-            if(enemyQueue.length == 0) {
-                lastSpawn = true;
+
+            if (enemyQueue[index] != null) {
+                muscles.push(enemyQueue[index]);
+                isWaveFinished();
+                enemyQueue.splice([index], 1);
+                isWaveFinished();
+                if (enemyQueue.length == 0) {
+                    lastSpawn = true;
+                }
+                isWaveFinished();
             }
-            isWaveFinished();
         }
 
 
-
-    } else if (gamemode == 2) {
-        gameover();
-    } else if (gamemode == 3) {
-        winner();
+        } else if (gamemode == 2) {
+            gameover();
+        } else if (gamemode == 3) {
+            winner();
+        }
     }
-}
 
 
 
