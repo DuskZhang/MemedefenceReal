@@ -33,7 +33,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 25; // standard 40
+var roadAmount = 15; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []

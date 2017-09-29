@@ -36,6 +36,7 @@ function objectFunctions() {
         towers[t].lockon();
         }
         
+
         
     }
 

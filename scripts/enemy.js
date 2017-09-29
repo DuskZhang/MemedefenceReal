@@ -17,6 +17,8 @@ class Enemy {
     this.image = muscleImg
     this.poisoned = 0;
     this.poisontick = 30;
+    this.lifedamage = 1;
+    this.takenByKnight = false;
      }
 
     show() {
@@ -209,6 +211,7 @@ class Workers extends Enemy {
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = japsover;
+        this.lifedamage = 3;
     }
 
     show() {
@@ -244,7 +247,7 @@ class Workers extends Enemy {
 
         } else {
             this.targetVec = null;
-            lives -= 3;
+            lives -= this.lifedamage;
             muscles.splice(this.iam, 1);
 
         }
@@ -497,6 +500,7 @@ class ImprovedMuscle extends Enemy {
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = improvedmuscle;
+        this.lifedamage = 2;
     }
 
     show() {
@@ -531,7 +535,7 @@ class ImprovedMuscle extends Enemy {
 
         } else {
             this.targetVec = null;
-            lives -= 3;
+            lives -= this.lifedamage;
             muscles.splice(this.iam, 1);
 
         }
