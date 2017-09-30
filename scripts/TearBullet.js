@@ -43,7 +43,7 @@ class TearBullet {
 }
 
 class WonkaBar {
-    constructor(x, y, target) {
+    constructor(x, y, target,poison) {
         this.position = createVector(x, y);
         this.target = target;
         this.damage = 1;
@@ -52,6 +52,7 @@ class WonkaBar {
         this.iam;
         this.dir;
         this.reachedTarget = false;
+        this.poison = poison;
 
     }
 
@@ -78,7 +79,7 @@ class WonkaBar {
             if(this.target.speed > 0.4) { 
                 this.target.speed = this.target.speed * 0.5;
             }
-            
+                this.target.poisoned += this.poison;
             this.target.hp -= this.damage;
             bullets.splice(this.iam, 1);
         } else {
@@ -90,3 +91,39 @@ class WonkaBar {
 
     }
 }
+
+class Brushy {
+    constructor(target,poison,damage) {
+        this.target = target;
+        this.damage = damage;
+        this.speed = 8;
+        this.image = paintattack;
+        this.iam;
+        this.dir;
+        this.reachedTarget = false;
+        this.poison = poison;
+        this.duration = 10;
+    }
+
+    show() {
+        if (this.target != null) {
+            image(this.image, this.target.pector.x, this.target.pector.y, 30, 30);
+        }
+    }
+
+    //also have the hit function built in or make it separate ,,,, called at 60fps
+    move(i) {
+        this.iam = i;
+            //hit slow
+            if(this.target.speed > 1.2) { 
+                this.target.speed -= this.poison;
+            }
+                this.target.poisoned += this.poison;
+            this.target.hp -= this.damage;
+        console.log("kibasdjkbasjkdb")
+            bullets.splice(this.iam, 1);
+        } 
+        }
+
+    
+

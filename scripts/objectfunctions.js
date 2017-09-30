@@ -1,11 +1,6 @@
 function objectFunctions() {
     
-    
-    if (muscles.length == 0 && numMuscle == waveMuscle) {
-        waveOn = false;
-        numMuscle = 0;
-        numWorkers = 0;
-    }
+ 
     //tile functions
     for (i = 0; i < tiles.length; i++) {
         tiles[i].show();
@@ -30,20 +25,23 @@ function objectFunctions() {
     
     //tower functions
     for (t = towers.length - 1; t >= 0; t--) {
-        towers[t].show(t);
-        towers[t].lockon();
+       
         if(towers[t] != null) {
         towers[t].onClick(t);
+            if(towers[t].selected) {
+            towers[t].hudInfo();
+                
+        }
+             towers[t].show(t);
+        towers[t].lockon();
         }
         
-        if(towers[t].selected) {
-            towers[t].hudInfo();
-        }
+
+        
     }
 
-    if (waveOn) {
         //enemy functions
-        for (var m = 0; m < muscles.length; m++) {
+        for (let m = 0; m < muscles.length; m++) {
             if (muscles[m] != null) {
                 muscles[m].move(m);
             }
@@ -54,8 +52,6 @@ function objectFunctions() {
 
 
         }
-
-    }
 
     
 

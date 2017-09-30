@@ -9,6 +9,7 @@ class Grump extends Tower {
         this.hits = 0;
         this.maxHits = 20;
         this.chargebuild = 30;
+        this.selected = false;
     }
 
     //called every frame
@@ -44,6 +45,7 @@ class Grump extends Tower {
             object.hp -= this.damage;
             this.hits++
                 if (this.maxHits == this.hits) {
+                    this.selected = false;
                     towers.splice(this.iam, 1);
                 }
 

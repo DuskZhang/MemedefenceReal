@@ -146,3 +146,65 @@ class BuyWeaboo extends Tile {
     }
 
 }
+
+class BuyRoss extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = buyRoss;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (rossTowerDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    rossTowerDesired = true;
+                }
+
+
+            }
+        }
+    }
+
+}
+
+class BuyNed extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = winterfell;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (nedTowerDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    nedTowerDesired = true;
+                }
+
+
+            }
+        }
+    }
+
+}

@@ -16,6 +16,10 @@ class AngryWeaboo extends Tower {
         this.image = angryweab;
         this.dir;
         this.speed = 10;
+        this.upgradeA0Image = ichigo;
+        this.upgradeA0Description = "Ichigo: \n200% damage, 80% rof";
+        this.upgradeB0Image = bigweab;
+        this.upgradeB0Description = "Stronk: \n150%speed double rof";
 
 
     }
@@ -43,10 +47,10 @@ class AngryWeaboo extends Tower {
     show(t) {
         image(this.image, this.position.x, this.position.y, this.width, this.width);
         this.iam = t;
-        if(this.dir != null) {
-            image(katana,this.position.x,this.position.y,this.width * 2, this.width);
+        if (this.dir != null) {
+            image(katana, this.position.x, this.position.y, this.width * 2, this.width);
         }
-        if(waveOn == false) {
+        if (waveOn == false) {
             this.position.x = this.neutralPositionx;
             this.position.y = this.neutralPositiony;
         }

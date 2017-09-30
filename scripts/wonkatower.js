@@ -11,6 +11,11 @@ class Wonka extends Tower {
         this.primeshoot = 150;
         this.range = 6969;
         this.image = wonka;
+        this.upgradeA0Image = blueberry;
+        this.upgradeA0Description = "Blueberries: \n1 damage dot";
+        this.upgradeB0Image = turnwonka;
+        this.upgradeB0Description = "Suspicious: \ndouble rof";
+        this.poison = 0;
 
     }
     //called every frame
@@ -33,7 +38,7 @@ class Wonka extends Tower {
     shootAt(object) {
         if (this.shootcharge >= this.primeshoot) {
             this.shootcharge = 0;
-            bullets.push(new WonkaBar(this.x, this.y, object))
+            bullets.push(new WonkaBar(this.x, this.y, object, this.poison))
 
         }
 

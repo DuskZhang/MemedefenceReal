@@ -7,6 +7,8 @@ var dogeTowerDesired = false;
 var wonkaTowerDesired = false;
 var grumpDesired = false;
 var weabooDesired = false;
+var rossTowerDesired = false;
+var nedTowerDesired = false;
 var hudDesired = false;
 
 //if hud desired stop people from buying towers
@@ -18,29 +20,43 @@ var numMuscle = 0; // how many muscles have spawned in a wave
 var waveWorkers = 0;
 var numWorkers = 0;
 
+var numBoom = 0;
+var waveBoom = 0;
+var numTeacher = 0;
+var waveTeacher = 0;
+var numImprovedmus = 0;
+var waveImprovedmus = 0;
+
 var muscles = []; //slang for all enemies
 var spawnrate = 60; // once every second new guy 60fps
 var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 10;
+var roadAmount = 15; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
 var wave = 0;
 var noSpammerino = 0;
+var lastSpawn = false;
+var enemySpawnType = 0;
 //standard public hud
 
-var lives = 20;
-var gold = 800;
+var lives = 25;
+var gold = 420; // standard 420
 // towers
 var towers = [];
 var shops = [];
 var bullets = [];
-var selectedTower; //make this not run first hud view and have it be the tower u  know
+//make this not run first hud view and have it be the tower u  know
 
 var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
+
+function preload() {
+    //    soundFormats('mp3', 'ogg');
+    //    mySound = loadSound('assets/Bag Raiders - Shooting Stars.mp3');
+}
 
 function setup() {
     //18 x 12
@@ -66,6 +82,25 @@ function setup() {
     katana = loadImage("assets/katana.png");
     damagetears = loadImage("assets/hardertears.png");
     rangepepe = loadImage("assets/sightpepe.jpg");
+    snoopdoge = loadImage("assets/snoopdoge.jpg");
+    icedoge = loadImage("assets/icecreamdoge.jpg");
+    blueberry = loadImage("assets/blueberry.jpg");
+    turnwonka = loadImage("assets/turnwonka.jpg");
+    ichigo = loadImage("assets/bleach.jpg");
+    kirito = loadImage("assets/kirito.jpg");
+    bigweab = loadImage("assets/theweaboo.jpg");
+    babyboomers = loadImage("assets/babyboomer.jpg");
+    teacher = loadImage("assets/teacher.jpg");
+    book = loadImage("assets/bookheal.png");
+    improvedmuscle = loadImage("assets/improvedmuscle.jpg");
+    buyRoss = loadImage("assets/bobross.jpg");
+    bobross = loadImage("assets/rosstower.jpg");
+    paintattack = loadImage("assets/animateattackross.png");
+    ned = loadImage("assets/ned.jpg");
+    snow = loadImage("assets/jonsnow.jpg");
+    winterfell = loadImage("assets/winterfell.jpg");
+    //    mySound.setVolume(.3);
+    //    mySound.play();
 }
 
 function initializeTiles() {
@@ -87,9 +122,9 @@ function initializeTiles() {
 
     tiles[207] = new BuyWonka(tiles[207].x, tiles[207].y);
     tiles[208] = new BuyWeaboo(tiles[208].x, tiles[208].y);
-    tiles[209] = new BuyPepe(tiles[209].x, tiles[209].y);
+    tiles[209] = new BuyRoss(tiles[209].x, tiles[209].y);
 
-    tiles[210] = new BuyPepe(tiles[210].x, tiles[210].y);
+    tiles[210] = new BuyNed(tiles[210].x, tiles[210].y);
     tiles[211] = new BuyPepe(tiles[211].x, tiles[211].y);
     tiles[212] = new BuyPepe(tiles[212].x, tiles[212].y);
 
@@ -105,6 +140,8 @@ function clearDesire() {
     pepeTowerDesired = false;
     wonkaTowerDesired = false;
     weabooDesired = false;
+    rossTowerDesired = false;
+    nedTowerDesired = false;
     noSpammerino = 0;
 }
 
@@ -115,6 +152,7 @@ function hudReset() {
 }
 
 function draw() {
+
     if (gamemode == 0) {
         startScreen();
 
@@ -122,16 +160,19 @@ function draw() {
         background(200); //todo replace with scarce
         //show and functions for the tiles including roads and whatnot
 
+        if (muscles.length == 0 && wave == 21 && enemyQueue.length == 0) {
+            gamemode = 3;
+        }
 
-        isWaveFinished();
 
         if (roadAmount == roadsBuilt) {
             nodes[roadAmount - 1].image = weabland;
         }
 
-        if (noSpammerino < 20)[
+        if (noSpammerino < 20) {
             noSpammerino++
-            ]
+
+        }
 
         if (boolinitializeTiles) {
             initializeTiles();
@@ -139,123 +180,145 @@ function draw() {
         }
         //spawning muscle
 
-        if (frameCount % spawnrate == 0) {
-            if (numMuscle < waveMuscle) {
-                muscles.push(new NormieMuscle(0, 0));
-                numMuscle++;
-            } else if (numWorkers < waveWorkers) {
-                muscles.push(new Workers(0, 0));
-                numWorkers++;
+        objectFunctions();
+
+        //get the numMuscles etc then push all into an array then 
+
+        if (frameCount % spawnrate == 0 && waveOn) {
+            isWaveFinished();
+            let index = Math.floor(Math.random() * enemyQueue.length);
+            isWaveFinished();
+
+            if (enemyQueue[index] != null) {
+                muscles.push(enemyQueue[index]);
+                isWaveFinished();
+                enemyQueue.splice([index], 1);
+                isWaveFinished();
+                if (enemyQueue.length == 0) {
+                    lastSpawn = true;
+                }
+                isWaveFinished();
             }
-
-
         }
 
 
-        objectFunctions();
-
-
-    } else if (gamemode == 2) {
-        gameover();
+        } else if (gamemode == 2) {
+            gameover();
+        } else if (gamemode == 3) {
+            winner();
+        }
     }
 
 
-}
 
+    function drawHud() {
+        if (pepeTowerDesired) {
+            image(pepe, mouseX, mouseY, 60, 60);
+            fill(230, 150, 120);
+            textSize(24);
+            text("A midrange rapid-fire killer ", mouseX, mouseY);
+            fill(40, 130, 130, 40);
+            ellipse(mouseX + 30, mouseY + 30, 120 * 2);
+        }
 
+        if (dogeTowerDesired) {
+            image(doge, mouseX, mouseY, 60, 60);
+            fill(230, 150, 120);
+            textSize(24);
+            text("A ferocious melee fighter ", mouseX, mouseY);
+            fill(40, 130, 130, 40);
+            ellipse(mouseX + 30, mouseY + 30, 120 * 2);
 
-function drawHud() {
-    if (pepeTowerDesired) {
-        image(pepe, mouseX, mouseY, 60, 60);
-        fill(230, 150, 120);
-        textSize(24);
-        text("A midrange rapid-fire killer ", mouseX, mouseY);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 120 * 2);
+        }
+
+        if (grumpDesired) {
+            image(attackgrump, mouseX, mouseY, 60, 60);
+            fill(230, 150, 220);
+            textSize(24);
+            text("Lies on the road waiting to kill crossers ", mouseX, mouseY);
+            fill(40, 130, 130, 40);
+            ellipse(mouseX + 30, mouseY + 30, 60);
+        }
+
+        if (wonkaTowerDesired) {
+            image(wonka, mouseX, mouseY, 60, 60);
+            fill(230, 150, 220);
+            textSize(24);
+            text("Max range sniper slows speed to 10%", mouseX, mouseY);
+            fill(40, 130, 130, 40);
+            ellipse(mouseX + 30, mouseY + 30, 9000);
+        }
+
+        if (weabooDesired) {
+            image(angryweab, mouseX, mouseY, 60, 60);
+            fill(230, 150, 220);
+            textSize(24);
+            text("Aggressive phantom follows the invaders", mouseX, mouseY);
+            fill(40, 130, 130, 40);
+            ellipse(mouseX + 30, mouseY + 30, 130 * 2);
+        }
+
+        if (rossTowerDesired) {
+            image(bobross, mouseX, mouseY, 60, 60);
+            fill(230, 150, 220);
+            textSize(24);
+            text("Aoe damage in a circle", mouseX, mouseY);
+            fill(40, 130, 130, 40);
+            ellipse(mouseX + 30, mouseY + 30, 130 * 2);
+        }
+
+        if (hudDesired) {
+            fill(0);
+            rect(400, 0, 700, height / 4);
+            textSize(30);
+            fill("yellow");
+            text("G: " + gold, 450, 80);
+            fill(230, 150, 120);
+            text("Lives: " + lives, 450, 120);
+            text("Wave: " + wave, 450, 40);
+
+        }
+
+        if (nedTowerDesired) {
+            image(ned, mouseX, mouseY, 60, 60);
+            fill(230, 150, 120);
+            textSize(24);
+            text("Protect the south ", mouseX, mouseY);
+            fill(40, 130, 130, 40);
+            ellipse(mouseX + 30, mouseY + 30, 120 * 2);
+        }
     }
 
-    if (dogeTowerDesired) {
-        image(doge, mouseX, mouseY, 60, 60);
-        fill(230, 150, 120);
-        textSize(24);
-        text("A ferocious melee fighter ", mouseX, mouseY);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 120 * 2);
+    function keyPressed() {
+        if (keyCode == 27 && noSpammerino >= 18) {
+            hudReset();
+            hudDesired = !hudDesired;
+            clearDesire();
+            noSpammerino = 0;
+        }
+
+        if (waveOn == false && keyCode == 13 && roadsBuilt == roadAmount) {
+            decideWave();
+        }
 
     }
 
-    if (grumpDesired) {
-        image(attackgrump, mouseX, mouseY, 60, 60);
-        fill(230, 150, 220);
-        textSize(24);
-        text("Lies on the road waiting to kill crossers ", mouseX, mouseY);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 60);
+
+
+
+
+    function startScreen() {
+        background(0);
+        text("Start", width / 2, height / 2);
     }
 
-    if (wonkaTowerDesired) {
-        image(wonka, mouseX, mouseY, 60, 60);
-        fill(230, 150, 220);
-        textSize(24);
-        text("Max range sniper slows speed to 10%", mouseX, mouseY);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 9000);
+    function winner() {
+        background(0);
+        text("woo win", width / 2, height / 2);
     }
 
-    if (weabooDesired) {
-        image(angryweab, mouseX, mouseY, 60, 60);
-        fill(230, 150, 220);
-        textSize(24);
-        text("Aggressive phantom follows the invaders", mouseX, mouseY);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 130 * 2);
+
+    function gameover() {
+        background(0);
+        text("Game Over", width / 2, height / 2);
     }
-
-    if (hudDesired) {
-        fill(0);
-        rect(400, 0, 700, height / 4);
-        textSize(30);
-        fill("yellow");
-        text("G: " + gold, 450, 80);
-        fill(230, 150, 120);
-        text("Lives: " + lives, 450, 120);
-        text("Wave: " + wave, 450, 40);
-        
-    }
-}
-
-//function bringInstructions() {
-//    
-//}
-
-
-function keyPressed() {
-    if (keyCode == 27 && noSpammerino >= 18) {
-        hudReset();
-        hudDesired = !hudDesired;
-        clearDesire();
-        noSpammerino = 0;
-    }
-
-    if (waveOn == false && keyCode == 13 && roadsBuilt == roadAmount) {
-        //decide spawn numbers
-        decideWave();
-    }
-
-}
-
-
-
-
-
-function startScreen() {
-    background(0);
-    text("Start", width / 2, height / 2);
-}
-
-
-
-function gameover() {
-    background(0);
-    text("Game Over", width / 2, height / 2);
-}
