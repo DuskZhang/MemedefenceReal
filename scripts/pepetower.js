@@ -356,15 +356,179 @@ class Knight extends Ned {
     }
 }
 
-// 7 more
-//might not even need a class
+
+//class DabbingSquidward extends Tower {
+//     constructor(x, y,original) {
+//        super(x, y,original);
+//        this.shootcharge = 0;
+//        this.chargebuild = 5;
+//        this.primeshoot = 100;
+//        this.range = 550;
+//        this.image = ned;
+//        this.selected = false;
+//        this.upgradeA0Image = damagetears;
+//        this.upgradeA0Description = "Better knights: \ntriple rof";
+//        this.upgradeB0Image = rangepepe;
+//        this.upgradeB0Description = "Die: \nKnights are 1.5x better";
+//        this.knightsActive = [];
+//        this.knightImage = snow;
+//        this.knightDamage = 1;
+//        this.knightHealth = 5;
+//        this.knights = 0;
+//        this.maxKnights = 3;
+//    }
+//    //called every frame
+//    lockon() {
+//        if (this.shootcharge <= this.primeshoot) {
+//            this.shootcharge += this.chargebuild;
+//        }
+//
+//        if (this.knights < this.maxKnights && this.shootcharge >= this.primeshoot) {
+//            this.shootcharge = 0;
+//            this.knights++ //replace towers.pushb with jknights.push towers[i] made you 
+//                towers.push(new Knight(this.x, this.y, this.knightDamage, this.knightHealth, this.range, this.knightImage));
+//        }
+//    }
+//
+//    show(t) {
+//        image(this.image, this.x, this.y, this.width, this.width);
+//        this.iam = t;
+//    }
+//
+//    hudInfo() {
+//        showStats(towers[this.iam]);
+//        showRange(towers[this.iam]);
+//        showUpgrades(towers[this.iam]);
+//    }
+//
+//    //function heal(knight) 
+//    
+//    onClick(i) {
+//        this.iam = i;
+//        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+//            hudReset();
+//            this.selected = true;
+//
+//        }
+//    }
+//}
+//
+//class Bitcoin extends Tower {
+//     constructor(x, y,original) {
+//        super(x, y,original);
+//        this.shootcharge = 0;
+//        this.chargebuild = 5;
+//        this.primeshoot = 100;
+//        this.range = 550;
+//        this.image = ned;
+//        this.selected = false;
+//        this.upgradeA0Image = damagetears;
+//        this.upgradeA0Description = "Better knights: \ntriple rof";
+//        this.upgradeB0Image = rangepepe;
+//        this.upgradeB0Description = "Die: \nKnights are 1.5x better";
+//        this.knightsActive = [];
+//        this.knightImage = snow;
+//        this.knightDamage = 1;
+//        this.knightHealth = 5;
+//        this.knights = 0;
+//        this.maxKnights = 3;
+//    }
+//    //called every frame
+//    lockon() {
+//        if (this.shootcharge <= this.primeshoot) {
+//            this.shootcharge += this.chargebuild;
+//        }
+//
+//        if (this.knights < this.maxKnights && this.shootcharge >= this.primeshoot) {
+//            this.shootcharge = 0;
+//            this.knights++ //replace towers.pushb with jknights.push towers[i] made you 
+//                towers.push(new Knight(this.x, this.y, this.knightDamage, this.knightHealth, this.range, this.knightImage));
+//        }
+//    }
+//
+//    show(t) {
+//        image(this.image, this.x, this.y, this.width, this.width);
+//        this.iam = t;
+//    }
+//
+//    hudInfo() {
+//        showStats(towers[this.iam]);
+//        showRange(towers[this.iam]);
+//        showUpgrades(towers[this.iam]);
+//    }
+//
+//    //function heal(knight) 
+//    
+//    onClick(i) {
+//        this.iam = i;
+//        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+//            hudReset();
+//            this.selected = true;
+//
+//        }
+//    }
+//}
+//
+//class Trump extends Tower {
+//     constructor(x, y,original) {
+//        super(x, y,original);
+//        this.shootcharge = 0;
+//        this.chargebuild = 5;
+//        this.primeshoot = 100;
+//        this.range = 550;
+//        this.image = ned;
+//        this.selected = false;
+//        this.upgradeA0Image = damagetears;
+//        this.upgradeA0Description = "Better knights: \ntriple rof";
+//        this.upgradeB0Image = rangepepe;
+//        this.upgradeB0Description = "Die: \nKnights are 1.5x better";
+//        this.knightsActive = [];
+//        this.knightImage = snow;
+//        this.knightDamage = 1;
+//        this.knightHealth = 5;
+//        this.knights = 0;
+//        this.maxKnights = 3;
+//    }
+//    //called every frame
+//    lockon() {
+//        if (this.shootcharge <= this.primeshoot) {
+//            this.shootcharge += this.chargebuild;
+//        }
+//
+//        if (this.knights < this.maxKnights && this.shootcharge >= this.primeshoot) {
+//            this.shootcharge = 0;
+//            this.knights++ //replace towers.pushb with jknights.push towers[i] made you 
+//                towers.push(new Knight(this.x, this.y, this.knightDamage, this.knightHealth, this.range, this.knightImage));
+//        }
+//    }
+//
+//    show(t) {
+//        image(this.image, this.x, this.y, this.width, this.width);
+//        this.iam = t;
+//    }
+//
+//    hudInfo() {
+//        showStats(towers[this.iam]);
+//        showRange(towers[this.iam]);
+//        showUpgrades(towers[this.iam]);
+//    }
+//
+//    //function heal(knight) 
+//    
+//    onClick(i) {
+//        this.iam = i;
+//        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+//            hudReset();
+//            this.selected = true;
+//
+//        }
+//    }
+//}
+
 //
 //class BobBuilder
 //long range sniper that does decent wrench damage 
 
-
-//class animeGrill
-//tower that hunts down enemies moving around the map until the wave is finished doesnt really do much damage though
 
 //class LazyRedEyeDude 
 //toewr that does super slow medium damage

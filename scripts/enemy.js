@@ -98,8 +98,8 @@ class NormieMuscle extends Enemy{
     constructor(x, y) {
         super();
         this.pector = createVector(x, y);
-        this.hp = 5;
-        this.max = 5;
+        this.hp = 4;
+        this.max = 4;
         this.speed = 1.8; // dont go over 4 or it gets all buggy
 
         this.width = 50;
