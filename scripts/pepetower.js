@@ -1,7 +1,8 @@
 class Tower {
-    constructor(x, y) {
+    constructor(x, y,original) {
         this.x = x;
         this.y = y;
+        this.originalTile = original;
         this.position = createVector(this.x, this.y);
         this.damage = 1;
         this.shootcharge = 0; // once it hits primeshoot it fires
@@ -15,6 +16,7 @@ class Tower {
         this.upgradeLevelA = 0;
         this.upgradeLevelB = 0;
         this.sell = false;
+        
     }
 
     show() {
@@ -61,9 +63,9 @@ class Tower {
 }
 
 class Pepe extends Tower {
-    constructor(x, y) {
+    constructor(x, y,original) {
         //todo get x y from mouse location
-        super(x, y);
+        super(x, y,original);
 
         this.damage = 1; // prob will not need this on tower
         this.shootcharge = 0;
@@ -129,9 +131,8 @@ class Pepe extends Tower {
 }
 
 class Ross extends Tower {
-    constructor(x, y) {
-        //todo get x y from mouse location
-        super(x, y);
+    constructor(x, y,original) {
+        super(x, y,original);
         //cost 300
         this.damage = 0.75; // prob will not need this on tower
         this.shootcharge = 0;
@@ -207,10 +208,8 @@ class Ross extends Tower {
 
 
 class Ned extends Tower {
-    constructor(x, y) {
-        //todo get x y from mouse location
-        super(x, y);
-        //cost 300
+     constructor(x, y,original) {
+        super(x, y,original);
         this.shootcharge = 0;
         this.chargebuild = 5;
         this.primeshoot = 100;
@@ -363,10 +362,6 @@ class Knight extends Ned {
 //class BobBuilder
 //long range sniper that does decent wrench damage 
 
-
-//class WinterIsComing
-//tower that creates swordsmen to defend nearby road tile until they die
-//it will 
 
 //class animeGrill
 //tower that hunts down enemies moving around the map until the wave is finished doesnt really do much damage though

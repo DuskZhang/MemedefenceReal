@@ -34,52 +34,52 @@ class Tile {
 
                 //todo make it so u cant stack towers
             } else {
-                this.towerPlace();
+                this.towerPlace(this.arraySlot);
             }
 
         }
     }
 
-    towerPlace() {
+    towerPlace(i) {
             if (pepeTowerDesired && this.tileTaken == false) {
                 if (gold >= 150) {
                     gold -= 150;
-                    towers.push(new Pepe(this.x, this.y));
+                    towers.push(new Pepe(this.x, this.y, i));
                     pepeTowerDesired = false;
                     this.tileTaken = true;
                 }
             } else if (dogeTowerDesired && this.tileTaken == false) {
                 if (gold >= 220) {
                     gold -= 220;
-                    towers.push(new Doge(this.x, this.y));
+                    towers.push(new Doge(this.x, this.y, i));
                     dogeTowerDesired = false;
                     this.tileTaken = true;
                 }
             } else if (wonkaTowerDesired && this.tileTaken == false) {
                 if (gold >= 320) {
                     gold -= 320;
-                    towers.push(new Wonka(this.x, this.y));
+                    towers.push(new Wonka(this.x, this.y, i));
                     wonkaTowerDesired = false;
                     this.tileTaken = true;
                 }
             } else if (weabooDesired && this.tileTaken == false) {
                 if (gold >= 240) {
                     gold -= 240;
-                    towers.push(new AngryWeaboo(this.x, this.y));
+                    towers.push(new AngryWeaboo(this.x, this.y, i));
                     weabooDesired = false;
                     this.tileTaken = true;
                 } 
             } else if (rossTowerDesired && this.tileTaken == false) {
                 if (gold >= 300) {
                     gold -= 300;
-                    towers.push(new Ross(this.x, this.y));
+                    towers.push(new Ross(this.x, this.y, i));
                     rossTowerDesired = false;
                     this.tileTaken = true;
                 } 
             } else if (nedTowerDesired && this.tileTaken == false) {
                 if (gold >= 300) {
                     gold -= 300;
-                    towers.push(new Ned(this.x, this.y));
+                    towers.push(new Ned(this.x, this.y, i));
                     nedTowerDesired = false;
                     this.tileTaken = true;
                 } 

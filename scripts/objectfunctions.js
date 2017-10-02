@@ -27,13 +27,14 @@ function objectFunctions() {
     for (t = towers.length - 1; t >= 0; t--) {
        
         if(towers[t] != null) {
+            towers[t].show(t);
+        towers[t].lockon();
         towers[t].onClick(t);
             if(towers[t].selected) {
             towers[t].hudInfo();
                 
         }
-             towers[t].show(t);
-        towers[t].lockon();
+             
         }
         
 

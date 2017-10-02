@@ -1,7 +1,6 @@
 class Grump extends Tower {
-    constructor(x, y) {
-        //todo get x y from mouse location
-        super(x, y);
+     constructor(x, y,original) {
+        super(x, y,original);
         this.position = createVector(this.x, this.y);
         this.damage = 1; // Will need this because doge wont be producing any bullets for damage
         this.range = 30;

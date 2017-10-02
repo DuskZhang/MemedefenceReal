@@ -2,9 +2,8 @@
 //upgrades into animegrills yandere runs around killing people
 //damage increases closer to japan
 class AngryWeaboo extends Tower {
-    constructor(x, y) {
-        //todo get x y from mouse location
-        super(x, y);
+    constructor(x, y, original) {
+        super(x, y, original);
         this.position = createVector(this.x, this.y);
         this.neutralPositionx = this.x;
         this.neutralPositiony = this.y;

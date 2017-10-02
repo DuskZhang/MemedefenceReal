@@ -18,12 +18,16 @@ function showStats(object) {
 
 }
 
+
+//upgrades + sell
 function showUpgrades(object) {
     fill(255);
     textSize(15);
 
     //add costs later i wanna test it first
     if (object instanceof Pepe) {
+        
+        
         if (object.upgradeLevelA == 0) {
             //show increased range upgrade have the upgrade clicked function within this function
             image(object.upgradeA0Image, 750, 50, 130, 100);
@@ -45,6 +49,13 @@ function showUpgrades(object) {
                 noSpammerino = 0;
                 gold -= 100;
             }
+        }
+        
+        image(hodl, 480, 180, 50, 50); 
+        if(mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
+            gold += pepePrice;
+            tiles[object.originalTile].tileTaken = false;
+            towers.splice(object.iam);
         }
     }
 
@@ -71,6 +82,12 @@ function showUpgrades(object) {
                 noSpammerino = 0;
                 gold -= 100;
             }
+        }
+        image(hodl, 480, 180, 50, 50); 
+        if(mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
+            gold += dogePrice;
+            tiles[object.originalTile].tileTaken = false;
+            towers.splice(object.iam);
         }
     }
 
@@ -99,6 +116,13 @@ function showUpgrades(object) {
                 gold -= 180;
             }
         }
+        
+        image(hodl, 480, 180, 50, 50); 
+        if(mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
+            gold += wonkaPrice;
+            tiles[object.originalTile].tileTaken = false;
+            towers.splice(object.iam);
+        }
     }
 
     if (object instanceof AngryWeaboo) {
@@ -126,6 +150,12 @@ function showUpgrades(object) {
                 gold -= 100;
             }
         }
+        image(hodl, 480, 180, 50, 50); 
+        if(mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
+            gold += weabooPrice;
+            tiles[object.originalTile].tileTaken = false;
+            towers.splice(object.iam);
+        }
     }
     
     if (object instanceof Ross) {
@@ -152,6 +182,47 @@ function showUpgrades(object) {
                 noSpammerino = 0;
                 gold -= 100;
             }
+        }
+    }
+    
+    image(hodl, 480, 180, 50, 50); 
+        if(mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
+            gold += rossPrice;
+            tiles[object.originalTile].tileTaken = false;
+            towers.splice(object.iam);
+        }
+    
+    if (object instanceof Ned) {
+        
+        
+        if (object.upgradeLevelA == 0) {
+            //show increased range upgrade have the upgrade clicked function within this function
+            image(object.upgradeA0Image, 750, 50, 130, 100);
+            text(object.upgradeA0Description, 750, 15);
+            if (object.upgradeAclicked() && gold >= 120) {;
+                object.damage *= 2;
+                object.upgradeLevelA++;
+                noSpammerino = 0;
+                gold -= 120;
+            }
+        }
+        if (object.upgradeLevelB == 0) {
+            //show increased range upgrade have the upgrade clicked function within this function
+            image(object.upgradeB0Image, 900, 50, 130, 100);
+            text(object.upgradeB0Description, 900, 15);
+            if (object.upgradeBclicked() && gold >= 100) {;
+                object.range *= 2;
+                object.upgradeLevelB++;
+                noSpammerino = 0;
+                gold -= 100;
+            }
+        }
+        
+        image(hodl, 480, 180, 50, 50); 
+        if(mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
+            gold += nedPrice / 5 - 10;
+            tiles[object.originalTile].tileTaken = false;
+            towers.splice(object.iam);
         }
     }
 

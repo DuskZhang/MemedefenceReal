@@ -1,9 +1,8 @@
 //WONKA
 
 class Wonka extends Tower {
-    constructor(x, y) {
-        //todo get x y from mouse location
-        super(x, y);
+    constructor(x, y, original) {
+        super(x, y, original);
 
         this.damage = 1; // prob will not need this on tower
         this.shootcharge = 0;

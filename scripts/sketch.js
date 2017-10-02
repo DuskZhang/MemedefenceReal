@@ -1,5 +1,13 @@
 //meme defence is cool
 
+var pepePrice = 150;
+var grumpPrice = 45;
+var dogePrice = 225;
+var weabooPrice = 225;
+var nedPrice = 300;
+var wonkaPrice = 300;
+var rossPrice = 250;
+
 
 var roadsBuilt = 1;
 var pepeTowerDesired = false;
@@ -33,7 +41,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 15; // standard 40
+var roadAmount = 4; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
@@ -99,6 +107,7 @@ function setup() {
     ned = loadImage("assets/ned.jpg");
     snow = loadImage("assets/jonsnow.jpg");
     winterfell = loadImage("assets/winterfell.jpg");
+    hodl = loadImage("assets/hodl.jpg");
     //    mySound.setVolume(.3);
     //    mySound.play();
 }
