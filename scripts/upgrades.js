@@ -205,6 +205,7 @@ function showUpgrades(object) {
             text(object.upgradeA0Description, 750, 15);
             if (object.upgradeAclicked() && gold >= 120) {
                 object.damage *= 2;
+                object.range *= 2;
                 object.upgradeLevelA++;
                 noSpammerino = 0;
                 gold -= 120;
@@ -215,7 +216,7 @@ function showUpgrades(object) {
             image(object.upgradeB0Image, 900, 50, 130, 100);
             text(object.upgradeB0Description, 900, 15);
             if (object.upgradeBclicked() && gold >= 100) {
-                object.range *= 2;
+                object.maxKnights *= 2;
                 object.upgradeLevelB++;
                 noSpammerino = 0;
                 gold -= 100;

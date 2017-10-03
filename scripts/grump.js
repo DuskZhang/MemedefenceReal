@@ -7,7 +7,7 @@ class Grump extends Tower {
         this.range = 30;
         this.image = attackgrump;
         this.hits = 0;
-        this.maxHits = 25;
+        this.maxHits = 30;
         this.chargebuild = 30;
         this.selected = false;
         this.originalTile = original;

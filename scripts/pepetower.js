@@ -1,5 +1,5 @@
 class Tower {
-    constructor(x, y,original) {
+    constructor(x, y, original) {
         this.x = x;
         this.y = y;
         this.originalTile = original;
@@ -16,7 +16,7 @@ class Tower {
         this.upgradeLevelA = 0;
         this.upgradeLevelB = 0;
         this.sell = false;
-        
+
     }
 
     show() {
@@ -63,9 +63,9 @@ class Tower {
 }
 
 class Pepe extends Tower {
-    constructor(x, y,original) {
+    constructor(x, y, original) {
         //todo get x y from mouse location
-        super(x, y,original);
+        super(x, y, original);
 
         this.damage = 1; // prob will not need this on tower
         this.shootcharge = 0;
@@ -131,8 +131,8 @@ class Pepe extends Tower {
 }
 
 class Ross extends Tower {
-    constructor(x, y,original) {
-        super(x, y,original);
+    constructor(x, y, original) {
+        super(x, y, original);
         //cost 300
         this.damage = 0.75; // prob will not need this on tower
         this.shootcharge = 0;
@@ -214,18 +214,18 @@ class Ned extends Tower {
         //cost 300
         this.shootcharge = 0;
         this.chargebuild = 5;
-        this.primeshoot = 100;
+        this.primeshoot = 300;
         this.range = 150;
         this.image = ned;
         this.selected = false;
         this.upgradeA0Image = damagetears;
-        this.upgradeA0Description = "Better knights: \ntriple rof";
+        this.upgradeA0Description = "More knights: \ntriple rof";
         this.upgradeB0Image = rangepepe;
         this.upgradeB0Description = "Die: \nKnights are 1.5x better";
         this.knightsActive = [];
         this.knightImage = snow;
         this.knightDamage = 3;
-        this.knightHealth = 2;
+        this.knightHealth = 3;
         this.knights = 0;
         this.maxKnights = 3;
     }
@@ -235,10 +235,21 @@ class Ned extends Tower {
             this.shootcharge += this.chargebuild;
         }
 
+        this.knights = this.knightsActive.length;
+
+
+        for (let k = 0; k < this.knightsActive.length; k++) {
+
+            if (this.knightsActive[k] != null) {
+
+                this.knightsActive[k].show(t);
+                this.knightsActive[k].lockon(this.knightDamage, this.knightHealth, this.range, towers[this.iam], k);
+            }
+        }
+
         if (this.knights < this.maxKnights && this.shootcharge >= this.primeshoot) {
             this.shootcharge = 0;
-            this.knights++ //replace towers.pushb with jknights.push towers[i] made you 
-                towers.push(new Knight(this.x, this.y, this.knightDamage, this.knightHealth, this.range, this.knightImage));
+            this.knightsActive.push(new Knight(this.x, this.y, this.knightDamage, this.knightHealth, this.range, this.knightImage));
         }
     }
 
@@ -254,7 +265,7 @@ class Ned extends Tower {
     }
 
     //function heal(knight) 
-    
+
     onClick(i) {
         this.iam = i;
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
@@ -268,7 +279,6 @@ class Ned extends Tower {
 class Knight extends Ned {
     constructor(x, y, damage, health, range, image) {
         super(x, y);
-        this.alive = true;
         this.neutralX = x;
         this.neutralY = y;
         this.hp = health;
@@ -282,101 +292,110 @@ class Knight extends Ned {
         this.target;
         this.image = image;
         this.dir;
-        this.speed = 4;
+        this.speed = 10;
+        this.angle = 0;
+        this.ned;
+        this.iam;
     }
     //called every frame
-    lockon() {
-        
-        //chjeck if alive
-        //challenge
+    lockon(damage, max, radius, whichNed, k) {
+        this.iam = k;
+        this.damage = damage;
+        this.max = max;
+        this.radius = radius;
+        this.ned = whichNed;
+        if (this.target != null) {
+            this.angle = (Math.atan((this.neutralX - this.position.x) / this.neutralY - this.position.y));
+        }
+
+        if (this.angle < 360 && this.target == null) {
+            this.angle += this.speed / 150;
+        } else if (this.angle >= 360) {
+            this.angle = 0;
+        }
+
+
         if (this.target == null) {
+            this.position.x = this.neutralX + Math.cos(this.angle) * this.radius;
+            this.position.y = this.neutralY + Math.sin(this.angle) * this.radius;
+            console.log("searching")
             for (var i = 0; i < muscles.length; i++) {
                 if (dist(this.neutralX, this.neutralY, muscles[i].pector.x, muscles[i].pector.y) <= this.range && muscles[i].takenByKnight == false) {
                     this.target = muscles[i];
-                    muscles[i].takenByKnight = true;
+                    this.target.takenByKnight = true;
+
                 }
             }
         }
-       
-        if (this.target != null && this.alive) {
+
+        if (this.hp <= 0) {
+            if(this.target != null) {
+                 this.target.speed = this.target.regularSpeed;
+                this.target.takenByKnight = false;  
+            }
+             
+               
+            
+                 console.log("sbhuit")
+            
+            
+            this.ned.knightsActive.splice(this.iam);
+
+        }
+
+        if (this.target != null) {
             this.target.speed = 0;
-            if (frameCount % 80 == 0) {
+            if (frameCount % 40 == 0) {
 
                 this.hp -= this.target.lifedamage;
                 this.target.hp -= this.damage;
-                
 
-               
-                if (this.hp <= 0) {
-//                    towers.splice(this.iam);
-                    this.target.speed = this.target.regularSpeed;
-                    
-                    this.target.takenByKnight = false;
-                    this.alive = false;
-                }
-                 if (this.target.hp <= 0 || this.target == null) {
+
+
+
+
+
+                if (this.target.hp <= 0) {
                     this.target = null;
                 }
-                
-                
+
+
             } else {
-                
-                
+
+
                 if ((this.position.dist(this.target.pector)) >= 10) {
-            //stop moving forward if its not greater
-            this.dir = p5.Vector.sub(this.target.pector, this.position);
-            this.dir = this.dir.mult(this.speed / this.dir.mag());
-            this.position.add(this.dir);
-        }
+                    //stop moving forward if its not greater
+                    this.dir = p5.Vector.sub(this.target.pector, this.position);
+                    this.dir = this.dir.mult(this.speed / this.dir.mag());
+                    this.position.add(this.dir);
+                }
             }
         }
 
 
-        
 
-        
+
+
 
 
     }
 
     show(t) {
         this.iam = t;
-        if(this.alive) {
-              image(this.image, this.position.x, this.position.y, this.width, this.width);
-            fill("red");
-                rect(this.position.x, this.position.y + 60, this.max * 9, 20);
-                fill("green");
-                rect(this.position.x, this.position.y + 60, this.hp * 9, 20);
-        }
-      
-        
-        if(this.hp<= this.max) {
-            this.hp += 0.005;
-            if(this.alive == false) {
-                this.hp += 0.2
-            }
-        } else if(this.alive == false) {
-            this.alive = true;
-            this.target = null;
+        image(this.image, this.position.x, this.position.y, this.width, this.width);
+        fill("red");
+        rect(this.position.x, this.position.y + 60, this.max * 9, 20);
+        fill("green");
+        rect(this.position.x, this.position.y + 60, this.hp * 9, 20);
+
+
+        if (this.hp <= this.max) {
+            this.hp += this.hp / 300;
         }
 
 
     }
 
-    hudInfo() {
-        showStats(towers[this.iam]);
-        showRange(towers[this.iam]);
-        showUpgrades(towers[this.iam]);
-    }
-
-    onClick(i) {
-        this.iam = i;
-        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
-            hudReset();
-            this.selected = true;
-
-        }
-    }
 }
 
 
