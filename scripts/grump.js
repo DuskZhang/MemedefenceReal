@@ -1,14 +1,17 @@
 class Grump extends Tower {
-     constructor(x, y,original) {
-        super(x, y,original);
+    constructor(x, y,original) {
+        //todo get x y from mouse location
+        super(x, y);
         this.position = createVector(this.x, this.y);
         this.damage = 1; // Will need this because doge wont be producing any bullets for damage
         this.range = 30;
         this.image = attackgrump;
         this.hits = 0;
-        this.maxHits = 20;
+        this.maxHits = 25;
         this.chargebuild = 30;
         this.selected = false;
+        this.originalTile = original;
+        //amke it so that u can palce again on same tile
     }
 
     //called every frame
@@ -46,6 +49,7 @@ class Grump extends Tower {
                 if (this.maxHits == this.hits) {
                     this.selected = false;
                     towers.splice(this.iam, 1);
+                     
                 }
 
 

@@ -19,6 +19,7 @@ class Enemy {
     this.poisontick = 30;
     this.lifedamage = 1;
     this.takenByKnight = false;
+    this.regularSpeed = 1.5;
      }
 
     show() {
@@ -98,8 +99,8 @@ class NormieMuscle extends Enemy{
     constructor(x, y) {
         super();
         this.pector = createVector(x, y);
-        this.hp = 4;
-        this.max = 4;
+        this.hp = 5;
+        this.max = 5;
         this.speed = 1.8; // dont go over 4 or it gets all buggy
 
         this.width = 50;
@@ -301,6 +302,7 @@ class BabyBoomer extends Enemy {
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = babyboomers;
+        this.lifedamage = 2;
     }
 
     show() {

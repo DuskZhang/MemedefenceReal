@@ -208,12 +208,14 @@ class Ross extends Tower {
 
 
 class Ned extends Tower {
-     constructor(x, y,original) {
-        super(x, y,original);
+    constructor(x, y, original) {
+        //todo get x y from mouse location
+        super(x, y, original);
+        //cost 300
         this.shootcharge = 0;
         this.chargebuild = 5;
         this.primeshoot = 100;
-        this.range = 550;
+        this.range = 150;
         this.image = ned;
         this.selected = false;
         this.upgradeA0Image = damagetears;
@@ -222,8 +224,8 @@ class Ned extends Tower {
         this.upgradeB0Description = "Die: \nKnights are 1.5x better";
         this.knightsActive = [];
         this.knightImage = snow;
-        this.knightDamage = 1;
-        this.knightHealth = 5;
+        this.knightDamage = 3;
+        this.knightHealth = 2;
         this.knights = 0;
         this.maxKnights = 3;
     }
@@ -266,12 +268,13 @@ class Ned extends Tower {
 class Knight extends Ned {
     constructor(x, y, damage, health, range, image) {
         super(x, y);
+        this.alive = true;
         this.neutralX = x;
         this.neutralY = y;
         this.hp = health;
         this.max = health;
         this.damage = damage;
-        this.width = 80;
+        this.width = 50;
         this.position = createVector(x, y);
         this.selected = false;
         this.image = snow;
@@ -279,40 +282,46 @@ class Knight extends Ned {
         this.target;
         this.image = image;
         this.dir;
-        this.speed = 10;
+        this.speed = 4;
     }
     //called every frame
     lockon() {
-
+        
         //chjeck if alive
         //challenge
-        if (muscles[0] != null && this.target == null) {
+        if (this.target == null) {
             for (var i = 0; i < muscles.length; i++) {
                 if (dist(this.neutralX, this.neutralY, muscles[i].pector.x, muscles[i].pector.y) <= this.range && muscles[i].takenByKnight == false) {
                     this.target = muscles[i];
+                    muscles[i].takenByKnight = true;
                 }
             }
         }
-
-        if (this.target != null) {
+       
+        if (this.target != null && this.alive) {
             this.target.speed = 0;
             if (frameCount % 80 == 0) {
 
                 this.hp -= this.target.lifedamage;
                 this.target.hp -= this.damage;
-                if (this.target.hp <= 0) {
+                
+
+               
+                if (this.hp <= 0) {
+//                    towers.splice(this.iam);
+                    this.target.speed = this.target.regularSpeed;
+                    
+                    this.target.takenByKnight = false;
+                    this.alive = false;
+                }
+                 if (this.target.hp <= 0 || this.target == null) {
                     this.target = null;
                 }
-
-                if (this.hp <= 0) {
-                    towers.splice(this.iam);
-                }
+                
+                
             } else {
                 
-                fill("red");
-                rect(this.position.x, this.position.y + 110, this.max * 9, 30);
-                fill("green");
-                rect(this.position.x, this.position.y + 110, this.hp * 9, 30);
+                
                 if ((this.position.dist(this.target.pector)) >= 10) {
             //stop moving forward if its not greater
             this.dir = p5.Vector.sub(this.target.pector, this.position);
@@ -323,7 +332,7 @@ class Knight extends Ned {
         }
 
 
-
+        
 
         
 
@@ -331,10 +340,24 @@ class Knight extends Ned {
     }
 
     show(t) {
-        image(this.image, this.position.x, this.position.y, this.width, this.width);
         this.iam = t;
-        if(this.hp< this.max) {
+        if(this.alive) {
+              image(this.image, this.position.x, this.position.y, this.width, this.width);
+            fill("red");
+                rect(this.position.x, this.position.y + 60, this.max * 9, 20);
+                fill("green");
+                rect(this.position.x, this.position.y + 60, this.hp * 9, 20);
+        }
+      
+        
+        if(this.hp<= this.max) {
             this.hp += 0.005;
+            if(this.alive == false) {
+                this.hp += 0.2
+            }
+        } else if(this.alive == false) {
+            this.alive = true;
+            this.target = null;
         }
 
 
@@ -355,6 +378,7 @@ class Knight extends Ned {
         }
     }
 }
+
 
 
 //class DabbingSquidward extends Tower {

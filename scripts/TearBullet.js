@@ -125,5 +125,5 @@ class Brushy {
         } 
         }
 
-    
+    //exploding bitcoin technology damage  btc will be high volatile damage, might heal the enemy actually. -1 - 30 damage
 
