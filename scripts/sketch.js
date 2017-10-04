@@ -42,7 +42,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 7; // standard 40
+var roadAmount = 40; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
@@ -53,7 +53,7 @@ var enemySpawnType = 0;
 //standard public hud
 
 var lives = 25;
-var gold = 420; // standard 420
+var gold = 820; // standard 420
 // towers
 var towers = [];
 var shops = [];
@@ -109,6 +109,8 @@ function setup() {
     snow = loadImage("assets/jonsnow.jpg");
     winterfell = loadImage("assets/winterfell.jpg");
     hodl = loadImage("assets/hodl.jpg");
+    betterknights = loadImage("assets/betterknights.jpg");
+    moreknights = loadImage("assets/moreknights.png");
     //    mySound.setVolume(.3);
     //    mySound.play();
 }

@@ -214,14 +214,14 @@ class Ned extends Tower {
         //cost 300
         this.shootcharge = 0;
         this.chargebuild = 5;
-        this.primeshoot = 300;
+        this.primeshoot = 600;
         this.range = 150;
         this.image = ned;
         this.selected = false;
-        this.upgradeA0Image = damagetears;
-        this.upgradeA0Description = "More knights: \ntriple rof";
-        this.upgradeB0Image = rangepepe;
-        this.upgradeB0Description = "Die: \nKnights are 1.5x better";
+        this.upgradeA0Image = betterknights;
+        this.upgradeA0Description = "Better knights: \n 4 dmg 8hp";
+        this.upgradeB0Image = moreknights;
+        this.upgradeB0Description = "More: \n6 knights";
         this.knightsActive = [];
         this.knightImage = snow;
         this.knightDamage = 3;
@@ -236,7 +236,9 @@ class Ned extends Tower {
         }
 
         this.knights = this.knightsActive.length;
-
+        if (this.knights == this.maxKnights) {
+            this.shootcharge = 0;
+        }
 
         for (let k = 0; k < this.knightsActive.length; k++) {
 
@@ -304,6 +306,10 @@ class Knight extends Ned {
         this.max = max;
         this.radius = radius;
         this.ned = whichNed;
+        if (this.target == null || this.target.hp <= 0) {
+            this.target = null;
+        }
+
         if (this.target != null) {
             this.angle = (Math.atan((this.neutralX - this.position.x) / this.neutralY - this.position.y));
         }
@@ -328,37 +334,26 @@ class Knight extends Ned {
             }
         }
 
-        if (this.hp <= 0) {
-            if(this.target != null) {
-                 this.target.speed = this.target.regularSpeed;
-                this.target.takenByKnight = false;  
-            }
-             
-               
-            
-                 console.log("sbhuit")
-            
-            
-            this.ned.knightsActive.splice(this.iam);
 
-        }
 
         if (this.target != null) {
             this.target.speed = 0;
             if (frameCount % 40 == 0) {
 
-                this.hp -= this.target.lifedamage;
+
                 this.target.hp -= this.damage;
-
-
-
-
-
+                this.hp -= this.target.lifedamage;
 
                 if (this.target.hp <= 0) {
-                    this.target = null;
+                    muscles.splice(this.target.iam, 1);
                 }
 
+                if (this.hp <= 0) {
+                    this.target.takenByKnight = false;
+                    this.target.speed = this.target.regularSpeed;
+                    this.ned.knightsActive.splice(this.iam, 1);
+
+                }
 
             } else {
 
@@ -390,7 +385,7 @@ class Knight extends Ned {
 
 
         if (this.hp <= this.max) {
-            this.hp += this.hp / 300;
+            this.hp += this.max / 600;
         }
 
 

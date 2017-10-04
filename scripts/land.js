@@ -18,7 +18,7 @@ class Tile {
         //roads
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (roadsBuilt < roadAmount) {
-
+                
 
                 if (tiles[this.arraySlot - 12] == null) {
                     if (tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen) {

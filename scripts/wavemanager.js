@@ -6,7 +6,7 @@ function decideWave() {
         waveOn = true;
         waveMuscle = 6; // norm 5
         waveWorkers = 0;
-        waveBoom = 0;
+        waveBoom = 8;
         waveTeacher = 0;
         wave++;
     } else if (wave == 1) {
@@ -33,6 +33,7 @@ function decideWave() {
         spawnrate = 45;
         wave++
     } else if (wave == 4) {
+        
         waveOn = true;
         waveMuscle = 55;
         waveWorkers = 3;
@@ -42,8 +43,11 @@ function decideWave() {
         wave++;
     } else if (wave == 5) {
         waveOn = true;
-        waveMuscle = 75;
-        spawnrate = 10;
+       waveMuscle = 55;
+        waveWorkers = 3;
+        waveBoom = 5;
+        waveImprovedmus = 3;
+        spawnrate = 15;
         wave++;
     } else if (wave == 6) {
         waveOn = true;

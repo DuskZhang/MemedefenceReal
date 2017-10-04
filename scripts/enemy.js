@@ -26,6 +26,11 @@ class Enemy {
         if (this.takenByKnight && this.speed == this.regularSpeed) {
             this.takenByKnight = false;
         }
+        
+        if(this.takenByKnight && this.speed > 0) {
+            this.takenByKnight = false;
+        }
+        
         if (this.hp <= 0) {
             gold += 4;
             muscles.splice(this.iam, 1);
@@ -118,30 +123,6 @@ class NormieMuscle extends Enemy {
         this.poisoned = 0;
         this.poisontick = 30;
     }
-
-    show() {
-        if (this.takenByKnight && this.speed == this.regularSpeed) {
-            this.takenByKnight = false;
-        }
-
-        if (this.hp <= 0) {
-            gold += 5;
-            muscles.splice(this.iam, 1);
-        }
-
-        image(this.image, this.pector.x, this.pector.y, this.width, this.height);
-        //hp bars
-
-        fill("red");
-        rect(this.pector.x, this.pector.y + this.width, this.max * 10, 10);
-        if (this.hp > this.max) {
-            fill("blue");
-        } else {
-            fill(30, 223, 23);
-        }
-        rect(this.pector.x, this.pector.y + this.width, this.hp * 10, 10);
-    }
-
 
     getPathNode() {
         if (this.nodeIndex < nodes.length) {

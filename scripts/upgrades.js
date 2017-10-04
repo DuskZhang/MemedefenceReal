@@ -5,15 +5,20 @@ function showRange(object) {
 
 function showStats(object) {
     fill(50, 150, 120);
-    textSize(24);
+    textSize(21);
 
     hudDesired = true;
-    text("damage: " + object.damage, 600, 50);
-    text("range: " + object.range, 600, 80);
     if (object instanceof Grump) {
         text("hits used: " + object.hits + "/ " + object.maxHits, 600, 120);
+    } else if (object instanceof Ned) {
+        text("Knight HP: " + object.knightHealth, 600, 50);
+        text("Knight DMG: " + object.knightDamage, 600, 80);
+        text("Knights: " + object.knights + "/ " + object.maxKnights, 600, 110);
+        text("Spawn.. " + floor(object.shootcharge / 60) + "/ " + floor(object.primeshoot / 60), 600, 140);
     } else {
-        text("rate of fire: " + object.chargebuild, 600, 120);
+        text("Damage: " + object.damage, 600, 50);
+        text("Range: " + object.range, 600, 80);
+        text("rate of fire: " + object.chargebuild, 600, 110);
     }
 
 }
@@ -100,7 +105,7 @@ function showUpgrades(object) {
             text(object.upgradeA0Description, 750, 15);
             text("G : 120", 750, 170);
             if (object.upgradeAclicked() && gold >= 120) {
-                object.poison = 1;
+                object.poison = 2;
                 object.upgradeLevelA++;
                 noSpammerino = 0;
                 gold -= 120;
@@ -204,8 +209,8 @@ function showUpgrades(object) {
             image(object.upgradeA0Image, 750, 50, 130, 100);
             text(object.upgradeA0Description, 750, 15);
             if (object.upgradeAclicked() && gold >= 120) {
-                object.damage *= 2;
-                object.range *= 2;
+                object.knightDamage = 4;
+                object.knightHealth = 8;
                 object.upgradeLevelA++;
                 noSpammerino = 0;
                 gold -= 120;
@@ -216,7 +221,7 @@ function showUpgrades(object) {
             image(object.upgradeB0Image, 900, 50, 130, 100);
             text(object.upgradeB0Description, 900, 15);
             if (object.upgradeBclicked() && gold >= 100) {
-                object.maxKnights *= 2;
+                object.maxKnights = 6;
                 object.upgradeLevelB++;
                 noSpammerino = 0;
                 gold -= 100;
