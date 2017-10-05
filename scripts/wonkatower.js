@@ -11,7 +11,7 @@ class Wonka extends Tower {
         this.range = 6969;
         this.image = wonka;
         this.upgradeA0Image = blueberry;
-        this.upgradeA0Description = "Blueberries: \n1 damage dot";
+        this.upgradeA0Description = "Blueberries: \n2 damage dot";
         this.upgradeB0Image = turnwonka;
         this.upgradeB0Description = "Suspicious: \ndouble rof";
         this.poison = 0;

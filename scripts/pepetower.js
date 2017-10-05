@@ -355,15 +355,17 @@ class Knight extends Ned {
 
                 }
 
-            } else {
+            }
 
 
-                if ((this.position.dist(this.target.pector)) >= 10) {
-                    //stop moving forward if its not greater
-                    this.dir = p5.Vector.sub(this.target.pector, this.position);
-                    this.dir = this.dir.mult(this.speed / this.dir.mag());
-                    this.position.add(this.dir);
-                }
+
+
+
+            if ((this.position.dist(this.target.pector)) >= 30) {
+                //stop moving forward if its not greater
+                this.dir = p5.Vector.sub(this.target.pector, this.position);
+                this.dir = this.dir.mult(this.speed / this.dir.mag());
+                this.position.add(this.dir);
             }
         }
 

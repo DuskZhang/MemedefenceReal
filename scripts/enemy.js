@@ -23,10 +23,7 @@ class Enemy {
     }
 
     show() {
-        if (this.takenByKnight && this.speed == this.regularSpeed) {
-            this.takenByKnight = false;
-        }
-        
+
         if(this.takenByKnight && this.speed > 0) {
             this.takenByKnight = false;
         }
@@ -201,7 +198,7 @@ class Workers extends Enemy {
     }
 
     show() {
-        if (this.takenByKnight && this.speed == this.regularSpeed) {
+    if(this.takenByKnight && this.speed > 0) {
             this.takenByKnight = false;
         }
 
@@ -293,10 +290,9 @@ class BabyBoomer extends Enemy {
     }
 
     show() {
-        if (this.takenByKnight && this.speed == this.regularSpeed) {
+   if(this.takenByKnight && this.speed > 0) {
             this.takenByKnight = false;
         }
-
         if (this.hp <= 0) {
             gold += 75;
             muscles.splice(this.iam, 1);

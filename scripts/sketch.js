@@ -111,6 +111,7 @@ function setup() {
     hodl = loadImage("assets/hodl.jpg");
     betterknights = loadImage("assets/betterknights.jpg");
     moreknights = loadImage("assets/moreknights.png");
+    squidtower = loadImage("assets/squidwardinactive.jpg");
     //    mySound.setVolume(.3);
     //    mySound.play();
 }
