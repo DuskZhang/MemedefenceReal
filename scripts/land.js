@@ -18,7 +18,7 @@ class Tile {
         //roads
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (roadsBuilt < roadAmount) {
-                
+
 
                 if (tiles[this.arraySlot - 12] == null) {
                     if (tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen) {
@@ -41,51 +41,57 @@ class Tile {
     }
 
     towerPlace(i) {
-            if (pepeTowerDesired && this.tileTaken == false) {
-                if (gold >= pepePrice) {
-                    gold -= pepePrice;
-                    towers.push(new Pepe(this.x, this.y, i));
-                    pepeTowerDesired = false;
-                    this.tileTaken = true;
-                }
-            } else if (dogeTowerDesired && this.tileTaken == false) {
-                if (gold >= dogePrice) {
-                    gold -= dogePrice;
-                    towers.push(new Doge(this.x, this.y, i));
-                    dogeTowerDesired = false;
-                    this.tileTaken = true;
-                }
-            } else if (wonkaTowerDesired && this.tileTaken == false) {
-                if (gold >= wonkaPrice) {
-                    gold -= wonkaPrice;
-                    towers.push(new Wonka(this.x, this.y, i));
-                    wonkaTowerDesired = false;
-                    this.tileTaken = true;
-                }
-            } else if (weabooDesired && this.tileTaken == false) {
-                if (gold >= weabooPrice) {
-                    gold -= weabooPrice;
-                    towers.push(new AngryWeaboo(this.x, this.y, i));
-                    weabooDesired = false;
-                    this.tileTaken = true;
-                } 
-            } else if (rossTowerDesired && this.tileTaken == false) {
-                if (gold >= rossPrice) {
-                    gold -= rossPrice;
-                    towers.push(new Ross(this.x, this.y, i));
-                    rossTowerDesired = false;
-                    this.tileTaken = true;
-                } 
-            } else if (nedTowerDesired && this.tileTaken == false) {
-                if (gold >= nedPrice) {
-                    gold -= nedPrice;
-                    towers.push(new Ned(this.x, this.y, i));
-                    nedTowerDesired = false;
-                    this.tileTaken = true;
-                } 
-            }// add more towers here
+        if (pepeTowerDesired && this.tileTaken == false) {
+            if (gold >= pepePrice) {
+                gold -= pepePrice;
+                towers.push(new Pepe(this.x, this.y, i));
+                pepeTowerDesired = false;
+                this.tileTaken = true;
+            }
+        } else if (dogeTowerDesired && this.tileTaken == false) {
+            if (gold >= dogePrice) {
+                gold -= dogePrice;
+                towers.push(new Doge(this.x, this.y, i));
+                dogeTowerDesired = false;
+                this.tileTaken = true;
+            }
+        } else if (wonkaTowerDesired && this.tileTaken == false) {
+            if (gold >= wonkaPrice) {
+                gold -= wonkaPrice;
+                towers.push(new Wonka(this.x, this.y, i));
+                wonkaTowerDesired = false;
+                this.tileTaken = true;
+            }
+        } else if (weabooDesired && this.tileTaken == false) {
+            if (gold >= weabooPrice) {
+                gold -= weabooPrice;
+                towers.push(new AngryWeaboo(this.x, this.y, i));
+                weabooDesired = false;
+                this.tileTaken = true;
+            }
+        } else if (rossTowerDesired && this.tileTaken == false) {
+            if (gold >= rossPrice) {
+                gold -= rossPrice;
+                towers.push(new Ross(this.x, this.y, i));
+                rossTowerDesired = false;
+                this.tileTaken = true;
+            }
+        } else if (nedTowerDesired && this.tileTaken == false) {
+            if (gold >= nedPrice) {
+                gold -= nedPrice;
+                towers.push(new Ned(this.x, this.y, i));
+                nedTowerDesired = false;
+                this.tileTaken = true;
+            }
+        } else if (squidTowerDesired && this.tileTaken == false) {
+            if (gold >= squidPrice) {
+                gold -= squidPrice;
+                towers.push(new DabbingSquidward(this.x, this.y, i));
+                squidTowerDesired = false;
+                this.tileTaken = true;
+            } // add more towers here
         }
-    
+    }
 }
 
 class Road extends Tile {

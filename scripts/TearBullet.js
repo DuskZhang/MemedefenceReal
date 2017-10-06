@@ -127,3 +127,40 @@ class Brushy {
 
     //exploding bitcoin technology damage  btc will be high volatile damage, might heal the enemy actually. -1 - 30 damage
 
+class SpongebobMeme {
+    constructor(target,poison,damage, what) {
+        this.target = target;
+        this.damage = damage;
+        this.speed = 8;
+        this.image = paintattack;
+        this.iam;
+        this.dir;
+        this.reachedTarget = false;
+        this.poison = poison;
+        this.duration = 10;
+        this.what = what;
+    }
+
+    //cange based on what
+    
+    show() {
+        if (this.target != null) {
+            image(this.image, this.target.pector.x, this.target.pector.y, 30, 30);
+        }
+    }
+
+    //also have the hit function built in or make it separate ,,,, called at 60fps
+    move(i) {
+        this.iam = i;
+            //hit slow
+            if(this.target.speed > 1.2) { 
+                this.target.speed -= this.poison;
+            }
+                this.target.poisoned += this.poison;
+            this.target.hp -= this.damage;
+        console.log("kibasdjkbasjkdb")
+            bullets.splice(this.iam, 1);
+        } 
+        }
+
+    //exploding bitcoin technology damage  btc will be high volatile damage, might heal the enemy actually. -1 - 30 damage

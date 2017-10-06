@@ -8,6 +8,7 @@ var nedPrice = 300;
 var wonkaPrice = 300;
 var rossPrice = 250;
 var btcPrice = 2000;
+var squidPrice = 400;
 
 var roadsBuilt = 1;
 var pepeTowerDesired = false;
@@ -19,7 +20,7 @@ var rossTowerDesired = false;
 var nedTowerDesired = false;
 var btcDesired = false;
 var hudDesired = false;
-
+var squidTowerDesired = false;
 //if hud desired stop people from buying towers
 //var hudReset = false;
 
@@ -112,6 +113,7 @@ function setup() {
     betterknights = loadImage("assets/betterknights.jpg");
     moreknights = loadImage("assets/moreknights.png");
     squidtower = loadImage("assets/squidwardinactive.jpg");
+    squiddab = loadImage("assets/dabbing.jpg")
     //    mySound.setVolume(.3);
     //    mySound.play();
 }
@@ -138,7 +140,7 @@ function initializeTiles() {
     tiles[209] = new BuyRoss(tiles[209].x, tiles[209].y);
 
     tiles[210] = new BuyNed(tiles[210].x, tiles[210].y);
-    tiles[211] = new BuyPepe(tiles[211].x, tiles[211].y);
+    tiles[211] = new BuySquidward(tiles[211].x, tiles[211].y);
     tiles[212] = new BuyPepe(tiles[212].x, tiles[212].y);
 
     tiles[213] = new BuyPepe(tiles[213].x, tiles[213].y);
@@ -155,6 +157,7 @@ function clearDesire() {
     weabooDesired = false;
     rossTowerDesired = false;
     nedTowerDesired = false;
+    squidTowerDesired = false;
     noSpammerino = 0;
 }
 
@@ -306,6 +309,16 @@ function drawHud() {
         textSize(24);
         text("Protect the south ", mouseX, mouseY);
         text(nedPrice, mouseX, mouseY - 25);
+        fill(40, 130, 130, 40);
+        ellipse(mouseX + 30, mouseY + 30, 120 * 2);
+    }
+    
+    if (squidTowerDesired) {
+        image(squiddab, mouseX, mouseY, 60, 60);
+        fill(230, 150, 120);
+        textSize(24);
+        text("What ", mouseX, mouseY);
+        text(squidPrice, mouseX, mouseY - 25);
         fill(40, 130, 130, 40);
         ellipse(mouseX + 30, mouseY + 30, 120 * 2);
     }

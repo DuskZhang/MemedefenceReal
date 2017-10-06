@@ -208,3 +208,34 @@ class BuyNed extends Tile {
     }
 
 }
+
+class BuySquidward extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = squidtower;
+    }
+
+    show() {
+        image(this.image, this.x, this.y, this.width, this.width);
+
+    }
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (squidTowerDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    squidTowerDesired = true;
+                }
+
+
+            }
+        }
+    }
+
+}
