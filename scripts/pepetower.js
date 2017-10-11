@@ -477,7 +477,7 @@ class Bitcoin extends Tower {
         this.upgradeA0Description = "Hard Tears: \nDouble damage";
         this.upgradeB0Image = rangepepe;
         this.upgradeB0Description = "Grim Sights: \nDouble range";
-
+        this.target;
     }
     //called every frame
     lockon() {
@@ -485,11 +485,16 @@ class Bitcoin extends Tower {
             this.shootcharge += this.chargebuild;
 
         }
+        if(this.target!= null) {
+            this.shootAt(this.target); 
+        }
+       
         //shoots at first enemy in muscles array to meet if statement
         if (muscles[0] != null) {
-            for (var i = 0; i < muscles.length; i++) {
-                if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range) {
-                    this.shootAt(muscles[i]);
+            for (let i = 0; i < muscles.length; i++) {
+                if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range && muscles[i].takenByBitcoin == false) {
+                    this.target = muscles[i];
+                    muscles[i].takenByBitcoin = true;
                     break;
                 }
             }
