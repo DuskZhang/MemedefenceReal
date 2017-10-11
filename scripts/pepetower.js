@@ -490,7 +490,7 @@ class Bitcoin extends Tower {
         }
        
         //shoots at first enemy in muscles array to meet if statement
-        if (muscles[0] != null) {
+        if (muscles[0] != null && this.target == null) {
             for (let i = 0; i < muscles.length; i++) {
                 if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range && muscles[i].takenByBitcoin == false) {
                     this.target = muscles[i];
