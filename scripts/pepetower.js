@@ -213,19 +213,19 @@ class Ned extends Tower {
         super(x, y, original);
         //cost 300
         this.shootcharge = 0;
-        this.chargebuild = 5;
+        this.chargebuild = 3;
         this.primeshoot = 600;
         this.range = 150;
         this.image = ned;
         this.selected = false;
         this.upgradeA0Image = betterknights;
-        this.upgradeA0Description = "Better knights: \n 4 dmg 8hp";
+        this.upgradeA0Description = "Better knights: \n 3 dmg 9hp";
         this.upgradeB0Image = moreknights;
-        this.upgradeB0Description = "More: \n6 knights";
+        this.upgradeB0Description = "More: \n4 knights";
         this.knightsActive = [];
         this.knightImage = snow;
-        this.knightDamage = 3;
-        this.knightHealth = 3;
+        this.knightDamage = 2;
+        this.knightHealth = 5;
         this.knights = 0;
         this.maxKnights = 3;
     }
@@ -344,10 +344,6 @@ class Knight extends Ned {
                 this.target.hp -= this.damage;
                 this.hp -= this.target.lifedamage;
 
-                if (this.target.hp <= 0) {
-                    muscles.splice(this.target.iam, 1);
-                }
-
                 if (this.hp <= 0) {
                     this.target.takenByKnight = false;
                     this.target.speed = this.target.regularSpeed;
@@ -404,10 +400,78 @@ class DabbingSquidward extends Tower {
 
         this.damage = 1; // prob will not need this on tower
         this.shootcharge = 0;
-        this.chargebuild = 5
+        this.chargebuild = 3;
         this.primeshoot = 100;
-        this.range = 120;
+        this.range = 200;
         this.image = squiddab;
+        this.selected = false;
+        this.upgradeA0Image = morememes;
+        this.upgradeA0Description = "More memes: \n3 more memes";
+        this.upgradeB0Image = rofdab;
+        this.upgradeB0Description = "To be evil: \nDouble rof";
+
+    }
+    //called every frame
+    lockon() {
+        if (this.shootcharge < this.primeshoot) {
+            this.shootcharge += this.chargebuild;
+
+        }
+        //shoots at first enemy in muscles array to meet if statement
+        if (muscles[0] != null) {
+            for (var i = 0; i < muscles.length; i++) {
+                if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range) {
+                    this.shootAt(muscles[i]);
+                    break;
+                }
+            }
+        }
+
+    }
+
+    show(t) {
+        image(this.image, this.x, this.y, this.width, this.width);
+        this.iam = t;
+    }
+
+    //called every frame by obj
+    shootAt(object) {
+        if (this.shootcharge >= this.primeshoot) {
+            this.shootcharge = 0;
+            bullets.push(new SpongebobMeme(this.x,this.y, object, floor(random(1,memes.length + 1))));
+            
+
+        }
+
+    }
+
+    hudInfo() {
+        showStats(towers[this.iam]);
+        showRange(towers[this.iam]);
+        showUpgrades(towers[this.iam]);
+    }
+
+    onClick(i) {
+        this.iam = i;
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+            hudReset();
+            this.selected = true;
+
+        }
+    }
+
+}
+
+class Bitcoin extends Tower {
+    constructor(x, y, original) {
+        //todo get x y from mouse location
+        super(x, y, original);
+        this.damage = 1; // prob will not need this on tower
+        this.shootcharge = 0;
+        this.chargebuild = 60
+        this.primeshoot = 100;
+        this.range = 1200;
+        this.image = bitcoin;
         this.selected = false;
         this.upgradeA0Image = damagetears;
         this.upgradeA0Description = "Hard Tears: \nDouble damage";
@@ -442,10 +506,6 @@ class DabbingSquidward extends Tower {
     shootAt(object) {
         if (this.shootcharge >= this.primeshoot) {
             this.shootcharge = 0;
-            
-            
-            bullets.push(new Figet)
-            
             bullets.push(new TearBullet(this.x, this.y, object, this.damage))
 
         }
@@ -468,62 +528,7 @@ class DabbingSquidward extends Tower {
     }
 
 }
-//
-//class Bitcoin extends Tower {
-//     constructor(x, y,original) {
-//        super(x, y,original);
-//        this.shootcharge = 0;
-//        this.chargebuild = 5;
-//        this.primeshoot = 100;
-//        this.range = 550;
-//        this.image = ned;
-//        this.selected = false;
-//        this.upgradeA0Image = damagetears;
-//        this.upgradeA0Description = "Better knights: \ntriple rof";
-//        this.upgradeB0Image = rangepepe;
-//        this.upgradeB0Description = "Die: \nKnights are 1.5x better";
-//        this.knightsActive = [];
-//        this.knightImage = snow;
-//        this.knightDamage = 1;
-//        this.knightHealth = 5;
-//        this.knights = 0;
-//        this.maxKnights = 3;
-//    }
-//    //called every frame
-//    lockon() {
-//        if (this.shootcharge <= this.primeshoot) {
-//            this.shootcharge += this.chargebuild;
-//        }
-//
-//        if (this.knights < this.maxKnights && this.shootcharge >= this.primeshoot) {
-//            this.shootcharge = 0;
-//            this.knights++ //replace towers.pushb with jknights.push towers[i] made you 
-//                towers.push(new Knight(this.x, this.y, this.knightDamage, this.knightHealth, this.range, this.knightImage));
-//        }
-//    }
-//
-//    show(t) {
-//        image(this.image, this.x, this.y, this.width, this.width);
-//        this.iam = t;
-//    }
-//
-//    hudInfo() {
-//        showStats(towers[this.iam]);
-//        showRange(towers[this.iam]);
-//        showUpgrades(towers[this.iam]);
-//    }
-//
-//    //function heal(knight) 
-//    
-//    onClick(i) {
-//        this.iam = i;
-//        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
-//            hudReset();
-//            this.selected = true;
-//
-//        }
-//    }
-//}
+
 //
 //class Trump extends Tower {
 //     constructor(x, y,original) {

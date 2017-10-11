@@ -8,6 +8,7 @@ function decideWave() {
         waveWorkers = 0;
         waveBoom = 8;
         waveTeacher = 0;
+        enemyQueue.push(new JohnCena(0,0));
         wave++;
     } else if (wave == 1) {
         waveOn = true;
@@ -24,7 +25,7 @@ function decideWave() {
         waveTeacher = 3;
         spawnrate = 52;
         wave++;
-    } else if (wave == 3) {
+    } else if (wave == 3) { //john
         waveOn = true;
         waveMuscle = 35;
         waveWorkers = 2;
@@ -40,50 +41,71 @@ function decideWave() {
         waveBoom = 5;
         waveImprovedmus = 3;
         spawnrate = 15;
+         waveTeacher = 4;
         wave++;
     } else if (wave == 5) {
         waveOn = true;
-       waveMuscle = 55;
+      waveMuscle = 45;
         waveWorkers = 3;
-        waveBoom = 5;
-        waveImprovedmus = 3;
+        waveBoom = 11;
+        waveImprovedmus = 4;
         spawnrate = 15;
+         waveTeacher = 5;
         wave++;
     } else if (wave == 6) {
         waveOn = true;
-        waveMuscle = 85;
-        spawnrate = 8;
+        waveMuscle = 25;
+        waveWorkers = 4;
+        waveBoom = 33;
+        waveImprovedmus = 7;
+        spawnrate = 15;
+         waveTeacher = 7;
         wave++;
         //21 waves
     } else if (wave == 7) {
         waveOn = true;
-        waveMuscle = 10;
-        waveWorkers = 0;
-        waveBoom = 1;
+        waveMuscle = 55;
+        waveWorkers = 13;
+        waveBoom = 13;
+        waveImprovedmus = 13;
+        spawnrate = 13;
+         waveTeacher = 13;
         wave++;
     } else if (wave == 8) {
         waveOn = true;
-        waveMuscle = 15;
-        waveWorkers = 0;
-        waveBoom = 3;
-        spawnrate = 52;
+        waveMuscle = 45;
+        waveWorkers = 3;
+        waveBoom = 5;
+        waveImprovedmus = 3;
+        spawnrate = 15;
+         waveTeacher = 4;
         wave++;
     } else if (wave == 9) {
         waveOn = true;
-        waveMuscle = 35;
-        waveWorkers = 2;
-        waveBoom = 3;
-        spawnrate = 45;
+        waveMuscle = 55;
+        waveWorkers = 3;
+        waveBoom = 5;
+        waveImprovedmus = 3;
+        spawnrate = 15;
+         waveTeacher = 4;
         wave++
     } else if (wave == 10) {
         waveOn = true;
         waveMuscle = 55;
-        waveWorkers = 1;
+        waveWorkers = 3;
+        waveBoom = 5;
+        waveImprovedmus = 3;
         spawnrate = 15;
+         waveTeacher = 4;
         wave++;
     } else if (wave == 11) {
         waveOn = true;
-        waveMuscle = 75;
+        waveMuscle = 55;
+        waveWorkers = 3;
+        waveBoom = 5;
+        waveImprovedmus = 3;
+        spawnrate = 15;
+         waveTeacher = 4;
         spawnrate = 10;
         wave++;
     } else if (wave == 12) {

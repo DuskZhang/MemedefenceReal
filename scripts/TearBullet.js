@@ -1,5 +1,5 @@
 class TearBullet {
-    constructor(x, y, target,damage) {
+    constructor(x, y, target, damage) {
         this.position = createVector(x, y);
         this.target = target;
         this.damage = damage;
@@ -43,7 +43,7 @@ class TearBullet {
 }
 
 class WonkaBar {
-    constructor(x, y, target,poison) {
+    constructor(x, y, target, poison) {
         this.position = createVector(x, y);
         this.target = target;
         this.damage = 1;
@@ -76,10 +76,10 @@ class WonkaBar {
         }
         if ((this.position.dist(this.target.pector)) <= 15) {
             //hit
-            if(this.target.speed > 0.4) { 
+            if (this.target.speed > 0.4) {
                 this.target.speed = this.target.speed * 0.5;
             }
-                this.target.poisoned += this.poison;
+            this.target.poisoned += this.poison;
             this.target.hp -= this.damage;
             bullets.splice(this.iam, 1);
         } else {
@@ -93,7 +93,7 @@ class WonkaBar {
 }
 
 class Brushy {
-    constructor(target,poison,damage) {
+    constructor(target, poison, damage) {
         this.target = target;
         this.damage = damage;
         this.speed = 8;
@@ -114,53 +114,65 @@ class Brushy {
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
         this.iam = i;
-            //hit slow
-            if(this.target.speed > 1.2) { 
-                this.target.speed -= this.poison;
-            }
-                this.target.poisoned += this.poison;
-            this.target.hp -= this.damage;
-        console.log("kibasdjkbasjkdb")
-            bullets.splice(this.iam, 1);
-        } 
+        //hit slow
+        if (this.target.speed > 1.2) {
+            this.target.speed -= this.poison;
         }
+        this.target.poisoned += this.poison;
+        this.target.hp -= this.damage;
+        console.log("kibasdjkbasjkdb")
+        bullets.splice(this.iam, 1);
+    }
+}
 
-    //exploding bitcoin technology damage  btc will be high volatile damage, might heal the enemy actually. -1 - 30 damage
+//exploding bitcoin technology damage  btc will be high volatile damage, might heal the enemy actually. -1 - 30 damage
 
 class SpongebobMeme {
-    constructor(target,poison,damage, what) {
+    constructor(x, y, target, what) {
+        this.x = x;
+        this.y = y;
+        this.position = createVector(this.x, this.y);
         this.target = target;
-        this.damage = damage;
-        this.speed = 8;
-        this.image = paintattack;
+        this.what = what;
+        this.speed = 4;
+        this.image = bobross;
         this.iam;
         this.dir;
         this.reachedTarget = false;
-        this.poison = poison;
-        this.duration = 10;
-        this.what = what;
+        this.damage;
     }
 
     //cange based on what
-    
+
     show() {
         if (this.target != null) {
-            image(this.image, this.target.pector.x, this.target.pector.y, 30, 30);
+            image(this.image, this.position.x, this.position.y, 130, 130);
         }
     }
 
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
-        this.iam = i;
-            //hit slow
-            if(this.target.speed > 1.2) { 
-                this.target.speed -= this.poison;
-            }
-                this.target.poisoned += this.poison;
+        this.image = memes[this.what - 1];
+        this.damage = this.what;
+
+        this.dir = p5.Vector.sub(this.target.pector, this.position);
+        this.dir = this.dir.mult(this.speed / this.dir.mag());
+
+        if ((this.position.dist(this.target.pector)) <= 15) {
+            //hit
             this.target.hp -= this.damage;
-        console.log("kibasdjkbasjkdb")
             bullets.splice(this.iam, 1);
-        } 
+        } else {
+            this.position.add(this.dir);
+            if (this.target.pector == null) {
+                bullets.splice(this.iam, 1);
+            }
         }
 
-    //exploding bitcoin technology damage  btc will be high volatile damage, might heal the enemy actually. -1 - 30 damage
+
+        this.iam = i;
+
+    }
+}
+
+//exploding bitcoin technology damage  btc will be high volatile damage, might heal the enemy actually. -1 - 30 damage

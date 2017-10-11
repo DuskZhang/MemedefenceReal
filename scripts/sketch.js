@@ -21,6 +21,9 @@ var nedTowerDesired = false;
 var btcDesired = false;
 var hudDesired = false;
 var squidTowerDesired = false;
+var bitcoinTowerDesired = false;
+
+
 //if hud desired stop people from buying towers
 //var hudReset = false;
 
@@ -43,7 +46,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 40; // standard 40
+var roadAmount = 13; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
@@ -54,11 +57,13 @@ var enemySpawnType = 0;
 //standard public hud
 
 var lives = 25;
-var gold = 820; // standard 420
+var gold = 13820; // standard 420
 // towers
 var towers = [];
 var shops = [];
 var bullets = [];
+let memes = [];
+
 //make this not run first hud view and have it be the tower u  know
 
 var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
@@ -113,7 +118,38 @@ function setup() {
     betterknights = loadImage("assets/betterknights.jpg");
     moreknights = loadImage("assets/moreknights.png");
     squidtower = loadImage("assets/squidwardinactive.jpg");
-    squiddab = loadImage("assets/dabbing.jpg")
+    squiddab = loadImage("assets/dabbing.jpg");
+     morememes = loadImage("assets/morememes.jpg");
+    rofdab = loadImage("assets/rofdab.jpg");
+    bitcoin = loadImage("assets/bitcoin.jpg");
+    buybitcoin = loadImage("assets/buybtc.jpg");
+    
+    meme1 = loadImage("assets/meme1.jpg");
+    meme2 = loadImage("assets/meme2.jpg");
+    meme3 = loadImage("assets/meme3.jpg");
+    meme4 = loadImage("assets/meme4.jpg");
+    meme5 = loadImage("assets/meme5.jpg");
+    meme6 = loadImage("assets/meme6.png");
+    meme7 = loadImage("assets/meme7.jpg");
+    meme8 = loadImage("assets/meme8.png");
+    meme9 = loadImage("assets/meme9.jpg");
+    meme10 = loadImage("assets/meme10.jpg");
+    meme11 = loadImage("assets/meme11.jpg");
+
+    memes.push(meme1);
+    memes.push(meme2);
+    memes.push(meme3);
+    memes.push(meme4);
+    memes.push(meme5);
+    memes.push(meme6);
+    memes.push(meme7);
+    memes.push(meme8);
+    
+    johncena = loadImage("assets/johncena.jpg");
+
+
+
+
     //    mySound.setVolume(.3);
     //    mySound.play();
 }
@@ -141,7 +177,7 @@ function initializeTiles() {
 
     tiles[210] = new BuyNed(tiles[210].x, tiles[210].y);
     tiles[211] = new BuySquidward(tiles[211].x, tiles[211].y);
-    tiles[212] = new BuyPepe(tiles[212].x, tiles[212].y);
+    tiles[212] = new BuyBitcoin(tiles[212].x, tiles[212].y);
 
     tiles[213] = new BuyPepe(tiles[213].x, tiles[213].y);
     tiles[214] = new BuyPepe(tiles[214].x, tiles[214].y);
@@ -158,6 +194,7 @@ function clearDesire() {
     rossTowerDesired = false;
     nedTowerDesired = false;
     squidTowerDesired = false;
+    bitcoinTowerDesired = false;
     noSpammerino = 0;
 }
 
@@ -185,7 +222,7 @@ function draw() {
             nodes[roadAmount - 1].image = weabland;
         }
 
-//        btcPrice += 0.001;
+        //        btcPrice += 0.001;
 
         if (noSpammerino < 20) {
             noSpammerino++
@@ -229,100 +266,7 @@ function draw() {
 
 
 
-function drawHud() {
-    if (pepeTowerDesired) {
-        image(pepe, mouseX, mouseY, 60, 60);
-        fill(230, 150, 120);
-        textSize(24);
-        text("A midrange rapid-fire killer ", mouseX, mouseY);
-        text(pepePrice, mouseX, mouseY - 25);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 120 * 2);
-    }
 
-    if (dogeTowerDesired) {
-        image(doge, mouseX, mouseY, 60, 60);
-        fill(230, 150, 120);
-        textSize(24);
-        text("A ferocious melee fighter ", mouseX, mouseY);
-        text(dogePrice, mouseX, mouseY - 25);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 120 * 2);
-
-    }
-
-    if (grumpDesired) {
-        image(attackgrump, mouseX, mouseY, 60, 60);
-        fill(230, 150, 220);
-        textSize(24);
-        text("Lies on the road waiting to kill crossers ", mouseX, mouseY);
-        text(grumpPrice, mouseX, mouseY - 25);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 60);
-    }
-
-    if (wonkaTowerDesired) {
-        image(wonka, mouseX, mouseY, 60, 60);
-        fill(230, 150, 220);
-        textSize(24);
-        text("Max range sniper slows speed to 10%", mouseX, mouseY);
-        text(wonkaPrice, mouseX, mouseY - 25);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 9000);
-    }
-
-    if (weabooDesired) {
-        image(angryweab, mouseX, mouseY, 60, 60);
-        fill(230, 150, 220);
-        textSize(24);
-        text("Aggressive phantom follows the invaders", mouseX, mouseY);
-        text(weabooPrice, mouseX, mouseY - 25);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 130 * 2);
-    }
-
-    if (rossTowerDesired) {
-        image(bobross, mouseX, mouseY, 60, 60);
-        fill(230, 150, 220);
-        textSize(24);
-        text("Aoe damage in a circle", mouseX, mouseY);
-        text(rossPrice, mouseX, mouseY - 25);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 130 * 2);
-    }
-
-    if (hudDesired) {
-        fill(0);
-        rect(400, 0, 700, height / 4);
-        textSize(30);
-        fill("yellow");
-        text("G: " + gold, 450, 80);
-        fill(230, 150, 120);
-        text("Lives: " + lives, 450, 120);
-        text("Wave: " + wave, 450, 40);
-
-    }
-
-    if (nedTowerDesired) {
-        image(ned, mouseX, mouseY, 60, 60);
-        fill(230, 150, 120);
-        textSize(24);
-        text("Protect the south ", mouseX, mouseY);
-        text(nedPrice, mouseX, mouseY - 25);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 120 * 2);
-    }
-    
-    if (squidTowerDesired) {
-        image(squiddab, mouseX, mouseY, 60, 60);
-        fill(230, 150, 120);
-        textSize(24);
-        text("What ", mouseX, mouseY);
-        text(squidPrice, mouseX, mouseY - 25);
-        fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 120 * 2);
-    }
-}
 
 function keyPressed() {
     if (keyCode == 27 && noSpammerino >= 18) {

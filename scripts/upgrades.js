@@ -8,7 +8,8 @@ function showStats(object) {
     textSize(21);
 
     hudDesired = true;
-    if (object instanceof Grump) {
+    if(object!= null) {
+         if (object instanceof Grump) {
         text("hits used: " + object.hits + "/ " + object.maxHits, 600, 120);
     } else if (object instanceof Ned) {
         text("Knight HP: " + object.knightHealth, 600, 50);
@@ -20,6 +21,8 @@ function showStats(object) {
         text("Range: " + object.range, 600, 80);
         text("rate of fire: " + object.chargebuild, 600, 110);
     }
+    }
+   
 
 }
 
@@ -209,8 +212,8 @@ function showUpgrades(object) {
             image(object.upgradeA0Image, 750, 50, 130, 100);
             text(object.upgradeA0Description, 750, 15);
             if (object.upgradeAclicked() && gold >= 120) {
-                object.knightDamage = 4;
-                object.knightHealth = 8;
+                object.knightDamage = 3;
+                object.knightHealth = 9;
                 object.upgradeLevelA++;
                 noSpammerino = 0;
                 gold -= 120;
@@ -221,7 +224,7 @@ function showUpgrades(object) {
             image(object.upgradeB0Image, 900, 50, 130, 100);
             text(object.upgradeB0Description, 900, 15);
             if (object.upgradeBclicked() && gold >= 100) {
-                object.maxKnights = 6;
+                object.maxKnights = 4;
                 object.upgradeLevelB++;
                 noSpammerino = 0;
                 gold -= 100;
@@ -231,6 +234,41 @@ function showUpgrades(object) {
         image(hodl, 480, 180, 50, 50);
         if (mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
             gold += nedPrice / 2;
+            tiles[object.originalTile].tileTaken = false;
+            towers.splice(object.iam);
+        }
+    }
+    
+    if (object instanceof DabbingSquidward) {
+
+        if (object.upgradeLevelA == 0) {
+            //show increased range upgrade have the upgrade clicked function within this function
+            image(object.upgradeA0Image, 750, 50, 130, 100);
+            text(object.upgradeA0Description, 750, 15);
+            if (object.upgradeAclicked() && gold >= 120) {
+                memes.push(meme9);
+                memes.push(meme10);
+                memes.push(meme11);
+                object.upgradeLevelA++;
+                noSpammerino = 0;
+                gold -= 120;
+            }
+        }
+        if (object.upgradeLevelB == 0) {
+            //show increased range upgrade have the upgrade clicked function within this function
+            image(object.upgradeB0Image, 900, 50, 130, 100);
+            text(object.upgradeB0Description, 900, 15);
+            if (object.upgradeBclicked() && gold >= 100) {
+                object.chargebuild *= 3;
+                object.upgradeLevelB++;
+                noSpammerino = 0;
+                gold -= 100;
+            }
+        }
+        text(squidPrice / 2, 480, 180);
+        image(hodl, 480, 180, 50, 50);
+        if (mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
+            gold += squidPrice / 2;
             tiles[object.originalTile].tileTaken = false;
             towers.splice(object.iam);
         }

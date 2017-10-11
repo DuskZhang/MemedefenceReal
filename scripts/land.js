@@ -89,6 +89,13 @@ class Tile {
                 towers.push(new DabbingSquidward(this.x, this.y, i));
                 squidTowerDesired = false;
                 this.tileTaken = true;
+            } 
+        } else if (bitcoinTowerDesired && this.tileTaken == false) {
+            if (gold >= btcPrice) {
+                gold -= btcPrice;
+                towers.push(new Bitcoin(this.x, this.y, i));
+                bitcoinTowerDesired = false;
+                this.tileTaken = true;
             } // add more towers here
         }
     }
