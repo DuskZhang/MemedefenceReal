@@ -123,6 +123,7 @@ function setup() {
     rofdab = loadImage("assets/rofdab.jpg");
     bitcoin = loadImage("assets/bitcoin.jpg");
     buybitcoin = loadImage("assets/buybtc.jpg");
+    bitcoins = loadImage("assets/bitcoins.jpg");
     
     meme1 = loadImage("assets/meme1.jpg");
     meme2 = loadImage("assets/meme2.jpg");

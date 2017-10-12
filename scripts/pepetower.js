@@ -468,7 +468,6 @@ class Bitcoin extends Tower {
         super(x, y, original);
         this.damage = 1; // prob will not need this on tower
         this.shootcharge = 0;
-        this.chargebuild = 60
         this.primeshoot = 100;
         this.range = 1200;
         this.image = bitcoin;
@@ -481,46 +480,10 @@ class Bitcoin extends Tower {
     }
     //called every frame
     lockon() {
-        if (this.shootcharge < this.primeshoot) {
-            this.shootcharge += this.chargebuild;
-
-        }
-        if(this.target!= null) {
-            this.shootAt(this.target); 
-        }
-       
-        //shoots at first enemy in muscles array to meet if statement
-        if (muscles[0] != null && this.target == null) {
-            for (let i = 0; i < muscles.length; i++) {
-                if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range && muscles[i].takenByBitcoin == false) {
-                    this.target = muscles[i];
-                    muscles[i].takenByBitcoin = true;
-                    break;
-                }
-            }
+        if (frameCount % this.primeshoot == 0 && waveOn) {
+            bullets.push(new BitcoinFire(random(0,width), random(0,height)));
         }
 
-    }
-
-    show(t) {
-        image(this.image, this.x, this.y, this.width, this.width);
-        this.iam = t;
-    }
-
-    //called every frame by obj
-    shootAt(object) {
-        if (this.shootcharge >= this.primeshoot) {
-            this.shootcharge = 0;
-            bullets.push(new TearBullet(this.x, this.y, object, this.damage))
-
-        }
-
-    }
-
-    hudInfo() {
-        showStats(towers[this.iam]);
-        showRange(towers[this.iam]);
-        showUpgrades(towers[this.iam]);
     }
 
     onClick(i) {

@@ -175,4 +175,60 @@ class SpongebobMeme {
     }
 }
 
+class BitcoinFire {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.position = createVector(this.x, this.y);
+        this.target = null;
+        this.speed = 5;
+        this.image = bitcoins;
+        this.iam;
+        this.dir;
+        this.reachedTarget = false;
+        this.damage = 18;
+    }
+
+    //cange based on what
+
+    show() {
+        if (this.target != null) {
+            image(this.image, this.position.x, this.position.y, 130, 130);
+        }
+    }
+
+    //also have the hit function built in or make it separate ,,,, called at 60fps
+    move(i) {
+        if (muscles[0] != null && frameCount % 20 == 0) {
+            this.target = muscles[floor(random(0, muscles.length))];
+            }
+            else if (frameCount % 20 == 0){
+                this.target = null;
+                bullets.splice(this.iam, 1);
+            }
+
+            if(this.target != null) {
+                this.dir = p5.Vector.sub(this.target.pector, this.position);
+            this.dir = this.dir.mult(this.speed / this.dir.mag());
+
+            if ((this.position.dist(this.target.pector)) <= 15) {
+                //hit
+                this.target.hp -= this.damage;
+                bullets.splice(this.iam, 1);
+            } else {
+                this.position.add(this.dir);
+                if (this.target.pector == null) {
+                    bullets.splice(this.iam, 1);
+                }
+            }
+            }
+            
+
+
+            this.iam = i;
+
+        }
+    }
+
+
 //exploding bitcoin technology damage  btc will be high volatile damage, might heal the enemy actually. -1 - 30 damage

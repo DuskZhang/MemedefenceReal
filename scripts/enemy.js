@@ -57,7 +57,7 @@ class Enemy {
 
         } else {
             this.targetVec = null;
-            lives--;
+            lives-=this.lifedamage;
             muscles.splice(this.iam, 1);
 
         }
@@ -122,22 +122,7 @@ class NormieMuscle extends Enemy {
         this.poisontick = 30;
     }
 
-    getPathNode() {
-        if (this.nodeIndex < nodes.length) {
-
-            this.targetVec = createVector(nodes[this.nodeIndex].x, nodes[this.nodeIndex].y);
-            this.movementVector = createVector(this.targetVec.x - this.pector.x, this.targetVec.y - this.pector.y)
-            this.nodeIndex++;
-
-        } else {
-            this.targetVec = null;
-            lives--;
-            muscles.splice(this.iam, 1);
-
-        }
-
-
-    }
+    
 
     //called 60fps
     move(i) {
@@ -224,23 +209,6 @@ class Workers extends Enemy {
     }
 
 
-    getPathNode() {
-        if (this.nodeIndex < nodes.length) {
-
-            this.targetVec = createVector(nodes[this.nodeIndex].x, nodes[this.nodeIndex].y);
-            this.movementVector = createVector(this.targetVec.x - this.pector.x, this.targetVec.y - this.pector.y)
-            this.nodeIndex++;
-
-        } else {
-            this.targetVec = null;
-            lives -= this.lifedamage;
-            muscles.splice(this.iam, 1);
-
-        }
-
-
-    }
-
     //called 60fps
     move(i) {
         this.iam = i;
@@ -317,22 +285,6 @@ class BabyBoomer extends Enemy {
     }
 
 
-    getPathNode() {
-        if (this.nodeIndex < nodes.length) {
-
-            this.targetVec = createVector(nodes[this.nodeIndex].x, nodes[this.nodeIndex].y);
-            this.movementVector = createVector(this.targetVec.x - this.pector.x, this.targetVec.y - this.pector.y)
-            this.nodeIndex++;
-
-        } else {
-            this.targetVec = null;
-            lives -= 3;
-            muscles.splice(this.iam, 1);
-
-        }
-
-
-    }
 
     //called 60fps
     move(i) {
@@ -412,22 +364,6 @@ class Teacher extends Enemy {
     }
 
 
-    getPathNode() {
-        if (this.nodeIndex < nodes.length) {
-
-            this.targetVec = createVector(nodes[this.nodeIndex].x, nodes[this.nodeIndex].y);
-            this.movementVector = createVector(this.targetVec.x - this.pector.x, this.targetVec.y - this.pector.y)
-            this.nodeIndex++;
-
-        } else {
-            this.targetVec = null;
-            lives -= 3;
-            muscles.splice(this.iam, 1);
-
-        }
-
-
-    }
 
     //called 60fps
     move(i) {
@@ -519,23 +455,6 @@ class ImprovedMuscle extends Enemy {
     }
 
 
-    getPathNode() {
-        if (this.nodeIndex < nodes.length) {
-
-            this.targetVec = createVector(nodes[this.nodeIndex].x, nodes[this.nodeIndex].y);
-            this.movementVector = createVector(this.targetVec.x - this.pector.x, this.targetVec.y - this.pector.y)
-            this.nodeIndex++;
-
-        } else {
-            this.targetVec = null;
-            lives -= this.lifedamage;
-            muscles.splice(this.iam, 1);
-
-        }
-
-
-    }
-
     //called 60fps
     move(i) {
         this.iam = i;
@@ -571,7 +490,7 @@ class JohnCena extends Enemy {
         this.hp = 790;
         this.max = 790;
         this.speed = 0.2; // dont go over 4 or it gets all buggy
-
+        this.regularSpeed = 0.2;
         this.width = 110;
         this.height = 110;
 
@@ -613,22 +532,6 @@ class JohnCena extends Enemy {
     }
 
 
-    getPathNode() {
-        if (this.nodeIndex < nodes.length) {
-
-            this.targetVec = createVector(nodes[this.nodeIndex].x, nodes[this.nodeIndex].y);
-            this.movementVector = createVector(this.targetVec.x - this.pector.x, this.targetVec.y - this.pector.y)
-            this.nodeIndex++;
-
-        } else {
-            this.targetVec = null;
-            lives -= this.lifedamage;
-            muscles.splice(this.iam, 1);
-
-        }
-
-
-    }
 
     //called 60fps
     move(i) {
