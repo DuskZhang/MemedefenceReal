@@ -98,10 +98,6 @@ class BuyWonka extends Tile {
         this.image = wonkafactory;
     }
 
-    show() {
-        image(this.image, this.x, this.y, this.width, this.width);
-
-    }
 
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
@@ -156,10 +152,6 @@ class BuyRoss extends Tile {
         this.image = buyRoss;
     }
 
-    show() {
-        image(this.image, this.x, this.y, this.width, this.width);
-
-    }
 
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
@@ -185,11 +177,6 @@ class BuyNed extends Tile {
         this.y = y;
         this.connectionOpen = false;
         this.image = winterfell;
-    }
-
-    show() {
-        image(this.image, this.x, this.y, this.width, this.width);
-
     }
 
     clicked() {
@@ -218,11 +205,6 @@ class BuySquidward extends Tile {
         this.image = squidtower;
     }
 
-    show() {
-        image(this.image, this.x, this.y, this.width, this.width);
-
-    }
-
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (noSpammerino >= 18) {
@@ -249,10 +231,6 @@ class BuyBitcoin extends Tile {
         this.image = buybitcoin;
     }
 
-    show() {
-        image(this.image, this.x, this.y, this.width, this.width);
-
-    }
 
     clicked() {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
@@ -262,6 +240,33 @@ class BuyBitcoin extends Tile {
                 } else {
                     clearDesire();
                     bitcoinTowerDesired = true;
+                }
+
+
+            }
+        }
+    }
+
+}
+
+class BuySanic extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = buySanic;
+    }
+
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (sanicTowerDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    sanicTowerDesired = true;
                 }
 
 

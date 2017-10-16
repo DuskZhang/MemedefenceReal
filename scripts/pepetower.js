@@ -67,7 +67,7 @@ class Pepe extends Tower {
         //todo get x y from mouse location
         super(x, y, original);
 
-        this.damage = 1; // prob will not need this on tower
+        this.damage = 1.69; // prob will not need this on tower
         this.shootcharge = 0;
         this.chargebuild = 5
         this.primeshoot = 100;
@@ -75,7 +75,7 @@ class Pepe extends Tower {
         this.image = pepe;
         this.selected = false;
         this.upgradeA0Image = damagetears;
-        this.upgradeA0Description = "Hard Tears: \nDouble damage";
+        this.upgradeA0Description = "Hard Tears: \n125% damage";
         this.upgradeB0Image = rangepepe;
         this.upgradeB0Description = "Grim Sights: \nDouble range";
 
@@ -438,8 +438,77 @@ class DabbingSquidward extends Tower {
     shootAt(object) {
         if (this.shootcharge >= this.primeshoot) {
             this.shootcharge = 0;
-            bullets.push(new SpongebobMeme(this.x,this.y, object, floor(random(1,memes.length + 1))));
-            
+            bullets.push(new SpongebobMeme(this.x, this.y, object, floor(random(1, memes.length + 1))));
+
+
+        }
+
+    }
+
+    hudInfo() {
+        showStats(towers[this.iam]);
+        showRange(towers[this.iam]);
+        showUpgrades(towers[this.iam]);
+    }
+
+    onClick(i) {
+        this.iam = i;
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed && noSpammerino >= 18) {
+            hudReset();
+            this.selected = true;
+
+        }
+    }
+
+}
+
+class Sanic extends Tower {
+    constructor(x, y, original) {
+        //todo get x y from mouse location
+        super(x, y, original);
+
+        this.damage = 1; // prob will not need this on tower
+        this.shootcharge = 0;
+        this.chargebuild = 3;
+        this.primeshoot = 100;
+        this.range = 200;
+        this.image = sanic;
+        this.selected = false;
+        this.upgradeA0Image = morememes;
+        this.upgradeA0Description = "More memes: \n3 more memes";
+        this.upgradeB0Image = rofdab;
+        this.upgradeB0Description = "To be evil: \nDouble rof";
+
+    }
+    //called every frame
+    lockon() {
+        if (this.shootcharge < this.primeshoot) {
+            this.shootcharge += this.chargebuild;
+
+        }
+        //shoots at first enemy in muscles array to meet if statement
+        if (muscles[0] != null) {
+            for (var i = 0; i < muscles.length; i++) {
+                if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range) {
+                    this.shootAt(muscles[i]);
+                    break;
+                }
+            }
+        }
+
+    }
+
+    show(t) {
+        image(this.image, this.x, this.y, this.width, this.width);
+        this.iam = t;
+    }
+
+    //called every frame by obj
+    shootAt(object) {
+        if (this.shootcharge >= this.primeshoot) {
+            this.shootcharge = 0;
+            bullets.push(new Sanicbomb(this.x, this.y, object, this.damage));
+
 
         }
 
@@ -481,7 +550,7 @@ class Bitcoin extends Tower {
     //called every frame
     lockon() {
         if (frameCount % this.primeshoot == 0 && waveOn) {
-            bullets.push(new BitcoinFire(random(0,width), random(0,height)));
+            bullets.push(new BitcoinFire(random(0, width), random(0, height)));
         }
 
     }

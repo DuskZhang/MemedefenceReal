@@ -6,7 +6,7 @@ function objectFunctions() {
         tiles[i].show();
 
         if (tiles[i].clicked(i)) {
-            tiles[i] = new Road;
+            tiles[i] = new Road(tiles[i].x,tiles[i].y, i);
         }
 
     }

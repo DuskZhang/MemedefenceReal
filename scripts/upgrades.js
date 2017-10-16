@@ -1,6 +1,9 @@
 function showRange(object) {
     fill(40, 130, 130, 40);
-    ellipse(object.position.x + 30, object.position.y + 30, object.range * 2);
+    if(object != null) {
+         ellipse(object.position.x + 30, object.position.y + 30, object.range * 2);
+    }
+   
 }
 
 function showStats(object) {
@@ -43,8 +46,7 @@ function showUpgrades(object) {
             image(object.upgradeA0Image, 750, 50, 130, 100);
             text(object.upgradeA0Description, 750, 15);
             if (object.upgradeAclicked() && gold >= 120) {
-                object.damage *= 2;
-                object.upgradeLevelA++;
+                object.damage *= 1.25;
                 noSpammerino = 0;
                 gold -= 120;
             }
@@ -259,7 +261,7 @@ function showUpgrades(object) {
             image(object.upgradeB0Image, 900, 50, 130, 100);
             text(object.upgradeB0Description, 900, 15);
             if (object.upgradeBclicked() && gold >= 100) {
-                object.chargebuild *= 3;
+                object.chargebuild *= 2;
                 object.upgradeLevelB++;
                 noSpammerino = 0;
                 gold -= 100;

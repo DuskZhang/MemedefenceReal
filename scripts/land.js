@@ -18,9 +18,15 @@ class Tile {
         //roads
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (roadsBuilt < roadAmount) {
+                if(i == 11) {
+                    if(tiles[10].connectionOpen || tiles[23].connectionOpen) {
+                        tiles[this.arraySlot] = new Road(this.x, this.y);
+                        nodes.push(tiles[this.arraySlot]);
+                        roadsBuilt++
+                    }
+                }
 
-
-                if (tiles[this.arraySlot - 12] == null) {
+                else if (tiles[this.arraySlot - 12] == null) {
                     if (tiles[this.arraySlot + 12].connectionOpen || tiles[this.arraySlot - 1].connectionOpen || tiles[this.arraySlot + 1].connectionOpen) {
                         tiles[this.arraySlot] = new Road(this.x, this.y);
                         nodes.push(tiles[this.arraySlot]);
@@ -96,18 +102,26 @@ class Tile {
                 towers.push(new Bitcoin(this.x, this.y, i));
                 bitcoinTowerDesired = false;
                 this.tileTaken = true;
+            } 
+        } else if (sanicTowerDesired && this.tileTaken == false) {
+            if (gold >= sanicPrice) {
+                gold -= sanicPrice;
+                towers.push(new Sanic(this.x, this.y, i));
+                sanicTowerDesired = false;
+                this.tileTaken = true;
             } // add more towers here
         }
     }
 }
 
 class Road extends Tile {
-    constructor(x, y) {
+    constructor(x, y,i) {
         super()
         this.x = x;
         this.y = y;
         this.connectionOpen = true;
         this.image = stars;
+        this.iam = i;
 
     }
 
@@ -117,12 +131,12 @@ class Road extends Tile {
 
     }
 
-    clicked() {
+    clicked(i) {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (grumpDesired && this.tileTaken == false) {
                 if (gold >= 45) {
                     gold -= 45;
-                    towers.push(new Grump(this.x, this.y));
+                    towers.push(new Grump(this.x, this.y, i));
                     grumpDesired = false;
                     this.tileTaken = true;
                 }

@@ -29,11 +29,6 @@ class Enemy {
             this.takenByKnight = false;
         }
         
-        if (this.hp <= 0) {
-            gold += 4;
-            muscles.splice(this.iam, 1);
-        }
-
         image(this.image, this.pector.x, this.pector.y, this.width, this.height);
         //hp bars
 
@@ -75,7 +70,7 @@ class Enemy {
 
         this.iam = i;
         if (this.hp <= 0) {
-            gold += 4;
+            gold += 5;
             muscles.splice(this.iam, 1);
         }
 
@@ -134,7 +129,7 @@ class NormieMuscle extends Enemy {
 
         this.iam = i;
         if (this.hp <= 0) {
-            gold += 4;
+            gold += 5;
             muscles.splice(this.iam, 1);
         }
 
@@ -189,7 +184,7 @@ class Workers extends Enemy {
         }
 
         if (this.hp <= 0) {
-            gold += 55;
+            gold += 45;
             muscles.splice(this.iam, 1);
         }
 
@@ -263,7 +258,7 @@ class BabyBoomer extends Enemy {
             this.takenByKnight = false;
         }
         if (this.hp <= 0) {
-            gold += 35;
+            gold += 32;
             muscles.splice(this.iam, 1);
         }
 
@@ -344,7 +339,7 @@ class Teacher extends Enemy {
         }
 
         if (this.hp <= 0) {
-            gold += 65;
+            gold += 45;
             muscles.splice(this.iam, 1);
         }
 
@@ -512,7 +507,7 @@ class JohnCena extends Enemy {
         }
 
         if (this.hp <= 0) {
-            gold += 200;
+            gold += 120;
             muscles.splice(this.iam, 1);
         }
 

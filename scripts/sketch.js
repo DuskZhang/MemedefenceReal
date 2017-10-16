@@ -7,8 +7,9 @@ var weabooPrice = 225;
 var nedPrice = 300;
 var wonkaPrice = 300;
 var rossPrice = 250;
-var btcPrice = 2000;
+var btcPrice = 800;
 var squidPrice = 400;
+let sanicPrice = 320;
 
 var roadsBuilt = 1;
 var pepeTowerDesired = false;
@@ -22,7 +23,7 @@ var btcDesired = false;
 var hudDesired = false;
 var squidTowerDesired = false;
 var bitcoinTowerDesired = false;
-
+var sanicTowerDesired = false;
 
 //if hud desired stop people from buying towers
 //var hudReset = false;
@@ -46,7 +47,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 13; // standard 40
+var roadAmount = 35; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
@@ -57,7 +58,7 @@ var enemySpawnType = 0;
 //standard public hud
 
 var lives = 25;
-var gold = 13820; // standard 420
+var gold = 420; // standard 420
 // towers
 var towers = [];
 var shops = [];
@@ -69,8 +70,8 @@ let memes = [];
 var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
 
 function preload() {
-    //    soundFormats('mp3', 'ogg');
-    //    mySound = loadSound('assets/Bag Raiders - Shooting Stars.mp3');
+        soundFormats('mp3', 'ogg');
+        mySound = loadSound('assets/Bag Raiders - Shooting Stars.mp3');
 }
 
 function setup() {
@@ -124,6 +125,9 @@ function setup() {
     bitcoin = loadImage("assets/bitcoin.jpg");
     buybitcoin = loadImage("assets/buybtc.jpg");
     bitcoins = loadImage("assets/bitcoins.jpg");
+    sanic = loadImage("assets/sanic.jpg");
+    buySanic = loadImage("assets/buysonic.png")
+    rings = loadImage("assets/rings.jpg")
     
     meme1 = loadImage("assets/meme1.jpg");
     meme2 = loadImage("assets/meme2.jpg");
@@ -151,8 +155,8 @@ function setup() {
 
 
 
-    //    mySound.setVolume(.3);
-    //    mySound.play();
+        mySound.setVolume(.3);
+        mySound.play();
 }
 
 function initializeTiles() {
@@ -180,7 +184,7 @@ function initializeTiles() {
     tiles[211] = new BuySquidward(tiles[211].x, tiles[211].y);
     tiles[212] = new BuyBitcoin(tiles[212].x, tiles[212].y);
 
-    tiles[213] = new BuyPepe(tiles[213].x, tiles[213].y);
+    tiles[213] = new BuySanic(tiles[213].x, tiles[213].y);
     tiles[214] = new BuyPepe(tiles[214].x, tiles[214].y);
     tiles[215] = new BuyPepe(tiles[215].x, tiles[215].y);
 
@@ -196,6 +200,7 @@ function clearDesire() {
     nedTowerDesired = false;
     squidTowerDesired = false;
     bitcoinTowerDesired = false;
+    sanicTowerDesired = false;
     noSpammerino = 0;
 }
 

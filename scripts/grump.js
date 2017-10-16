@@ -1,7 +1,7 @@
 class Grump extends Tower {
     constructor(x, y,original) {
         //todo get x y from mouse location
-        super(x, y);
+        super(x, y,original);
         this.position = createVector(this.x, this.y);
         this.damage = 1; // Will need this because doge wont be producing any bullets for damage
         this.range = 30;
@@ -26,7 +26,6 @@ class Grump extends Tower {
             for (var i = 0; i < muscles.length; i++) {
                 if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range) {
                     this.shootAt(muscles[i]);
-                    break;
                 }
             }
         }
@@ -41,6 +40,7 @@ class Grump extends Tower {
 
     //called every frame by obj
     shootAt(object) {
+        console.log(this.originalTile)
         //charge at enemy instead of pushing a new bullet
         if ((this.position.dist(object.pector)) <= this.range) {
             //hit
@@ -48,6 +48,7 @@ class Grump extends Tower {
             this.hits++
                 if (this.maxHits == this.hits) {
                     this.selected = false;
+                    tiles[this.originalTile].tileTaken = false;
                     towers.splice(this.iam, 1);
                      
                 }
