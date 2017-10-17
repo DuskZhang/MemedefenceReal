@@ -99,8 +99,8 @@ class NormieMuscle extends Enemy {
     constructor(x, y) {
         super();
         this.pector = createVector(x, y);
-        this.hp = 5.5;
-        this.max = 5.5;
+        this.hp = 5;
+        this.max = 5;
         this.speed = 1.5; // dont go over 4 or it gets all buggy
 
         this.width = 50;
@@ -143,7 +143,7 @@ class NormieMuscle extends Enemy {
 
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
-            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 100) {
                 this.targetVec = null; //reached node
             } else {
                 this.pector.x += this.movementVector.x * this.distFrame;
@@ -580,12 +580,12 @@ class Trump extends Enemy {
         this.x = x;
         this.y = y;
         this.pector = createVector(this.x, this.y);
-        this.hp = 2000;
-        this.max = 2000;
+        this.hp = 2016;
+        this.max = 2024;
         this.speed = 0.2; // dont go over 4 or it gets all buggy
-        this.regularSpeed = 0.25;
-        this.width = 110;
-        this.height = 110;
+        this.regularSpeed = 0.3;
+        this.width = 90;
+        this.height = 90;
 
         this.nodeIndex = 0;
         this.targetVec;
@@ -593,7 +593,7 @@ class Trump extends Enemy {
         this.distFrame;
         // once every 1/2 second if running at 60fps
         this.iam;
-        this.image = johncena;
+        this.image = donald;
         this.lifedamage = 6;
     }
 
@@ -641,7 +641,7 @@ class Trump extends Enemy {
 
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
-            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 180) {
                 this.targetVec = null; //reached node
             } else {
                 this.pector.x += this.movementVector.x * this.distFrame;

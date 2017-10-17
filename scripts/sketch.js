@@ -128,6 +128,7 @@ function setup() {
     sanic = loadImage("scripts/assets/sanic.jpg");
     buySanic = loadImage("scripts/assets/buysonic.png")
     rings = loadImage("scripts/assets/rings.jpg")
+    donald = loadImage("scripts/assets/donald.jpg")
     
     meme1 = loadImage("scripts/assets/meme1.jpg");
     meme2 = loadImage("scripts/assets/meme2.jpg");
