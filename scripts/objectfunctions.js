@@ -33,11 +33,7 @@ function objectFunctions() {
 
         }
 
-        if (towers[t] != null) {
-            if (towers[t].selected) {
-                towers[t].hudInfo();
-            }
-        }
+        
 
     }
 
@@ -55,6 +51,12 @@ function objectFunctions() {
     }
 
 drawHud();
+    
+    if (towers[t] != null) {
+            if (towers[t].selected) {
+                towers[t].hudInfo();
+            }
+        }
 
 
 }
