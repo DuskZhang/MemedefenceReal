@@ -71,75 +71,75 @@ var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
 
 function preload() {
         soundFormats('mp3', 'ogg');
-        mySound = loadSound('assets/Bag Raiders - Shooting Stars.mp3');
+        mySound = loadSound('scripts/assets/Bag Raiders - Shooting Stars.mp3');
 }
 
 function setup() {
     //18 x 12
     createCanvas(1080, 720);
-    muscleImg = loadImage("assets/Enemy.jpg");
-    pepe = loadImage("assets/pepe.png");
-    tear = loadImage("assets/tear.png");
-    scarce = loadImage("assets/fat_scarce.jpg");
-    water = loadImage("assets/water.jpg");
-    stars = loadImage("assets/stars.jpg");
-    buypepe = loadImage("assets/buypepe.jpg");
-    weabland = loadImage("assets/weabland.jpg");
-    doge = loadImage("assets/doge.jpg");
-    buyDoge = loadImage("assets/buyDoge.png");
-    japsover = loadImage("assets/Workers.jpg");
-    grump = loadImage("assets/grump.jpg");
-    attackgrump = loadImage("assets/attackgrump.jpg");
-    wonka = loadImage("assets/wonka.jpg");
-    wonkabar = loadImage("assets/wonkabar.jpg");
-    wonkafactory = loadImage("assets/wonkafactory.jpg");
-    angryweab = loadImage("assets/anime-memes3.jpg");
-    buyweaboo = loadImage("assets/weabooman.jpg");
-    katana = loadImage("assets/katana.png");
-    damagetears = loadImage("assets/hardertears.png");
-    rangepepe = loadImage("assets/sightpepe.jpg");
-    snoopdoge = loadImage("assets/snoopdoge.jpg");
-    icedoge = loadImage("assets/icecreamdoge.jpg");
-    blueberry = loadImage("assets/blueberry.jpg");
-    turnwonka = loadImage("assets/turnwonka.jpg");
-    ichigo = loadImage("assets/bleach.jpg");
-    kirito = loadImage("assets/kirito.jpg");
-    bigweab = loadImage("assets/theweaboo.jpg");
-    babyboomers = loadImage("assets/babyboomer.jpg");
-    teacher = loadImage("assets/teacher.jpg");
-    book = loadImage("assets/bookheal.png");
-    improvedmuscle = loadImage("assets/improvedmuscle.jpg");
-    buyRoss = loadImage("assets/bobross.jpg");
-    bobross = loadImage("assets/rosstower.jpg");
-    paintattack = loadImage("assets/animateattackross.png");
-    ned = loadImage("assets/ned.jpg");
-    snow = loadImage("assets/jonsnow.jpg");
-    winterfell = loadImage("assets/winterfell.jpg");
-    hodl = loadImage("assets/hodl.jpg");
-    betterknights = loadImage("assets/betterknights.jpg");
-    moreknights = loadImage("assets/moreknights.png");
-    squidtower = loadImage("assets/squidwardinactive.jpg");
-    squiddab = loadImage("assets/dabbing.jpg");
-     morememes = loadImage("assets/morememes.jpg");
-    rofdab = loadImage("assets/rofdab.jpg");
-    bitcoin = loadImage("assets/bitcoin.jpg");
-    buybitcoin = loadImage("assets/buybtc.jpg");
-    bitcoins = loadImage("assets/bitcoins.jpg");
-    sanic = loadImage("assets/sanic.jpg");
-    buySanic = loadImage("assets/buysonic.png")
-    rings = loadImage("assets/rings.jpg")
+    muscleImg = loadImage("scripts/assets/Enemy.jpg");
+    pepe = loadImage("scripts/assets/pepe.png");
+    tear = loadImage("scripts/assets/tear.png");
+    scarce = loadImage("scripts/assets/fat_scarce.jpg");
+    water = loadImage("scripts/assets/water.jpg");
+    stars = loadImage("scripts/assets/stars.jpg");
+    buypepe = loadImage("scripts/assets/buypepe.jpg");
+    weabland = loadImage("scripts/assets/weabland.jpg");
+    doge = loadImage("scripts/assets/doge.jpg");
+    buyDoge = loadImage("scripts/assets/buyDoge.png");
+    japsover = loadImage("scripts/assets/Workers.jpg");
+    grump = loadImage("scripts/assets/grump.jpg");
+    attackgrump = loadImage("scripts/assets/attackgrump.jpg");
+    wonka = loadImage("scripts/assets/wonka.jpg");
+    wonkabar = loadImage("scripts/assets/wonkabar.jpg");
+    wonkafactory = loadImage("scripts/assets/wonkafactory.jpg");
+    angryweab = loadImage("scripts/assets/anime-memes3.jpg");
+    buyweaboo = loadImage("scripts/assets/weabooman.jpg");
+    katana = loadImage("scripts/assets/katana.png");
+    damagetears = loadImage("scripts/assets/hardertears.png");
+    rangepepe = loadImage("scripts/assets/sightpepe.jpg");
+    snoopdoge = loadImage("scripts/assets/snoopdoge.jpg");
+    icedoge = loadImage("scripts/assets/icecreamdoge.jpg");
+    blueberry = loadImage("scripts/assets/blueberry.jpg");
+    turnwonka = loadImage("scripts/assets/turnwonka.jpg");
+    ichigo = loadImage("scripts/assets/bleach.jpg");
+    kirito = loadImage("scripts/assets/kirito.jpg");
+    bigweab = loadImage("scripts/assets/theweaboo.jpg");
+    babyboomers = loadImage("scripts/assets/babyboomer.jpg");
+    teacher = loadImage("scripts/assets/teacher.jpg");
+    book = loadImage("scripts/assets/bookheal.png");
+    improvedmuscle = loadImage("scripts/assets/improvedmuscle.jpg");
+    buyRoss = loadImage("scripts/assets/bobross.jpg");
+    bobross = loadImage("scripts/assets/rosstower.jpg");
+    paintattack = loadImage("scripts/assets/animateattackross.png");
+    ned = loadImage("scripts/assets/ned.jpg");
+    snow = loadImage("scripts/assets/jonsnow.jpg");
+    winterfell = loadImage("scripts/assets/winterfell.jpg");
+    hodl = loadImage("scripts/assets/hodl.jpg");
+    betterknights = loadImage("scripts/assets/betterknights.jpg");
+    moreknights = loadImage("scripts/assets/moreknights.png");
+    squidtower = loadImage("scripts/assets/squidwardinactive.jpg");
+    squiddab = loadImage("scripts/assets/dabbing.jpg");
+     morememes = loadImage("scripts/assets/morememes.jpg");
+    rofdab = loadImage("scripts/assets/rofdab.jpg");
+    bitcoin = loadImage("scripts/assets/bitcoin.jpg");
+    buybitcoin = loadImage("scripts/assets/buybtc.jpg");
+    bitcoins = loadImage("scripts/assets/bitcoins.jpg");
+    sanic = loadImage("scripts/assets/sanic.jpg");
+    buySanic = loadImage("scripts/assets/buysonic.png")
+    rings = loadImage("scripts/assets/rings.jpg")
     
-    meme1 = loadImage("assets/meme1.jpg");
-    meme2 = loadImage("assets/meme2.jpg");
-    meme3 = loadImage("assets/meme3.jpg");
-    meme4 = loadImage("assets/meme4.jpg");
-    meme5 = loadImage("assets/meme5.jpg");
-    meme6 = loadImage("assets/meme6.png");
-    meme7 = loadImage("assets/meme7.jpg");
-    meme8 = loadImage("assets/meme8.png");
-    meme9 = loadImage("assets/meme9.jpg");
-    meme10 = loadImage("assets/meme10.jpg");
-    meme11 = loadImage("assets/meme11.jpg");
+    meme1 = loadImage("scripts/assets/meme1.jpg");
+    meme2 = loadImage("scripts/assets/meme2.jpg");
+    meme3 = loadImage("scripts/assets/meme3.jpg");
+    meme4 = loadImage("scripts/assets/meme4.jpg");
+    meme5 = loadImage("scripts/assets/meme5.jpg");
+    meme6 = loadImage("scripts/assets/meme6.png");
+    meme7 = loadImage("scripts/assets/meme7.jpg");
+    meme8 = loadImage("scripts/assets/meme8.png");
+    meme9 = loadImage("scripts/assets/meme9.jpg");
+    meme10 = loadImage("scripts/assets/meme10.jpg");
+    meme11 = loadImage("scripts/assets/meme11.jpg");
 
     memes.push(meme1);
     memes.push(meme2);
@@ -150,7 +150,7 @@ function setup() {
     memes.push(meme7);
     memes.push(meme8);
     
-    johncena = loadImage("assets/johncena.jpg");
+    johncena = loadImage("scripts/assets/johncena.jpg");
 
 
 
