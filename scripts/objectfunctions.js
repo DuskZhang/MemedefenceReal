@@ -11,17 +11,11 @@ function objectFunctions() {
 
     }
 
+    
+
+    
+    
     drawHud();
-
-    //bullet functions
-    for (var bindex = 0; bindex < bullets.length; bindex++) {
-
-
-        bullets[bindex].show();
-        bullets[bindex].move(bindex);
-
-
-    }
 
     //tower functions
     for (t = towers.length - 1; t >= 0; t--) {
@@ -38,6 +32,16 @@ function objectFunctions() {
                 towers[t].hudInfo();
             }
         }
+
+    }
+    
+    //bullet functions
+    for (var bindex = 0; bindex < bullets.length; bindex++) {
+
+
+        bullets[bindex].show();
+        bullets[bindex].move(bindex);
+
 
     }
 
