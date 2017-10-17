@@ -11,7 +11,7 @@ function objectFunctions() {
 
     }
 
-    drawHud();
+    
 
     //bullet functions
     for (var bindex = 0; bindex < bullets.length; bindex++) {
@@ -54,7 +54,7 @@ function objectFunctions() {
 
     }
 
-
+drawHud();
 
 
 }
