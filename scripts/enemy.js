@@ -129,7 +129,7 @@ class NormieMuscle extends Enemy {
 
         this.iam = i;
         if (this.hp <= 0) {
-            gold += 5;
+            gold += 4;
             muscles.splice(this.iam, 1);
         }
 
@@ -184,7 +184,7 @@ class Workers extends Enemy {
         }
 
         if (this.hp <= 0) {
-            gold += 45;
+            gold += 35;
             muscles.splice(this.iam, 1);
         }
 
@@ -339,7 +339,7 @@ class Teacher extends Enemy {
         }
 
         if (this.hp <= 0) {
-            gold += 45;
+            gold += 33;
             muscles.splice(this.iam, 1);
         }
 
@@ -431,7 +431,7 @@ class ImprovedMuscle extends Enemy {
         }
 
         if (this.hp <= 0) {
-            gold += 35;
+            gold += 25;
             muscles.splice(this.iam, 1);
         }
 
@@ -482,10 +482,10 @@ class JohnCena extends Enemy {
         this.x = x;
         this.y = y;
         this.pector = createVector(this.x, this.y);
-        this.hp = 790;
-        this.max = 790;
+        this.hp = 690;
+        this.max = 690;
         this.speed = 0.2; // dont go over 4 or it gets all buggy
-        this.regularSpeed = 0.2;
+        this.regularSpeed = 0.25;
         this.width = 110;
         this.height = 110;
 
@@ -496,8 +496,6 @@ class JohnCena extends Enemy {
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = johncena;
-        this.supportTimer = 0;
-        this.supportImage = book;
         this.lifedamage = 8;
     }
 
@@ -507,7 +505,7 @@ class JohnCena extends Enemy {
         }
 
         if (this.hp <= 0) {
-            gold += 120;
+            gold += 80;
             muscles.splice(this.iam, 1);
         }
 
@@ -530,7 +528,6 @@ class JohnCena extends Enemy {
 
     //called 60fps
     move(i) {
-        this.supportTimer++;
         this.iam = i;
         if (this.targetVec == null) {
             this.getPathNode();
@@ -551,18 +548,8 @@ class JohnCena extends Enemy {
 
         }
 
-        if (muscles.length > 1 && this.supportTimer % 120 == 0) {
-            this.support(muscles[Math.round(random(0, muscles.length - 1))]);
-        }
 
 
-
-    }
-
-    support(randomAlly) {
-        randomAlly.hp += 3;
-        randomAlly.speed += 0.5;
-        image(this.supportImage, randomAlly.pector.x, randomAlly.pector.y, 30, 30);
     }
 
 

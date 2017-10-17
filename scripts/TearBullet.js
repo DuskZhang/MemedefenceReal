@@ -76,7 +76,7 @@ class WonkaBar {
         }
         if ((this.position.dist(this.target.pector)) <= 15) {
             //hit
-            if (this.target.speed > 0.4) {
+            if (this.target.speed > 0.53) {
                 this.target.speed = this.target.speed * 0.5;
             }
             this.target.poisoned += this.poison;
