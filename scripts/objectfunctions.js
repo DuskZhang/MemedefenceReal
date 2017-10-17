@@ -11,7 +11,7 @@ function objectFunctions() {
 
     }
 
-    
+    drawHud();
 
     //bullet functions
     for (var bindex = 0; bindex < bullets.length; bindex++) {
@@ -33,7 +33,11 @@ function objectFunctions() {
 
         }
 
-        
+        if (towers[t] != null) {
+            if (towers[t].selected) {
+                towers[t].hudInfo();
+            }
+        }
 
     }
 
@@ -50,13 +54,7 @@ function objectFunctions() {
 
     }
 
-drawHud();
-    
-    if (towers[t] != null) {
-            if (towers[t].selected) {
-                towers[t].hudInfo();
-            }
-        }
+
 
 
 }
