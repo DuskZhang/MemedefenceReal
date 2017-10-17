@@ -58,7 +58,7 @@ var enemySpawnType = 0;
 //standard public hud
 
 var lives = 25;
-var gold = 420; // standard 420
+var gold = 469; // standard 420
 // towers
 var towers = [];
 var shops = [];
