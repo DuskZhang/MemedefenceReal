@@ -258,7 +258,7 @@ class BabyBoomer extends Enemy {
             this.takenByKnight = false;
         }
         if (this.hp <= 0) {
-            gold += 32;
+            gold += 22;
             muscles.splice(this.iam, 1);
         }
 
@@ -330,7 +330,7 @@ class Teacher extends Enemy {
         this.image = teacher;
         this.supportTimer = 0;
         this.supportImage = book;
-        this.lifedamage = 3;
+        this.lifedamage = 2;
     }
 
     show() {
@@ -422,7 +422,7 @@ class ImprovedMuscle extends Enemy {
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = improvedmuscle;
-        this.lifedamage = 5;
+        this.lifedamage = 3;
     }
 
     show() {
@@ -496,7 +496,7 @@ class JohnCena extends Enemy {
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = johncena;
-        this.lifedamage = 8;
+        this.lifedamage = 6;
     }
 
     show() {

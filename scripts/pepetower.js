@@ -75,7 +75,7 @@ class Pepe extends Tower {
         this.image = pepe;
         this.selected = false;
         this.upgradeA0Image = damagetears;
-        this.upgradeA0Description = "Hard Tears: \n125% damage";
+        this.upgradeA0Description = "Hard Tears: \n130% dmg,max 30";
         this.upgradeB0Image = rangepepe;
         this.upgradeB0Description = "Grim Sights: \nDouble range";
 

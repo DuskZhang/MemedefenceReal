@@ -41,12 +41,12 @@ function showUpgrades(object) {
         if (mouseIsPressed) {
             console.log("dontloganything")
         }
-        if (object.upgradeLevelA == 0 && object.damage <= 65) {
+        if (object.upgradeLevelA == 0 && object.damage * 1.3 <= 30) {
             //show increased range upgrade have the upgrade clicked function within this function
             image(object.upgradeA0Image, 750, 50, 130, 100);
             text(object.upgradeA0Description, 750, 15);
             if (object.upgradeAclicked() && gold >= 120) {
-                object.damage *= 1.25;
+                object.damage *= 1.3;
                 noSpammerino = 0;
                 gold -= 120;
             }
