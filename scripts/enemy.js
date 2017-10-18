@@ -25,18 +25,18 @@ class Enemy {
         this.distanceFromNode2;
         this.justNoded = false;
     }
-    
+
     checkGameBreakingBug1() {
-        if(this.targetVec != null) {
-            this.distanceFromNode1 = dist(this.pector.x,this.pector.y, this.targetVec.x,this.targetVec.y);
+        if (this.targetVec != null) {
+            this.distanceFromNode1 = dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y);
         }
-        
+
         this.justNoded = false;
     }
     //after move
     checkGameBreakingBug2() {
-        if(this.targetVec != null) {
-            this.distanceFromNode2 = dist(this.pector.x,this.pector.y, this.targetVec.x,this.targetVec.y);
+        if (this.targetVec != null) {
+            this.distanceFromNode2 = dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y);
         }
         if (this.distanceFromNode2 > this.distanceFromNode1 && this.justNoded == false) {
             this.getPathNode();
@@ -46,10 +46,10 @@ class Enemy {
 
     show() {
 
-        if(this.takenByKnight && this.speed > 0) {
+        if (this.takenByKnight && this.speed > 0) {
             this.takenByKnight = false;
         }
-        
+
         image(this.image, this.pector.x, this.pector.y, this.width, this.height);
         //hp bars
 
@@ -74,7 +74,7 @@ class Enemy {
 
         } else {
             this.targetVec = null;
-            lives-=this.lifedamage;
+            lives -= this.lifedamage;
             muscles.splice(this.iam, 1);
 
         }
@@ -134,7 +134,7 @@ class NormieMuscle extends Enemy {
         this.poisontick = 30;
     }
 
-    
+
 
     //called 60fps
     move(i) {
@@ -146,7 +146,7 @@ class NormieMuscle extends Enemy {
 
         this.iam = i;
         if (this.hp <= 0) {
-            gold ++;
+            gold++;
             muscles.splice(this.iam, 1);
         }
 
@@ -196,17 +196,17 @@ class Workers extends Enemy {
     }
 
     show() {
-    if(this.takenByKnight && this.speed > 0) {
+        if (this.takenByKnight && this.speed > 0) {
             this.takenByKnight = false;
         }
 
         if (this.hp <= 0) {
-            if(wave < 5) {
-                 gold += 35;
+            if (wave < 5) {
+                gold += 35;
             } else {
                 gold += 16;
             }
-           
+
             muscles.splice(this.iam, 1);
         }
 
@@ -276,12 +276,12 @@ class BabyBoomer extends Enemy {
     }
 
     show() {
-   if(this.takenByKnight && this.speed > 0) {
+        if (this.takenByKnight && this.speed > 0) {
             this.takenByKnight = false;
         }
         if (this.hp <= 0) {
-            if(wave < 5) {
-                 gold += 22;
+            if (wave < 5) {
+                gold += 22;
             } else {
                 gold += 11;
             }
@@ -365,8 +365,8 @@ class Teacher extends Enemy {
         }
 
         if (this.hp <= 0) {
-            if(wave < 5) {
-                 gold += 30;
+            if (wave < 5) {
+                gold += 30;
             } else {
                 gold += 15;
             }
@@ -428,8 +428,6 @@ class Teacher extends Enemy {
     }
 
 
-
-    //make the guy lose hp over time lol from killing himself
 }
 
 class ImprovedMuscle extends Enemy {
@@ -461,8 +459,8 @@ class ImprovedMuscle extends Enemy {
         }
 
         if (this.hp <= 0) {
-            if(wave < 5) {
-                 gold += 25;
+            if (wave < 5) {
+                gold += 25;
             } else {
                 gold += 10;
             }
@@ -539,8 +537,8 @@ class JohnCena extends Enemy {
         }
 
         if (this.hp <= 0) {
-            if(wave < 5) {
-                 gold += 80;
+            if (wave < 5) {
+                gold += 80;
             } else {
                 gold += 40;
             }
@@ -551,7 +549,7 @@ class JohnCena extends Enemy {
         //hp bars
 
         fill("red");
-        rect(this.pector.x, this.pector.y + this.width, this.max/2, 50);
+        rect(this.pector.x, this.pector.y + this.width, this.max / 2, 50);
 
         if (this.hp > this.max) {
             fill("blue");
@@ -559,7 +557,7 @@ class JohnCena extends Enemy {
             fill(30, 223, 23);
         }
 
-        rect(this.pector.x, this.pector.y + this.width, this.hp/2, 50);
+        rect(this.pector.x, this.pector.y + this.width, this.hp / 2, 50);
     }
 
 
@@ -620,8 +618,8 @@ class Trump extends Enemy {
         }
 
         if (this.hp <= 0) {
-            if(wave < 5) {
-                 gold += 80;
+            if (wave < 5) {
+                gold += 80;
             } else {
                 gold += 40;
             }
@@ -632,7 +630,7 @@ class Trump extends Enemy {
         //hp bars
 
         fill("red");
-        rect(this.pector.x, this.pector.y + this.width, this.max/2, 50);
+        rect(this.pector.x, this.pector.y + this.width, this.max / 2, 50);
 
         if (this.hp > this.max) {
             fill("blue");
@@ -640,7 +638,7 @@ class Trump extends Enemy {
             fill(30, 223, 23);
         }
 
-        rect(this.pector.x, this.pector.y + this.width, this.hp/2, 50);
+        rect(this.pector.x, this.pector.y + this.width, this.hp / 2, 50);
     }
 
 
@@ -672,5 +670,122 @@ class Trump extends Enemy {
     }
 
 
-    
+
+}
+
+class Philosopher extends Enemy {
+    constructor(x, y) {
+        //buffs normies hp / speed 
+        super()
+        this.x = x;
+        this.y = y;
+        this.pector = createVector(this.x, this.y);
+        this.hp = 300;
+        this.max = 350;
+        this.speed = 0.75; // dont go over 4 or it gets all buggy
+
+        this.width = 80;
+        this.height = 80;
+
+        this.nodeIndex = 0;
+        this.targetVec;
+        this.movementVector;
+        this.distFrame;
+        // once every 1/2 second if running at 60fps
+        this.iam;
+        this.image = aristotles;
+        this.supportTimer = 0;
+        this.supportImage = book;
+        this.lifedamage = 2;
+        this.supportAnimation = 0
+        this.randomAlly;
+    }
+
+    show() {
+        if (this.takenByKnight && this.speed == this.regularSpeed) {
+            this.takenByKnight = false;
+        }
+
+        if (this.hp <= 0) {
+            if (wave < 5) {
+                gold += 30;
+            } else {
+                gold += 15;
+            }
+            muscles.splice(this.iam, 1);
+        }
+
+        image(this.image, this.pector.x, this.pector.y, this.width, this.height);
+        //hp bars
+
+        fill("red");
+        rect(this.pector.x, this.pector.y + this.width, this.max, 10);
+
+        if (this.hp > this.max) {
+            fill("blue");
+        } else {
+            fill(30, 223, 23);
+        }
+
+        rect(this.pector.x, this.pector.y + this.width, this.hp, 10);
+    }
+
+
+
+    //called 60fps
+    move(i) {
+        console.log(this.supportTimer)
+        
+        this.iam = i;
+        if (this.randomAlly != null && (this.randomAlly != muscles[this.iam])) {
+            this.support(this.randomAlly);
+        }
+
+        
+        if (this.targetVec == null) {
+            this.getPathNode();
+        }
+
+        if (this.targetVec !== null) {
+            //getting the x and y values of the target 
+
+
+            this.distFrame = this.speed * (1 / 60);
+            //todo improve this checking dist
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 100) {
+                this.targetVec = null; //reached node
+            } else {
+                this.pector.x += this.movementVector.x * this.distFrame;
+                this.pector.y += this.movementVector.y * this.distFrame;
+            }
+
+        }
+
+        if (muscles.length > 1 && this.supportAnimation <= 0) {
+            if (this.randomAlly != muscles[this.iam]) {
+                this.supportAnimation = 120;
+            }
+            this.randomAlly = (muscles[Math.round(random(0, muscles.length - 1))]);
+
+
+        }
+
+
+
+    }
+
+    support(randomAlly) {
+        if(this.supportAnimation > 0) {
+            randomAlly.hp += 0.07;
+            randomAlly.speed += 0.01;
+            image(this.supportImage, randomAlly.pector.x, randomAlly.pector.y, 50, 50);
+            this.supportAnimation--
+            console.log("philip")
+        }
+
+    }
+
+
+
+    //make the guy lose hp over time lol from killing himself
 }

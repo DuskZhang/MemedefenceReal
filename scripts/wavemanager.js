@@ -24,6 +24,7 @@ function decideWave() {
         waveBoom = 9;
         waveImprovedmus = 0;
         waveTeacher = 3;
+        enemyQueue.push(new Philosopher(0,0))
         spawnrate = 50;
         wave++;
     } else if (wave == 3) { //john

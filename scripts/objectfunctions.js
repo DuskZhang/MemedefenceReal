@@ -50,7 +50,10 @@ function objectFunctions() {
         if (muscles[m] != null) {
             muscles[m].checkGameBreakingBug1();
             muscles[m].move(m);
-            muscles[m].checkGameBreakingBug2();
+            if(muscles[m] != null) {
+                muscles[m].checkGameBreakingBug2();
+            }
+            
         }
 
         if (muscles[m] != null) {

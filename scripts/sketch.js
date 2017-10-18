@@ -55,7 +55,6 @@ var wave = 0;
 var noSpammerino = 0;
 var lastSpawn = false;
 var enemySpawnType = 0;
-let lastRoadTile = 1;
 //standard public hud
 
 var lives = 25;
@@ -130,6 +129,7 @@ function setup() {
     buySanic = loadImage("scripts/assets/buysonic.png")
     rings = loadImage("scripts/assets/rings.jpg")
     donald = loadImage("scripts/assets/donald.jpg")
+    aristotles = loadImage("scripts/assets/aristotles.jpg")
     
     meme1 = loadImage("scripts/assets/meme1.jpg");
     meme2 = loadImage("scripts/assets/meme2.jpg");
