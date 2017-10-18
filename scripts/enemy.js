@@ -118,7 +118,7 @@ class NormieMuscle extends Enemy {
         this.pector = createVector(x, y);
         this.hp = 5;
         this.max = 5;
-        this.speed = 1.5; // dont go over 4 or it gets all buggy
+        this.speed = 1.8; // dont go over 4 or it gets all buggy
 
         this.width = 50;
         this.height = 50;
