@@ -47,7 +47,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 35; // standard 40
+var roadAmount = 40; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
@@ -55,6 +55,7 @@ var wave = 0;
 var noSpammerino = 0;
 var lastSpawn = false;
 var enemySpawnType = 0;
+let lastRoadTile = 1;
 //standard public hud
 
 var lives = 25;
@@ -157,7 +158,7 @@ function setup() {
 
 
         mySound.setVolume(.3);
-        mySound.play();
+        mySound.loop();
 }
 
 function initializeTiles() {
