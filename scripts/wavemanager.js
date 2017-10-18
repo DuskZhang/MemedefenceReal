@@ -7,7 +7,7 @@ function decideWave() {
         waveMuscle = 6; // norm 5
         waveWorkers = 0;
         waveBoom = 3;
-        waveTeacher = 300;
+        waveTeacher = 1;
         wave++;
     } else if (wave == 1) {
         waveOn = true;
