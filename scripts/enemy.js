@@ -734,7 +734,7 @@ class Philosopher extends Enemy {
 
     //called 60fps
     move(i) {
-        console.log(this.supportTimer)
+        console.log(this.supportAnimation)
         
         this.iam = i;
         if (this.randomAlly != null && (this.randomAlly != muscles[this.iam])) {
@@ -780,7 +780,6 @@ class Philosopher extends Enemy {
             randomAlly.speed += 0.01;
             image(this.supportImage, randomAlly.pector.x, randomAlly.pector.y, 50, 50);
             this.supportAnimation--
-            console.log("philip")
         }
 
     }
