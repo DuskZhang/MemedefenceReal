@@ -48,7 +48,9 @@ function objectFunctions() {
     //enemy functions
     for (let m = 0; m < muscles.length; m++) {
         if (muscles[m] != null) {
+            muscles[m].checkGameBreakingBug1();
             muscles[m].move(m);
+            muscles[m].checkGameBreakingBug2();
         }
 
         if (muscles[m] != null) {

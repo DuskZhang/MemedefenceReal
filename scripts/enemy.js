@@ -21,6 +21,27 @@ class Enemy {
         this.takenByKnight = false;
         this.regularSpeed = 1.5;
         this.takenByBitcoin = false;
+        this.distanceFromNode1;
+        this.distanceFromNode2;
+        this.justNoded = false;
+    }
+    
+    checkGameBreakingBug1() {
+        if(this.targetVec != null) {
+            this.distanceFromNode1 = dist(this.pector.x,this.pector.y, this.targetVec.x,this.targetVec.y);
+        }
+        
+        this.justNoded = false;
+    }
+    //after move
+    checkGameBreakingBug2() {
+        if(this.targetVec != null) {
+            this.distanceFromNode2 = dist(this.pector.x,this.pector.y, this.targetVec.x,this.targetVec.y);
+        }
+        if (this.distanceFromNode2 > this.distanceFromNode1 && this.justNoded == false) {
+            this.getPathNode();
+            console.log("avoided game breaking bug")
+        }
     }
 
     show() {
@@ -49,6 +70,7 @@ class Enemy {
             this.targetVec = createVector(nodes[this.nodeIndex].x, nodes[this.nodeIndex].y);
             this.movementVector = createVector(this.targetVec.x - this.pector.x, this.targetVec.y - this.pector.y)
             this.nodeIndex++;
+            this.justNoded = true;
 
         } else {
             this.targetVec = null;
@@ -74,17 +96,12 @@ class Enemy {
             muscles.splice(this.iam, 1);
         }
 
-        if (this.targetVec == null) {
-            this.getPathNode();
-        }
 
         if (this.targetVec !== null) {
             //getting the x and y values of the target 
-
-
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
-            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 60) {
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 10) {
                 this.targetVec = null; //reached node
             } else {
                 this.pector.x += this.movementVector.x * this.distFrame;
@@ -387,7 +404,7 @@ class Teacher extends Enemy {
 
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
-            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 100) {
                 this.targetVec = null; //reached node
             } else {
                 this.pector.x += this.movementVector.x * this.distFrame;
