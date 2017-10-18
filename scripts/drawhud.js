@@ -67,7 +67,13 @@ function drawHud() {
         fill("yellow");
         text("G: " + gold, 450, 80);
         fill(230, 150, 120);
-        text("Lives: " + lives, 450, 120);
+        
+        if(roadsBuilt < roadAmount) {
+            text("Roads: " + roadsBuilt + "/ " + roadAmount, 450, 120);
+        } else {
+            text("Lives: " + lives, 450, 120);
+        }
+        
         text("Wave: " + wave, 450, 40);
 
     }
