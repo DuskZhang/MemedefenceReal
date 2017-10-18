@@ -47,7 +47,7 @@ var waveOn = false;
 var tearBullets = [];
 var tiles = [];
 var nodes = [];
-var roadAmount = 40; // standard 40
+var roadAmount = 45; // standard 40
 var nearestEnemy;
 var boolinitializeTiles = true;
 var enemyQueue = []
@@ -126,10 +126,11 @@ function setup() {
     buybitcoin = loadImage("scripts/assets/buybtc.jpg");
     bitcoins = loadImage("scripts/assets/bitcoins.jpg");
     sanic = loadImage("scripts/assets/sanic.jpg");
-    buySanic = loadImage("scripts/assets/buysonic.png")
-    rings = loadImage("scripts/assets/rings.jpg")
-    donald = loadImage("scripts/assets/donald.jpg")
-    aristotles = loadImage("scripts/assets/aristotles.jpg")
+    buySanic = loadImage("scripts/assets/buysonic.png");
+    rings = loadImage("scripts/assets/rings.jpg");
+    donald = loadImage("scripts/assets/donald.jpg");
+    aristotles = loadImage("scripts/assets/aristotles.jpg");
+    cavalry = loadImage("scripts/assets/cavalry.jpg");
     
     meme1 = loadImage("scripts/assets/meme1.jpg");
     meme2 = loadImage("scripts/assets/meme2.jpg");
