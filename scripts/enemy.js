@@ -778,7 +778,7 @@ class Philosopher extends Enemy {
         if(this.supportAnimation > 0) {
             randomAlly.hp += 0.07;
             randomAlly.speed += 0.01;
-            image(this.supportImage, randomAlly.pector.x, randomAlly.pector.y, 50, 50);
+            image(this.supportImage, randomAlly.pector.x, randomAlly.pector.y, 70, 70);
             this.supportAnimation--
         }
 
