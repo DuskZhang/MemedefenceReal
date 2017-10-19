@@ -203,10 +203,10 @@ class BitcoinFire {
     }
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
-        if (muscles[0] != null && frameCount % 30 == 0) {
+        if (muscles[0] != null && frameCount % 50 == 0) {
             this.target = muscles[floor(random(0, muscles.length))];
             }
-            else if (frameCount % 30 == 0){
+            else if (frameCount % 50 == 0){
                 this.target = null;
                 bullets.splice(this.iam, 1);
             }
