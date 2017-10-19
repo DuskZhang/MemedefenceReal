@@ -1,5 +1,5 @@
 //start with 269 gold
-//30 lives
+//30 lives - 50 lives
 
 function decideWave() {
     if (wave == 0) {

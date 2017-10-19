@@ -134,8 +134,8 @@ class Road extends Tile {
     clicked(i) {
         if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
             if (grumpDesired && this.tileTaken == false) {
-                if (gold >= 45) {
-                    gold -= 45;
+                if (gold >= grumpPrice) {
+                    gold -= grumpPrice;
                     towers.push(new Grump(this.x, this.y, i));
                     grumpDesired = false;
                     this.tileTaken = true;

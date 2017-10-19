@@ -1,7 +1,7 @@
 //meme defence is cool
 
 var pepePrice = 150;
-var grumpPrice = 45;
+var grumpPrice = 40;
 var dogePrice = 225;
 var weabooPrice = 225;
 var nedPrice = 300;
