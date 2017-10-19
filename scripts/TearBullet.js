@@ -181,28 +181,32 @@ class BitcoinFire {
         this.y = y;
         this.position = createVector(this.x, this.y);
         this.target = null;
-        this.speed = 5;
+        this.speed = 3.5;
         this.image = bitcoins;
         this.iam;
         this.dir;
         this.reachedTarget = false;
-        this.damage = 18;
+        this.damage = 1;
     }
 
     //cange based on what
 
     show() {
         if (this.target != null) {
+            tint("red");
             image(this.image, this.position.x, this.position.y, 130, 130);
+            noTint();
+            this.damage += 0.13;
+            textSize(23);
+            text(floor(this.damage), this.position.x, this.position.y);
         }
     }
-
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
-        if (muscles[0] != null && frameCount % 20 == 0) {
+        if (muscles[0] != null && frameCount % 30 == 0) {
             this.target = muscles[floor(random(0, muscles.length))];
             }
-            else if (frameCount % 20 == 0){
+            else if (frameCount % 30 == 0){
                 this.target = null;
                 bullets.splice(this.iam, 1);
             }

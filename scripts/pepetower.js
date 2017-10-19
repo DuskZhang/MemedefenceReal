@@ -469,7 +469,7 @@ class Sanic extends Tower {
         //todo get x y from mouse location
         super(x, y, original);
 
-        this.damage = 1; // prob will not need this on tower
+        this.damage = 1; 
         this.shootcharge = 0;
         this.chargebuild = 3;
         this.primeshoot = 100;
@@ -477,9 +477,9 @@ class Sanic extends Tower {
         this.image = sanic;
         this.selected = false;
         this.upgradeA0Image = morememes;
-        this.upgradeA0Description = "More memes: \n3 more memes";
+        this.upgradeA0Description = "GoFast: \n3 surrounding towers shoot 25% faster";
         this.upgradeB0Image = rofdab;
-        this.upgradeB0Description = "To be evil: \nDouble rof";
+        this.upgradeB0Description = "Better art: \n 150% rof, ";
 
     }
     //called every frame
