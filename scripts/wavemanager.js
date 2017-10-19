@@ -116,10 +116,8 @@ function decideWave() {
         wave++;
     } else if (wave == 11) {
         waveOn = true;
-        waveBoom = 30;
         waveTeacher = 30;
-        waveImprovedmus = 10;
-        waveWorkers = 10;
+        waveImprovedmus = 150;
          enemyQueue.push(new Jordan(0, 0));
         spawnrate = 24;
         wave++;
