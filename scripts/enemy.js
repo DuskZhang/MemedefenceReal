@@ -43,7 +43,6 @@ class Enemy {
         }
         if (this.distanceFromNode2 > this.distanceFromNode1 && this.justNoded == false) {
             this.getPathNode();
-            console.log("avoided game breaking bug")
         }
     }
 
@@ -638,9 +637,7 @@ class Philosopher extends Enemy {
 
 
     //called 60fps
-    move(i) {
-        console.log(this.supportAnimation)
-        
+    move(i) {  
         this.iam = i;
         if (this.randomAlly != null && (this.randomAlly != muscles[this.iam])) {
             this.support(this.randomAlly);

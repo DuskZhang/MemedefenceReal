@@ -31,15 +31,17 @@ class Tower {
 
     }
 
-    upgradeAclicked() {
-        if (mouseX > 750 && mouseX < 900 && mouseY < 150 && mouseY > 50 && mouseIsPressed && noSpammerino >= 18) {
+    upgradeAhover(price) {
+        if (mouseX > 750 && mouseX < 900 && mouseY < 150 && mouseY > 50 && noSpammerino >= 18) {
+            showPrice(price);
             return true;
-
+            
         }
     }
 
-    upgradeBclicked() {
-        if (mouseX > 900 && mouseX < 1050 && mouseY < 150 && mouseY > 50 && mouseIsPressed && noSpammerino >= 18) {
+    upgradeBhover(price) {
+        if (mouseX > 900 && mouseX < 1050 && mouseY < 150 && mouseY > 50 && noSpammerino >= 18) {
+            showPrice(price);
             return true;
 
         }
@@ -220,6 +222,7 @@ class Ned extends Tower {
         this.selected = false;
         this.upgradeA0Image = betterknights;
         this.upgradeA0Description = "Better knights: \n 3 dmg 9hp";
+        this.upgradeA1Description = "Trained knights: \n 5 dmg 11hp";
         this.upgradeB0Image = moreknights;
         this.upgradeB0Description = "More: \n4 knights";
         this.knightsActive = [];
@@ -324,7 +327,6 @@ class Knight extends Ned {
         if (this.target == null) {
             this.position.x = this.neutralX + Math.cos(this.angle) * this.radius;
             this.position.y = this.neutralY + Math.sin(this.angle) * this.radius;
-            console.log("searching")
             for (var i = 0; i < muscles.length; i++) {
                 if (dist(this.neutralX, this.neutralY, muscles[i].pector.x, muscles[i].pector.y) <= this.range && muscles[i].takenByKnight == false) {
                     this.target = muscles[i];
