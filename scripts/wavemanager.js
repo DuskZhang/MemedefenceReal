@@ -8,6 +8,7 @@ function decideWave() {
         waveWorkers = 0;
         waveBoom = 3;
         waveTeacher = 1;
+        enemyQueue.push(new Emo(0,0));
         wave++;
     } else if (wave == 1) {
         waveOn = true;
@@ -111,6 +112,7 @@ function decideWave() {
         waveImprovedmus = 20;
         waveWorkers = 20
         spawnrate = 15;
+        numEmo = 25;
          
         wave++;
     } else if (wave == 11) {
@@ -253,6 +255,7 @@ function wavespawnReset() {
     numTeacher = 0;
     numImprovedmus = 0;
     numCavalry = 0;
+     numEmo = 0;
     lastSpawn = false;
 }
 
@@ -277,6 +280,9 @@ function buildWave() {
         } else if (numCavalry < waveCavalry) {
             enemyQueue.push(new Cavalry(0, 0));
             numCavalry++;
+        } else if (numEmo < waveEmo) {
+            enemyQueue.push(new Emo(0, 0));
+            numEmo++;
         } else {
             keepgoing = false;
         }

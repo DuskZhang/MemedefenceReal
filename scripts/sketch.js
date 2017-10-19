@@ -42,6 +42,8 @@ var numImprovedmus = 0;
 var waveImprovedmus = 0;
 var numCavalry = 0;
 var waveCavalry = 0;
+var numEmo = 0;
+var waveEmo = 0;
 
 var muscles = []; //slang for all enemies
 var spawnrate = 60; // once every second new guy 60fps
@@ -59,7 +61,7 @@ var lastSpawn = false;
 var enemySpawnType = 0;
 //standard public hud
 
-var lives = 25;
+var lives = 30;
 var gold = 720; // standard 840
 // towers
 var towers = [];
@@ -133,6 +135,8 @@ function setup() {
     donald = loadImage("scripts/assets/donald.jpg");
     aristotles = loadImage("scripts/assets/aristotles.jpg");
     cavalry = loadImage("scripts/assets/cavalry.jpg");
+    jordan = loadImage("scripts/assets/jordan.jpg");
+    emo = loadImage("scripts/assets/emo.jpg");
     
     meme1 = loadImage("scripts/assets/meme1.jpg");
     meme2 = loadImage("scripts/assets/meme2.jpg");

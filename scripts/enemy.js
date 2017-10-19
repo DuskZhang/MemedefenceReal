@@ -715,8 +715,138 @@ class Cavalry extends Enemy {
         this.iam;
         this.image = cavalry;
         this.lifedamage = 2;
-        this.gold = 25
-        this.goldWave5 = 10
+        this.gold = 25;
+        this.goldWave5 = 10;
+    }
+
+
+
+    //called 60fps
+    move(i) {
+        this.iam = i;
+        if (this.targetVec == null) {
+            this.getPathNode();
+        }
+
+        if (this.targetVec !== null) {
+            //getting the x and y values of the target 
+
+
+            this.distFrame = this.speed * (1 / 60);
+            //todo improve this checking dist
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
+                this.targetVec = null; //reached node
+            } else {
+                this.pector.x += this.movementVector.x * this.distFrame;
+                this.pector.y += this.movementVector.y * this.distFrame;
+            }
+
+        }
+    }
+
+}
+
+class Emo extends Enemy {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.pector = createVector(this.x, this.y);
+        this.hp = 300;
+        this.max = 150;
+        this.speed = 2.65; 
+
+        this.width = 60;
+        this.height = 60;
+
+        this.nodeIndex = 0;
+        this.targetVec;
+        this.movementVector;
+        this.distFrame;
+        // once every 1/2 second if running at 60fps
+        this.iam;
+        this.image = emo;
+        this.lifedamage = 2;
+        this.gold = 11;
+        this.goldWave5 = 8;
+    }
+
+    show() {
+
+        if (this.takenByKnight && this.speed == this.regularSpeed) {
+            this.takenByKnight = false;
+        }
+
+        if (this.hp <= 0) {
+            if (wave < 5) {
+                gold += this.gold;
+            } else {
+                gold += this.goldWave5;
+            }
+            muscles.splice(this.iam, 1);
+        }
+
+        image(this.image, this.pector.x, this.pector.y, this.width, this.height);
+        //hp bars
+
+        fill("red");
+        rect(this.pector.x, this.pector.y + this.width, this.max * this.factor, 10);
+        if (this.hp > this.max) {
+            fill("black");
+        } else {
+            fill("purple");
+        }
+        rect(this.pector.x, this.pector.y + this.width, this.hp * this.factor, 10);
+        this.hp -= 0.04;
+    }
+
+    move(i) {
+        this.iam = i;
+        if (this.targetVec == null) {
+            this.getPathNode();
+        }
+
+        if (this.targetVec !== null) {
+            //getting the x and y values of the target 
+
+
+            this.distFrame = this.speed * (1 / 60);
+            //todo improve this checking dist
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
+                this.targetVec = null; //reached node
+            } else {
+                this.pector.x += this.movementVector.x * this.distFrame;
+                this.pector.y += this.movementVector.y * this.distFrame;
+            }
+
+        }
+    }
+
+}
+
+class Jordan extends Enemy {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.pector = createVector(this.x, this.y);
+        this.hp = 1000;
+        this.max = 1000;
+        this.speed = 1.3; // dont go over 4 or it gets all buggy
+
+        this.width = 70;
+        this.height = 70;
+
+        this.nodeIndex = 0;
+        this.targetVec;
+        this.movementVector;
+        this.distFrame;
+        // once every 1/2 second if running at 60fps
+        this.iam;
+        this.image = jordan;
+        this.lifedamage = 2;
+        this.gold = 11;
+        this.goldWave5 = 8;
     }
 
 
