@@ -8,7 +8,6 @@ function decideWave() {
         waveWorkers = 0;
         waveBoom = 3;
         waveTeacher = 1;
-        enemyQueue.push(new Emo(0, 0));
         wave++;
     } else if (wave == 1) {
         waveOn = true;
@@ -120,7 +119,8 @@ function decideWave() {
         waveBoom = 30;
         waveTeacher = 30;
         waveImprovedmus = 10;
-        waveWorkers = 10
+        waveWorkers = 10;
+         enemyQueue.push(new Jordan(0, 0));
         spawnrate = 24;
         wave++;
     } else if (wave == 12) {

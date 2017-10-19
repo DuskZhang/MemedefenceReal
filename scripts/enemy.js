@@ -847,6 +847,7 @@ class Jordan extends Enemy {
         this.lifedamage = 2;
         this.gold = 11;
         this.goldWave5 = 8;
+        this.factor = 0.75;
     }
 
 
