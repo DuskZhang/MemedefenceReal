@@ -112,7 +112,7 @@ function decideWave() {
         waveImprovedmus = 20;
         waveWorkers = 20
         spawnrate = 15;
-        numEmo = 25;
+        waveEmo = 25;
 
         wave++;
     } else if (wave == 11) {
