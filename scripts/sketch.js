@@ -40,6 +40,8 @@ var numTeacher = 0;
 var waveTeacher = 0;
 var numImprovedmus = 0;
 var waveImprovedmus = 0;
+var numCavalry = 0;
+var waveCavalry = 0;
 
 var muscles = []; //slang for all enemies
 var spawnrate = 60; // once every second new guy 60fps

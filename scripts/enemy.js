@@ -702,7 +702,7 @@ class Cavalry extends Enemy {
         this.pector = createVector(this.x, this.y);
         this.hp = 100;
         this.max = 100;
-        this.speed = 2.4; // dont go over 4 or it gets all buggy
+        this.speed = 3.4; // dont go over 4 or it gets all buggy
 
         this.width = 50;
         this.height = 50;
@@ -714,7 +714,7 @@ class Cavalry extends Enemy {
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = cavalry;
-        this.lifedamage = 3;
+        this.lifedamage = 2;
         this.gold = 25
         this.goldWave5 = 10
     }

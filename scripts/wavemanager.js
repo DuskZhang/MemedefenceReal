@@ -76,7 +76,8 @@ function decideWave() {
         waveBoom = 40;
         waveTeacher = 60;
         waveImprovedmus = 40;
-        waveWorkers = 40
+        waveWorkers = 40;
+        waveCavalry = 10;
         spawnrate = 30;
         enemyQueue.push(new JohnCena(0,0));
         wave++;
@@ -270,6 +271,9 @@ function buildWave() {
         } else if (numImprovedmus < waveImprovedmus) {
             enemyQueue.push(new ImprovedMuscle(0, 0));
             numImprovedmus++;
+        } else if (numCavalry < waveCavalry) {
+            enemyQueue.push(new Cavalry(0, 0));
+            numCavalry++;
         } else {
             keepgoing = false;
         }
