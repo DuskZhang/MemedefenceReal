@@ -1,7 +1,13 @@
 function showRange(object) {
     fill(40, 130, 130, 40);
     stroke(0);
-    if (object != null) {
+    if (object instanceof Sanic && object != null) {
+        if (object.vertical == false) { // range is 360
+            rect(object.position.x - object.range / 2, object.position.y - 60, object.range + 60, 180);
+        } else {
+            rect(object.position.x - 60, object.position.y - object.range / 2,  180, object.range + 60);
+        }
+    } else {
         ellipse(object.position.x + 30, object.position.y + 30, object.range * 2);
     }
 
@@ -326,6 +332,16 @@ function showUpgrades(object) {
                 object.sellPrice += price;
             }
         }
+
+
+    }
+
+    if (object instanceof Sanic) {
+
+                if(keyIsDown(82) && noSpammerino > 19) {
+                    object.vertical = !object.vertical;
+                    noSpammerino = 0;
+                }
 
 
     }

@@ -117,6 +117,6 @@ function drawHud() {
         text("aoe slow or ally speedup ", mouseX, mouseY);
         text(sanicPrice, mouseX, mouseY - 25);
         fill(40, 130, 130, 40);
-        ellipse(mouseX + 30, mouseY + 30, 200 * 2);
+        rect(mouseX - 180, mouseY - 60, 420, 180);
     }
 }

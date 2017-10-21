@@ -36,7 +36,7 @@ class Tower {
         if (mouseX > 750 && mouseX < 900 && mouseY < 150 && mouseY > 50 && noSpammerino >= 18) {
             showPrice(price);
             return true;
-            
+
         }
     }
 
@@ -355,11 +355,11 @@ class Knight extends Ned {
 
 
             if (this.hp <= 0) {
-                    this.target.takenByKnight = false;
-                    this.target.speed = this.target.regularSpeed;
-                    this.ned.knightsActive.splice(this.iam, 1);
+                this.target.takenByKnight = false;
+                this.target.speed = this.target.regularSpeed;
+                this.ned.knightsActive.splice(this.iam, 1);
 
-                }
+            }
 
 
             if ((this.position.dist(this.target.pector)) >= 30) {
@@ -473,11 +473,11 @@ class Sanic extends Tower {
         //todo get x y from mouse location
         super(x, y, original);
 
-        this.damage = 1; 
+        this.damage = 1;
         this.shootcharge = 0;
         this.chargebuild = 3;
         this.primeshoot = 100;
-        this.range = 200;
+        this.range = 360;
         this.image = sanic;
         this.selected = false;
         this.upgradeA0Image = morememes;
@@ -485,6 +485,7 @@ class Sanic extends Tower {
         this.upgradeB0Image = rofdab;
         this.upgradeB0Description = "Better art: \n 150% rof, ";
         this.sellPrice = sanicPrice * 0.9;
+        this.vertical = false;
 
     }
     //called every frame
@@ -496,13 +497,19 @@ class Sanic extends Tower {
         //shoots at first enemy in muscles array to meet if statement
         if (muscles[0] != null) {
             for (var i = 0; i < muscles.length; i++) {
-                if (dist(this.x, this.y, muscles[i].pector.x, muscles[i].pector.y) <= this.range) {
+                if (this.vertical && (dist(this.x, 0, muscles[i].pector.x, 0)) <= 60 && dist(0, this.y, 0, muscles[i].pector.y) <= this.range /2) {
                     this.shootAt(muscles[i]);
                     break;
+                } else if (this.vertical == false && (dist(this.x, 0, muscles[i].pector.x, 0) <= this.range / 2) && dist(0, this.y, 0, muscles[i].pector.y) <= 60) {
+
+                    this.shootAt(muscles[i]);
+                    break;
+
+
                 }
+
             }
         }
-
     }
 
     show(t) {
@@ -542,7 +549,7 @@ class Bitcoin extends Tower {
     constructor(x, y, original) {
         //todo get x y from mouse location
         super(x, y, original);
-        this.damage = 1; 
+        this.damage = 1;
         this.shootcharge = 0;
         this.primeshoot = 100;
         this.range = 1200;
