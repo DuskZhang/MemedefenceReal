@@ -72,6 +72,7 @@ function decideWave() {
         //21 waves
     } else if (wave == 7) {
         waveOn = true;
+        waveMuscle = 0;
         waveBoom = 40;
         waveTeacher = 60;
         waveImprovedmus = 40;
