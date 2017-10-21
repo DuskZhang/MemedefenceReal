@@ -24,6 +24,7 @@ var hudDesired = false;
 var squidTowerDesired = false;
 var bitcoinTowerDesired = false;
 var sanicTowerDesired = false;
+let helpDesired = false;
 
 //if hud desired stop people from buying towers
 //var hudReset = false;
@@ -73,11 +74,11 @@ let memes = [];
 
 //make this not run first hud view and have it be the tower u  know
 
-var gamemode = 1 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
+var gamemode = 0 //0 for startpage 1 for gameplay 2 for gameover // 3 for pause
 
 function preload() {
-        soundFormats('mp3', 'ogg');
-        mySound = loadSound('scripts/assets/Bag Raiders - Shooting Stars.mp3');
+    soundFormats('mp3', 'ogg');
+    mySound = loadSound('scripts/assets/Bag Raiders - Shooting Stars.mp3');
 }
 
 function setup() {
@@ -126,7 +127,7 @@ function setup() {
     moreknights = loadImage("scripts/assets/moreknights.png");
     squidtower = loadImage("scripts/assets/squidwardinactive.jpg");
     squiddab = loadImage("scripts/assets/dabbing.jpg");
-     morememes = loadImage("scripts/assets/morememes.jpg");
+    morememes = loadImage("scripts/assets/morememes.jpg");
     rofdab = loadImage("scripts/assets/rofdab.jpg");
     bitcoin = loadImage("scripts/assets/bitcoin.jpg");
     buybitcoin = loadImage("scripts/assets/buybtc.jpg");
@@ -139,7 +140,7 @@ function setup() {
     cavalry = loadImage("scripts/assets/cavalry.jpg");
     jordan = loadImage("scripts/assets/jordan.jpg");
     emo = loadImage("scripts/assets/emo.jpg");
-    
+
     meme1 = loadImage("scripts/assets/meme1.jpg");
     meme2 = loadImage("scripts/assets/meme2.jpg");
     meme3 = loadImage("scripts/assets/meme3.jpg");
@@ -160,14 +161,14 @@ function setup() {
     memes.push(meme6);
     memes.push(meme7);
     memes.push(meme8);
-    
+
     johncena = loadImage("scripts/assets/johncena.jpg");
 
 
 
 
-        mySound.setVolume(.3);
-        mySound.loop();
+    mySound.setVolume(.3);
+    mySound.loop();
 }
 
 function initializeTiles() {
@@ -222,14 +223,18 @@ function hudReset() {
 }
 
 function draw() {
+if (noSpammerino < 20) {
+            noSpammerino++
 
+        }
     if (gamemode == 0) {
         startScreen();
+        
 
     } else if (gamemode == 1) {
         background(200); //todo replace with scarce
         //show and functions for the tiles including roads and whatnot
-
+        
         if (muscles.length == 0 && wave == 21 && enemyQueue.length == 0) {
             gamemode = 3;
         }
@@ -239,13 +244,6 @@ function draw() {
             nodes[roadAmount - 1].image = weabland;
         }
 
-        //        btcPrice += 0.001;
-
-        if (noSpammerino < 20) {
-            noSpammerino++
-
-        }
-
         if (boolinitializeTiles) {
             initializeTiles();
             boolinitializeTiles = false;
@@ -253,7 +251,7 @@ function draw() {
         //spawning muscle
 
         objectFunctions();
-
+        help();
         //get the numMuscles etc then push all into an array then 
 
         if (frameCount % spawnrate == 0 && waveOn) {
@@ -305,7 +303,16 @@ function keyPressed() {
 
 function startScreen() {
     background(0);
-    text("Start", width / 2, height / 2);
+    textSize(40);
+    stroke(255);
+    text("MemeDefence", width / 2 + 200, height / 2);
+    text("Press s to start", width / 2 + 200, height / 2 + 300);
+    text("Press o for help", width / 2 + 200, height / 2 + 200);
+    help();
+    if (keyIsDown(83)) {
+        gamemode = 1;
+    }
+
 }
 
 function winner() {
@@ -317,4 +324,21 @@ function winner() {
 function gameover() {
     background(0);
     text("Game Over", width / 2, height / 2);
+}
+
+function help() {
+    if (keyIsDown(79) && noSpammerino > 18) {
+        helpDesired = !helpDesired;
+        noSpammerino = 0;
+    }
+
+    if (helpDesired) {
+        fill(40, 40, 40, 40);
+        rect(0, 0, width, height);
+        textSize(30);
+        stroke(255);
+        text("Key Commands: \n esc for hud \n shift + s while selecting a tower to sell it \n ", 50, 50);
+        //todo more help            
+
+    }
 }
