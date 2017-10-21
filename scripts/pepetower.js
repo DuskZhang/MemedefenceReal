@@ -410,7 +410,7 @@ class DabbingSquidward extends Tower {
         this.upgradeA0Image = morememes;
         this.upgradeA0Description = "More memes: \n3 more memes";
         this.upgradeB0Image = rofdab;
-        this.upgradeB0Description = "To be evil: \nDouble rof";
+        this.upgradeB0Description = "To be evil: \n+2 rof";
 
     }
     //called every frame
