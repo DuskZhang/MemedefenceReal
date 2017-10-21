@@ -68,6 +68,8 @@ function decideWave() {
         waveWorkers = 40
         spawnrate = 33;
         enemyQueue.push(new JohnCena(0, 0));
+        enemyQueue.push(new Philosopher(0, 0))
+        enemyQueue.push(new JohnCena(0, 0));
         wave++;
         //21 waves
     } else if (wave == 7) {
@@ -79,6 +81,8 @@ function decideWave() {
         waveWorkers = 40;
         waveCavalry = 30;
         spawnrate = 30;
+        enemyQueue.push(new JohnCena(0, 0));
+        enemyQueue.push(new Philosopher(0, 0))
         enemyQueue.push(new JohnCena(0, 0));
         wave++;
     } else if (wave == 8) {
