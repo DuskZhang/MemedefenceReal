@@ -77,7 +77,7 @@ function decideWave() {
         waveTeacher = 60;
         waveImprovedmus = 40;
         waveWorkers = 40;
-        waveCavalry = 10;
+        waveCavalry = 30;
         spawnrate = 30;
         enemyQueue.push(new JohnCena(0, 0));
         wave++;
@@ -87,16 +87,16 @@ function decideWave() {
         waveTeacher = 40;
         waveImprovedmus = 20;
         waveWorkers = 20
-        waveCavalry = 10;
+        waveCavalry = 40;
         spawnrate = 27;
         wave++;
     } else if (wave == 9) {
         waveOn = true;
-        waveBoom = 40;
+        waveBoom = 30;
         waveTeacher = 50;
         waveImprovedmus = 20;
         waveWorkers = 20
-        waveCavalry = 40;
+        waveCavalry = 50;
         enemyQueue.push(new Philosopher(0, 0))
         spawnrate = 25;
 
