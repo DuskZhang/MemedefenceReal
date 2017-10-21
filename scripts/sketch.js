@@ -336,7 +336,7 @@ function help() {
         rect(0, 0, width, height);
         textSize(30);
         stroke(255);
-        text("Key Commands: \n esc for hud \n shift + s while selecting a tower to sell it \n ", 50, 50);
+        text("Key Commands: \n esc for hud \n shift + s while selecting a tower to sell it \n r to rotate a tower's range", 50, 50);
         //todo more help            
 
     }

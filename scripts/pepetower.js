@@ -477,7 +477,7 @@ class Sanic extends Tower {
         this.shootcharge = 0;
         this.chargebuild = 3;
         this.primeshoot = 100;
-        this.range = 360;
+        this.range = 365;
         this.image = sanic;
         this.selected = false;
         this.upgradeA0Image = morememes;
@@ -497,10 +497,10 @@ class Sanic extends Tower {
         //shoots at first enemy in muscles array to meet if statement
         if (muscles[0] != null) {
             for (var i = 0; i < muscles.length; i++) {
-                if (this.vertical && (dist(this.x, 0, muscles[i].pector.x, 0)) <= 60 && dist(0, this.y, 0, muscles[i].pector.y) <= this.range /2) {
+                if (this.vertical && (dist(this.x, 0, muscles[i].pector.x, 0)) <= 61 && dist(0, this.y, 0, muscles[i].pector.y) <= this.range /2) {
                     this.shootAt(muscles[i]);
                     break;
-                } else if (this.vertical == false && (dist(this.x, 0, muscles[i].pector.x, 0) <= this.range / 2) && dist(0, this.y, 0, muscles[i].pector.y) <= 60) {
+                } else if (this.vertical == false && (dist(this.x, 0, muscles[i].pector.x, 0) <= this.range / 2) && dist(0, this.y, 0, muscles[i].pector.y) <= 61) {
 
                     this.shootAt(muscles[i]);
                     break;
