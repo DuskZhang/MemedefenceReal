@@ -72,7 +72,7 @@ function decideWave() {
         //21 waves
     } else if (wave == 7) {
         waveOn = true;
-        waveMuscle = 85;
+        waveMuscle = 65;
         waveBoom = 40;
         waveTeacher = 60;
         waveImprovedmus = 40;
@@ -83,7 +83,7 @@ function decideWave() {
         wave++;
     } else if (wave == 8) {
         waveOn = true;
-        waveMuscle = 65;
+        waveMuscle = 35;
         waveBoom = 30;
         waveTeacher = 40;
         waveImprovedmus = 20;
@@ -93,7 +93,7 @@ function decideWave() {
         wave++;
     } else if (wave == 9) {
         waveOn = true;
-        waveMuscle = 25;
+        waveMuscle = 2;
         waveBoom = 40;
         waveTeacher = 50;
         waveImprovedmus = 20;
@@ -105,7 +105,7 @@ function decideWave() {
         wave++
     } else if (wave == 10) {
         waveOn = true;
-        waveMuscle = 15;
+        waveMuscle = 0;
         waveBoom = 40;
         waveTeacher = 50;
         waveImprovedmus = 20;
