@@ -328,13 +328,14 @@ class Knight extends Ned {
         }
 
 
-        if (this.target == null) {
+        if (this.target == null && this.hp > 0) {
             this.position.x = this.neutralX + Math.cos(this.angle) * this.radius;
             this.position.y = this.neutralY + Math.sin(this.angle) * this.radius;
             for (var i = 0; i < muscles.length; i++) {
                 if (dist(this.neutralX, this.neutralY, muscles[i].pector.x, muscles[i].pector.y) <= this.range && muscles[i].takenByKnight == false) {
                     this.target = muscles[i];
                     this.target.takenByKnight = true;
+                    break;
 
                 }
             }
@@ -350,17 +351,15 @@ class Knight extends Ned {
                 this.target.hp -= this.damage;
                 this.hp -= this.target.lifedamage;
 
-                if (this.hp <= 0) {
+            }
+
+
+            if (this.hp <= 0) {
                     this.target.takenByKnight = false;
                     this.target.speed = this.target.regularSpeed;
                     this.ned.knightsActive.splice(this.iam, 1);
 
                 }
-
-            }
-
-
-
 
 
             if ((this.position.dist(this.target.pector)) >= 30) {
