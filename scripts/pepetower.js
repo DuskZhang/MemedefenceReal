@@ -568,6 +568,8 @@ class Bitcoin extends Tower {
 
 }
 
+
+// have a rectangle range
 //
 //class Trump extends Tower {
 //     constructor(x, y,original) {

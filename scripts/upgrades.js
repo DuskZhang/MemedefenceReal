@@ -280,7 +280,7 @@ function showUpgrades(object) {
             image(object.upgradeB0Image, 900, 50, 130, 100);
             text(object.upgradeB0Description, 900, 15);
             if (object.upgradeBhover(price) && mouseIsPressed && gold >= 100) {
-                object.chargebuild *= 2;
+                object.chargebuild = 5;
                 object.upgradeLevelB++;
                 noSpammerino = 0;
                 gold -= 100;
