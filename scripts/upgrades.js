@@ -40,6 +40,17 @@ function showUpgrades(object) {
     textSize(15);
 
     //add costs later i wanna test it first
+    if (keyIsDown(16)) {
+        image(hodl, 480, 180, 400, 400);
+        text("press s to sell for: " + object.sellPrice, 300, 480);
+        if (keyIsDown(83)) {
+            gold += 100;
+            towers.splice(object.iam);
+            tiles[object.originalTile].tileTaken = false;
+        }
+
+    }
+
     if (object instanceof Pepe) {
 
         if (object.upgradeLevelA == 0 && object.damage * 1.3 <= 30) {
@@ -66,12 +77,6 @@ function showUpgrades(object) {
             }
         }
 
-        image(hodl, 480, 180, 50, 50);
-        if (mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
-            gold += pepePrice / 2;
-            tiles[object.originalTile].tileTaken = false;
-            towers.splice(object.iam);
-        }
     }
 
     if (object instanceof Doge) {
@@ -90,7 +95,7 @@ function showUpgrades(object) {
         }
         if (object.upgradeLevelB == 0) {
             let price = 100;
-            
+
             image(object.upgradeB0Image, 900, 50, 130, 100);
             text(object.upgradeB0Description, 900, 15);
             if (object.upgradeBhover(price) && mouseIsPressed && gold >= 100) {;
@@ -100,12 +105,7 @@ function showUpgrades(object) {
                 gold -= 100;
             }
         }
-        image(hodl, 480, 180, 50, 50);
-        if (mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
-            gold += dogePrice / 2;
-            tiles[object.originalTile].tileTaken = false;
-            towers.splice(object.iam);
-        }
+
     }
 
     if (object instanceof Wonka) {
@@ -135,13 +135,7 @@ function showUpgrades(object) {
             }
         }
 
-        image(hodl, 480, 180, 50, 50);
-        if (mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
-            towers.splice(object.iam);
-            gold += wonkaPrice / 2;
-            tiles[object.originalTile].tileTaken = false;
 
-        }
     }
 
     if (object instanceof AngryWeaboo) {
@@ -169,13 +163,7 @@ function showUpgrades(object) {
                 gold -= 100;
             }
         }
-        image(hodl, 480, 180, 50, 50);
-        if (mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
-            gold += weabooPrice / 2;
-            towers.splice(object.iam);
-            tiles[object.originalTile].tileTaken = false;
 
-        }
     }
 
     if (object instanceof Ross) {
@@ -203,12 +191,7 @@ function showUpgrades(object) {
                 gold -= 100;
             }
         }
-        image(hodl, 480, 180, 50, 50);
-        if (mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
-            gold += rossPrice / 2;
-            tiles[object.originalTile].tileTaken = false;
-            towers.splice(object.iam);
-        }
+
     }
 
 
@@ -241,7 +224,7 @@ function showUpgrades(object) {
         }
         if (object.upgradeLevelB == 0) {
             let price = 100;
-            
+
             image(object.upgradeB0Image, 900, 50, 130, 100);
             text(object.upgradeB0Description, 900, 15);
             if (object.upgradeBhover(price) && mouseIsPressed && gold >= price) {
@@ -251,13 +234,7 @@ function showUpgrades(object) {
                 gold -= price;
             }
         }
-        text(nedPrice / 2, 480, 180);
-        image(hodl, 480, 180, 50, 50);
-        if (mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
-            gold += nedPrice / 2;
-            tiles[object.originalTile].tileTaken = false;
-            towers.splice(object.iam);
-        }
+
     }
 
     if (object instanceof DabbingSquidward) {
@@ -286,13 +263,7 @@ function showUpgrades(object) {
                 gold -= 100;
             }
         }
-        text(squidPrice / 2, 480, 180);
-        image(hodl, 480, 180, 50, 50);
-        if (mouseX >= 480 && mouseX <= 480 + 50 && mouseY >= 180 && mouseY <= 230 && mouseIsPressed) {
-            gold += squidPrice / 2;
-            tiles[object.originalTile].tileTaken = false;
-            towers.splice(object.iam);
-        }
-    }
 
+
+    }
 }

@@ -16,6 +16,7 @@ class Tower {
         this.upgradeLevelA = 0;
         this.upgradeLevelB = 0;
         this.sell = false;
+        this.sellPrice;
 
     }
 
@@ -80,6 +81,7 @@ class Pepe extends Tower {
         this.upgradeA0Description = "Hard Tears: \n130% dmg,max 30";
         this.upgradeB0Image = rangepepe;
         this.upgradeB0Description = "Grim Sights: \nDouble range";
+        this.sellPrice = pepePrice * 0.9;
 
     }
     //called every frame
@@ -149,6 +151,7 @@ class Ross extends Tower {
         this.upgradeB0Description = "RelaxingTheme: \nChangeTheMusic";
         this.targets = [];
         this.poison = 0;
+        this.sellPrice = rossPrice * 0.9;
 
     }
     //called every frame
@@ -231,6 +234,7 @@ class Ned extends Tower {
         this.knightHealth = 5;
         this.knights = 0;
         this.maxKnights = 3;
+        this.sellPrice = nedPrice * 0.9;
     }
     //called every frame
     lockon() {
@@ -411,6 +415,7 @@ class DabbingSquidward extends Tower {
         this.upgradeA0Description = "More memes: \n3 more memes";
         this.upgradeB0Image = rofdab;
         this.upgradeB0Description = "To be evil: \n+2 rof";
+        this.sellPrice = squidPrice * 0.9;
 
     }
     //called every frame
@@ -480,6 +485,7 @@ class Sanic extends Tower {
         this.upgradeA0Description = "GoFast: \n3 surrounding towers shoot 25% faster";
         this.upgradeB0Image = rofdab;
         this.upgradeB0Description = "Better art: \n 150% rof, ";
+        this.sellPrice = sanicPrice * 0.9;
 
     }
     //called every frame
@@ -548,6 +554,7 @@ class Bitcoin extends Tower {
         this.upgradeB0Image = rangepepe;
         this.upgradeB0Description = "Grim Sights: \nDouble range";
         this.target;
+        this.sellPrice = btcPrice * 0.9;
     }
     //called every frame
     lockon() {

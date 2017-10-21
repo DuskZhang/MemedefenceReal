@@ -15,6 +15,7 @@ class Wonka extends Tower {
         this.upgradeB0Image = turnwonka;
         this.upgradeB0Description = "Suspicious: \ndouble rof";
         this.poison = 0;
+        this.sellPrice = wonkaPrice * 0.9;
 
     }
     //called every frame

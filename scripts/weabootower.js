@@ -19,6 +19,7 @@ class AngryWeaboo extends Tower {
         this.upgradeA0Description = "Ichigo: \n200% damage, 80% rof";
         this.upgradeB0Image = bigweab;
         this.upgradeB0Description = "Stronk: \n150%speed double rof";
+        this.sellPrice = weabooPrice * 0.9;
 
 
     }

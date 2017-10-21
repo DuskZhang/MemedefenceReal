@@ -16,6 +16,7 @@ class Doge extends Tower {
         this.upgradeA0Description = "High: \n15%speed,triple rof";
         this.upgradeB0Image = icedoge;
         this.upgradeB0Description = "Wolf: \n300%speed";
+        this.sellPrice = dogePrice * 0.9;
 
     }
 
