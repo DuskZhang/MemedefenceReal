@@ -26,6 +26,8 @@ var bitcoinTowerDesired = false;
 var sanicTowerDesired = false;
 let helpDesired = false;
 
+
+let bitcoinWaveDamage = 1;
 //if hud desired stop people from buying towers
 //var hudReset = false;
 

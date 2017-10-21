@@ -542,7 +542,7 @@ class Bitcoin extends Tower {
     constructor(x, y, original) {
         //todo get x y from mouse location
         super(x, y, original);
-        this.damage = 1; // prob will not need this on tower
+        this.damage = 1; 
         this.shootcharge = 0;
         this.primeshoot = 100;
         this.range = 1200;
@@ -558,7 +558,8 @@ class Bitcoin extends Tower {
     //called every frame
     lockon() {
         if (frameCount % this.primeshoot == 0 && waveOn) {
-            bullets.push(new BitcoinFire(random(0, width), random(0, height)));
+            this.damage = bitcoinWaveDamage;
+            bullets.push(new BitcoinFire(random(0, width), random(0, height), this.damage));
         }
 
     }

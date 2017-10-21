@@ -175,7 +175,7 @@ class SpongebobMeme {
 }
 
 class BitcoinFire {
-    constructor(x, y) {
+    constructor(x, y, damage) {
         this.x = x;
         this.y = y;
         this.position = createVector(this.x, this.y);
@@ -185,7 +185,7 @@ class BitcoinFire {
         this.iam;
         this.dir;
         this.reachedTarget = false;
-        this.damage = 1;
+        this.damage = damage;
     }
 
     //cange based on what
@@ -215,6 +215,9 @@ class BitcoinFire {
             if ((this.position.dist(this.target.pector)) <= 15) {
                 //hit
                 this.target.hp -= this.damage;
+                if(this.target.hp <= 0) {
+                    bitcoinWaveDamage += 0.20;
+                }
                 bullets.splice(this.iam, 1);
             } else {
                 this.position.add(this.dir);
