@@ -44,7 +44,7 @@ function showUpgrades(object) {
         image(hodl, 480, 180, 400, 400);
         text("press s to sell for: " + object.sellPrice, 300, 480);
         if (keyIsDown(83)) {
-            gold += 100;
+            gold += object.sellPrice;
             towers.splice(object.iam);
             tiles[object.originalTile].tileTaken = false;
         }
