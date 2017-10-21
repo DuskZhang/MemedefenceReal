@@ -38,7 +38,7 @@ class Wonka extends Tower {
     shootAt(object) {
         if (this.shootcharge >= this.primeshoot) {
             this.shootcharge = 0;
-            bullets.push(new WonkaBar(this.x, this.y, object, this.poison))
+            bullets.push(new WonkaBar(this.x, this.y, object, this.poison));
 
         }
 

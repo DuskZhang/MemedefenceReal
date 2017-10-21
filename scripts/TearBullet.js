@@ -77,7 +77,7 @@ class WonkaBar {
         if ((this.position.dist(this.target.pector)) <= 15) {
             //hit
             if (this.target.speed > 0.6) {
-                this.target.speed = this.target.speed -= 0.25;
+                this.target.speed = this.target.speed -= 0.3;
             }
             this.target.poisoned += this.poison;
             this.target.hp -= this.damage;
@@ -120,7 +120,6 @@ class Brushy {
         }
         this.target.poisoned += this.poison;
         this.target.hp -= this.damage;
-        console.log("kibasdjkbasjkdb")
         bullets.splice(this.iam, 1);
     }
 }
@@ -202,7 +201,7 @@ class BitcoinFire {
     move(i) {
         if (muscles[0] != null && frameCount % 60 == 0) {
             this.target = muscles[floor(random(0, muscles.length))];
-            this.damage += 2;
+            this.damage += 3.5;
             }
             else if (frameCount % 60 == 0){
                 this.target = null;
