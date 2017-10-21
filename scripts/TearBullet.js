@@ -193,20 +193,18 @@ class BitcoinFire {
 
     show() {
         if (this.target != null) {
-            tint("red");
             image(this.image, this.position.x, this.position.y, 130, 130);
-            noTint();
-            this.damage += 0.13;
             textSize(23);
             text(floor(this.damage), this.position.x, this.position.y);
         }
     }
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
-        if (muscles[0] != null && frameCount % 50 == 0) {
+        if (muscles[0] != null && frameCount % 60 == 0) {
             this.target = muscles[floor(random(0, muscles.length))];
+            this.damage *= 3;
             }
-            else if (frameCount % 50 == 0){
+            else if (frameCount % 60 == 0){
                 this.target = null;
                 bullets.splice(this.iam, 1);
             }
