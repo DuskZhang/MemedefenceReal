@@ -202,7 +202,7 @@ class BitcoinFire {
     move(i) {
         if (muscles[0] != null && frameCount % 60 == 0) {
             this.target = muscles[floor(random(0, muscles.length))];
-            this.damage *= 3;
+            this.damage += 2;
             }
             else if (frameCount % 60 == 0){
                 this.target = null;
