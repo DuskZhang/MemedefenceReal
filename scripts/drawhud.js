@@ -114,7 +114,7 @@ function drawHud() {
         image(sanic, mouseX, mouseY, 60, 60);
         fill(230, 150, 120);
         textSize(24);
-        text("What ", mouseX, mouseY);
+        text("aoe slow or ally speedup ", mouseX, mouseY);
         text(sanicPrice, mouseX, mouseY - 25);
         fill(40, 130, 130, 40);
         ellipse(mouseX + 30, mouseY + 30, 200 * 2);

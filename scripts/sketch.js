@@ -139,6 +139,10 @@ function setup() {
     cavalry = loadImage("scripts/assets/cavalry.jpg");
     jordan = loadImage("scripts/assets/jordan.jpg");
     emo = loadImage("scripts/assets/emo.jpg");
+    dogea1 = loadImage("scripts/assets/smokingdoge.png");
+    dogeb1 = loadImage("scripts/assets/toughdoge.jpg");
+    dogea2 = loadImage("scripts/assets/stoned.jpg");
+    dogeb2 = loadImage("scripts/assets/cerberus.jpg");
 
     meme1 = loadImage("scripts/assets/meme1.jpg");
     meme2 = loadImage("scripts/assets/meme2.jpg");
