@@ -33,7 +33,7 @@ class Enemy {
         if (this.targetVec != null) {
             this.distanceFromNode1 = dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y);
         }
-
+        
         this.justNoded = false;
     }
     //after move
@@ -51,7 +51,9 @@ class Enemy {
         if (this.takenByKnight && this.speed == this.regularSpeed) {
             this.takenByKnight = false;
         }
-
+         //poisoned
+        this.hp -= this.poisoned / this.poisontick;
+        this.poisoned -= this.poisoned / this.poisontick;
         if (this.hp <= 0) {
             if (wave < 5) {
                 gold += this.gold;
@@ -96,9 +98,7 @@ class Enemy {
     //called 60fps
     move(i) {
 
-        //poisoned
-        this.hp -= this.poisoned / this.poisontick;
-        this.poisoned -= this.poisoned / this.poisontick;
+       
 
 
         this.iam = i;
@@ -152,10 +152,6 @@ class NormieMuscle extends Enemy {
 
     //called 60fps
     move(i) {
-
-        //poisoned
-        this.hp -= this.poisoned / this.poisontick;
-        this.poisoned -= this.poisoned / this.poisontick;
 
 
         this.iam = i;
