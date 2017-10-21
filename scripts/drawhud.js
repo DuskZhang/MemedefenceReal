@@ -1,4 +1,5 @@
 function drawHud() {
+    stroke(255);
     if (pepeTowerDesired) {
         image(pepe, mouseX, mouseY, 60, 60);
         fill(230, 150, 120);
@@ -61,6 +62,7 @@ function drawHud() {
     }
 
     if (hudDesired) {
+        noStroke();
         fill(0);
         rect(400, 0, 700, height / 4);
         textSize(30);

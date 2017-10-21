@@ -56,7 +56,6 @@ var nodes = [];
 var roadAmount = 50; // standard 50
 
 var nearestEnemy;
-var boolinitializeTiles = true;
 var enemyQueue = []
 var wave = 0;
 var noSpammerino = 0;
@@ -243,13 +242,6 @@ if (noSpammerino < 20) {
         if (roadAmount == roadsBuilt) {
             nodes[roadAmount - 1].image = weabland;
         }
-
-        if (boolinitializeTiles) {
-            initializeTiles();
-            boolinitializeTiles = false;
-        }
-        //spawning muscle
-
         objectFunctions();
         help();
         //get the numMuscles etc then push all into an array then 
@@ -311,6 +303,7 @@ function startScreen() {
     help();
     if (keyIsDown(83)) {
         gamemode = 1;
+        initializeTiles();
     }
 
 }
