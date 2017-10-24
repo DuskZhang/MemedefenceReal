@@ -285,7 +285,7 @@ class MindBlown {
         this.y = y;
         this.position = createVector(this.x, this.y);
         this.target = target;
-        this.speed = 2.85;
+        this.speed = 3;
         this.image = mindblown;
         this.iam;
         this.dir;

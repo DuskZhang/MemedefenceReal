@@ -629,7 +629,7 @@ class CantIf extends Tower {
     constructor(x, y, original) {
         //todo get x y from mouse location
         super(x, y, original);
-        this.damage = 11;
+        this.damage = 10;
         this.shootcharge = 0;
         this.chargebuild = 2;
         this.primeshoot = 100;
@@ -640,7 +640,7 @@ class CantIf extends Tower {
         this.upgradeA0Description = "Hard Tears: \n130% dmg,max 30";
         this.upgradeB0Image = rangepepe;
         this.upgradeB0Description = "Grim Sights: \nDouble range";
-        this.sellPrice = pepePrice * 0.9;
+        this.sellPrice = logicalPrice * 0.9;
 
     }
     //called every frame
