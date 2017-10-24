@@ -240,12 +240,12 @@ class Sanicbomb {
         this.y = y;
         this.position = createVector(this.x, this.y);
         this.target = target;
-        this.speed = 4;
+        this.speed = 8;
         this.image = rings;
         this.iam;
         this.dir;
         this.reachedTarget = false;
-        this.damage = 6;
+        this.damage = 4.5;
         //shrapnel
     }
 
