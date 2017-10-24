@@ -275,3 +275,28 @@ class BuySanic extends Tile {
     }
 
 }
+
+class BuyLogic extends Tile {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.connectionOpen = false;
+        this.image = buyLogic;
+    }
+
+
+    clicked() {
+        if (mouseX > this.x && mouseX < this.x + this.width && mouseY < this.y + this.width && mouseY > this.y && mouseIsPressed) {
+            if (noSpammerino >= 18) {
+                if (logicTowerDesired) {
+                    clearDesire();
+                } else {
+                    clearDesire();
+                    logicTowerDesired = true;
+                }
+            }
+        }
+    }
+
+}

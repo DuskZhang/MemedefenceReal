@@ -111,10 +111,18 @@ class Tile {
                 this.tileTaken = true;
             } // add more towers here
         }
+        else if (logicTowerDesired && this.tileTaken == false) {
+            if (gold >= logicalPrice) {
+                gold -= logicalPrice;
+                towers.push(new CantIf(this.x, this.y, i));
+                logicTowerDesired = false;
+                this.tileTaken = true;
+            } // add more towers here
+        }
     }
 }
 
-class Road extends Tile {
+class Road extends Tile { //make another layer of roads offscreen to stop this
     constructor(x, y,i) {
         super()
         this.x = x;

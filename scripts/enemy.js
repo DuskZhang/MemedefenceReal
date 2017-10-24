@@ -870,3 +870,56 @@ class Jordan extends Enemy {
     }
 
 }
+
+class BehindTheMeme extends Enemy {
+    constructor(x, y) {
+        super()
+        this.x = x;
+        this.y = y;
+        this.pector = createVector(this.x, this.y);
+        this.hp = 1000;
+        this.max = 1000;
+        this.speed = 1.3; // dont go over 4 or it gets all buggy
+
+        this.width = 70;
+        this.height = 70;
+
+        this.nodeIndex = 0;
+        this.targetVec;
+        this.movementVector;
+        this.distFrame;
+        // once every 1/2 second if running at 60fps
+        this.iam;
+        this.image = jordan;
+        this.lifedamage = 2;
+        this.gold = 11;
+        this.goldWave5 = 8;
+        this.factor = 0.75;
+    }
+
+
+
+    //called 60fps
+    move(i) {
+        this.iam = i;
+        if (this.targetVec == null) {
+            this.getPathNode();
+        }
+
+        if (this.targetVec !== null) {
+            //getting the x and y values of the target 
+
+
+            this.distFrame = this.speed * (1 / 60);
+            //todo improve this checking dist
+            if (dist(this.pector.x, this.pector.y, this.targetVec.x, this.targetVec.y) <= this.distFrame * 120) {
+                this.targetVec = null; //reached node
+            } else {
+                this.pector.x += this.movementVector.x * this.distFrame;
+                this.pector.y += this.movementVector.y * this.distFrame;
+            }
+
+        }
+    }
+
+}

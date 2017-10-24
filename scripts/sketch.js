@@ -10,6 +10,8 @@ var rossPrice = 250;
 var btcPrice = 800;
 var squidPrice = 400;
 let sanicPrice = 320;
+let lazerPrice = 666;
+let logicalPrice = 500;
 
 var roadsBuilt = 1;
 var pepeTowerDesired = false;
@@ -25,6 +27,7 @@ var squidTowerDesired = false;
 var bitcoinTowerDesired = false;
 var sanicTowerDesired = false;
 let helpDesired = false;
+let logicTowerDesired = false;
 
 
 let bitcoinWaveDamage = 1;
@@ -145,6 +148,10 @@ function setup() {
     dogeb1 = loadImage("scripts/assets/toughdoge.jpg");
     dogea2 = loadImage("scripts/assets/stoned.jpg");
     dogeb2 = loadImage("scripts/assets/cerberus.jpg");
+    dogeb2 = loadImage("scripts/assets/cerberus.jpg");
+    buyLogic = loadImage("scripts/assets/buyLogic.jpg");
+    logical = loadImage("scripts/assets/logical.jpg");
+    mindblown = loadImage("scripts/assets/mindblown.jpg");
 
     meme1 = loadImage("scripts/assets/meme1.jpg");
     meme2 = loadImage("scripts/assets/meme2.jpg");
@@ -202,7 +209,7 @@ function initializeTiles() {
     tiles[212] = new BuyBitcoin(tiles[212].x, tiles[212].y);
 
     tiles[213] = new BuySanic(tiles[213].x, tiles[213].y);
-    tiles[214] = new BuyPepe(tiles[214].x, tiles[214].y);
+    tiles[214] = new BuyLogic(tiles[214].x, tiles[214].y);
     tiles[215] = new BuyPepe(tiles[215].x, tiles[215].y);
 
 }
@@ -218,6 +225,7 @@ function clearDesire() {
     squidTowerDesired = false;
     bitcoinTowerDesired = false;
     sanicTowerDesired = false;
+    logicTowerDesired = false;
     noSpammerino = 0;
 }
 

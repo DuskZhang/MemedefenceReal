@@ -119,4 +119,14 @@ function drawHud() {
         fill(40, 130, 130, 40);
         rect(mouseX - 180, mouseY - 60, 420, 180);
     }
+    
+    if (logicTowerDesired) {
+        image(logical, mouseX, mouseY, 60, 60);
+        fill(230, 150, 120);
+        textSize(24);
+        text("mindblowing focused aoe ", mouseX, mouseY);
+        text(logicalPrice, mouseX, mouseY - 25);
+        fill(40, 130, 130, 40);
+        ellipse(mouseX + 30, mouseY + 30, 280);
+    }
 }
