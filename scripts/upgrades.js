@@ -27,9 +27,9 @@ function showStats(object) {
             text("Knights: " + object.knights + "/ " + object.maxKnights, 600, 110);
             text("Spawn.. " + floor(object.shootcharge / 60) + "/ " + floor(object.primeshoot / 60), 600, 140);
         } else {
-            text("Damage: " + object.damage, 600, 50);
+            text("Damage: " + floor(object.damage), 600, 50);
             text("Range: " + object.range, 600, 80);
-            text("rate of fire: " + object.chargebuild, 600, 110);
+            text("rate of fire: " + floor(object.chargebuild), 600, 110);
         }
     }
 
@@ -47,11 +47,12 @@ function showUpgrades(object) {
     textSize(15);
 
     //add costs later i wanna test it first
-    if (keyIsDown(16)) {
+    if (keyIsDown(16) && noSpammerino > 19) {
         image(hodl, 480, 180, 400, 400);
         text("press s to sell for: " + object.sellPrice, 300, 480);
         if (keyIsDown(83)) {
             gold += object.sellPrice;
+            noSpammerino = 0;
             towers.splice(object.iam);
             tiles[object.originalTile].tileTaken = false;
         }
@@ -325,7 +326,7 @@ function showUpgrades(object) {
             image(object.upgradeB0Image, 900, 50, 130, 100);
             text(object.upgradeB0Description, 900, 15);
             if (object.upgradeBhover(price) && mouseIsPressed && gold >= price) {
-                object.chargebuild = 5;
+                object.chargebuild +=2;
                 object.upgradeLevelB++;
                 noSpammerino = 0;
                 gold -= price;

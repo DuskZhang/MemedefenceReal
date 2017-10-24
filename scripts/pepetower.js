@@ -7,6 +7,7 @@ class Tower {
         this.damage = 1;
         this.shootcharge = 0; // once it hits primeshoot it fires
         this.chargebuild = 5
+        this.speed = 0;
         this.primeshoot = 100;
         this.range;
         this.image;
@@ -17,6 +18,7 @@ class Tower {
         this.upgradeLevelB = 0;
         this.sell = false;
         this.sellPrice;
+        this.markedBySonic = false;
 
     }
 
@@ -475,7 +477,7 @@ class Sanic extends Tower {
 
         this.damage = 1;
         this.shootcharge = 0;
-        this.chargebuild = 3;
+        this.chargebuild = 2.4;
         this.primeshoot = 100;
         this.range = 365;
         this.image = sanic;
@@ -497,7 +499,7 @@ class Sanic extends Tower {
         //shoots at first enemy in muscles array to meet if statement
         if (muscles[0] != null) {
             for (var i = 0; i < muscles.length; i++) {
-                if (this.vertical && (dist(this.x, 0, muscles[i].pector.x, 0)) <= 61 && dist(0, this.y, 0, muscles[i].pector.y) <= this.range /2) {
+                if (this.vertical && (dist(this.x, 0, muscles[i].pector.x, 0)) <= 61 && dist(0, this.y, 0, muscles[i].pector.y) <= this.range / 2) {
                     this.shootAt(muscles[i]);
                     break;
                 } else if (this.vertical == false && (dist(this.x, 0, muscles[i].pector.x, 0) <= this.range / 2) && dist(0, this.y, 0, muscles[i].pector.y) <= 61) {
@@ -505,11 +507,52 @@ class Sanic extends Tower {
                     this.shootAt(muscles[i]);
                     break;
 
+                }
+            }
+
+            for (let i = 0; i < muscles.length; i++) {
+                if (this.vertical && (dist(this.x, 0, muscles[i].pector.x, 0)) <= 61 && dist(0, this.y, 0, muscles[i].pector.y) <= this.range / 2 && muscles[i].markedBySonic == false) {
+
+                    muscles[i].speed *= 0.666;
+                    muscles[i].markedBySonic = true;
+                } else if (this.vertical == false && (dist(this.x, 0, muscles[i].pector.x, 0) <= this.range / 2) && dist(0, this.y, 0, muscles[i].pector.y) <= 61 && muscles[i].markedBySonic == false) {
+
+                    muscles[i].speed *= 0.666;
+                    muscles[i].markedBySonic = true;
+
 
                 }
 
             }
+
+            for (let i = 0; i < towers.length; i++) {
+                if (this.vertical && (dist(this.x, 0, towers[i].x, 0)) <= 61 && dist(0, this.y, 0, towers[i].y) <= this.range / 2) {
+                    if (towers[i].markedBySonic == false) {
+                        towers[i].chargebuild *= 1.35;
+                        towers[i].speed *= 1.35;
+                        towers[i].markedBySonic = true;
+                        console.log("adjada")
+                    }
+                } else if (this.vertical == false && (dist(this.x, 0, towers[i].x, 0) <= this.range / 2) && dist(0, this.y, 0, towers[i].y) <= 61) {
+                    if (towers[i].markedBySonic == false) {
+                        towers[i].chargebuild *= 1.35;
+                        towers[i].speed *= 1.35;
+                        towers[i].markedBySonic = true;
+                        console.log("buffa")
+                    }
+
+                } else if (towers[i].markedBySonic) {
+                    towers[i].chargebuild /= 1.35;
+                    towers[i].speed /= 1.35;
+                    towers[i].markedBySonic = false;
+                    console.log("asdano")
+                }
+
+            }
+
         }
+
+
     }
 
     show(t) {

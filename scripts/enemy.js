@@ -27,6 +27,7 @@ class Enemy {
         this.gold
         this.goldWave5
         this.factor = 1;
+        this.markedBySonic = false;
     }
 
     checkGameBreakingBug1() {
