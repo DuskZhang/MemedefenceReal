@@ -191,31 +191,35 @@ class BitcoinFire {
     //cange based on what
 
     show() {
-        if (this.target != null) {
-            image(this.image, this.position.x, this.position.y, 130, 130);
-            textSize(23);
-            text(floor(this.damage), this.position.x, this.position.y);
-        }
+        image(this.image, this.position.x, this.position.y, 130, 130);
+        textSize(23);
+        text(floor(this.damage), this.position.x, this.position.y);
     }
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
         if (muscles[0] != null && frameCount % 60 == 0) {
             this.target = muscles[floor(random(0, muscles.length))];
             this.damage += 3.5;
-            }
-            else if (frameCount % 60 == 0){
-                this.target = null;
-                bullets.splice(this.iam, 1);
+        } else if (frameCount % 60 == 0) {
+            this.target = null;
+            bullets.splice(this.iam, 1);
+        }
+
+        if (this.target == null) {
+            if (muscles[0] != null) {
+                this.target = muscles[floor(random(0, muscles.length))];
             }
 
-            if(this.target != null) {
-                this.dir = p5.Vector.sub(this.target.pector, this.position);
+        }
+
+        if (this.target != null) {
+            this.dir = p5.Vector.sub(this.target.pector, this.position);
             this.dir = this.dir.mult(this.speed / this.dir.mag());
 
             if ((this.position.dist(this.target.pector)) <= 15) {
                 //hit
                 this.target.hp -= this.damage;
-                if(this.target.hp <= 0) {
+                if (this.target.hp <= 0) {
                     bitcoinWaveDamage += 0.20;
                 }
                 bullets.splice(this.iam, 1);
@@ -225,14 +229,14 @@ class BitcoinFire {
                     bullets.splice(this.iam, 1);
                 }
             }
-            }
-            
-
-
-            this.iam = i;
-
         }
+
+
+
+        this.iam = i;
+
     }
+}
 
 class Sanicbomb {
     constructor(x, y, target, damage) {
@@ -257,7 +261,7 @@ class Sanicbomb {
 
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
-       
+
 
         this.dir = p5.Vector.sub(this.target.pector, this.position);
         this.dir = this.dir.mult(this.speed / this.dir.mag());
@@ -304,7 +308,7 @@ class MindBlown {
 
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
-       
+
 
         this.dir = p5.Vector.sub(this.target.pector, this.position);
         this.dir = this.dir.mult(this.speed / this.dir.mag());
@@ -312,13 +316,13 @@ class MindBlown {
         if ((this.position.dist(this.target.pector)) <= 15) {
             //hit
             this.target.hp -= this.damage;
-            
-            for(let i = 0; i< muscles.length - 1; i++ ) {
-                if((this.position.dist(muscles[i].pector)) <= this.shrapnelRange) {
+
+            for (let i = 0; i < muscles.length - 1; i++) {
+                if ((this.position.dist(muscles[i].pector)) <= this.shrapnelRange) {
                     muscles[i].hp -= this.shrapnelDamage;
                 }
             }
-            
+
             bullets.splice(this.iam, 1);
         } else {
             this.position.add(this.dir);
