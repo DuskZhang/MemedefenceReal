@@ -50,9 +50,9 @@ function showUpgrades(object) {
     if (keyIsDown(16) && noSpammerino > 19) {
         image(hodl, 480, 180, 400, 400);
         text("press s to sell for: " + object.sellPrice, 300, 480);
-        if (keyIsDown(83)) {
-            gold += object.sellPrice;
+        if (keyIsDown(83) && noSpammerino > 19) {
             noSpammerino = 0;
+            gold += object.sellPrice;
             towers.splice(object.iam);
             tiles[object.originalTile].tileTaken = false;
         }
