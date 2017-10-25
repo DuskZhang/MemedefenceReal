@@ -7,7 +7,7 @@ function showRange(object) {
         } else {
             rect(object.position.x - 60, object.position.y - object.range / 2,  180, object.range + 60);
         }
-    } else {
+    } else if (object != null){
         ellipse(object.position.x + 30, object.position.y + 30, object.range * 2);
     }
 
