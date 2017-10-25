@@ -88,11 +88,11 @@ function decideWave() {
         wave++;
     } else if (wave == 8) {
         waveOn = true;
-        waveBoom = 30;
+        waveBoom = 20;
         waveTeacher = 40;
-        waveImprovedmus = 20;
+        waveImprovedmus = 40;
         waveWorkers = 20
-        waveCavalry = 40;
+        waveCavalry = 60;
         enemyQueue.push(new BehindTheMeme(0, 0));
         spawnrate = 27;
         wave++;

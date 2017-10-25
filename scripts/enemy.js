@@ -878,9 +878,9 @@ class BehindTheMeme extends Enemy {
         this.x = x;
         this.y = y;
         this.pector = createVector(this.x, this.y);
-        this.hp = 3000;
-        this.max = 3000;
-        this.speed = 1.05; // dont go over 4 or it gets all buggy
+        this.hp = 5000;
+        this.max = 5000;
+        this.speed = 0.45; // dont go over 4 or it gets all buggy
 
         this.width = 70;
         this.height = 70;
@@ -895,7 +895,7 @@ class BehindTheMeme extends Enemy {
         this.lifedamage = 4;
         this.gold = 110;
         this.goldWave5 = 300;
-        this.factor = 0.25;
+        this.factor = 0.1;
     }
 
 
