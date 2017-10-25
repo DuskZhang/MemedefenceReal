@@ -531,21 +531,18 @@ class Sanic extends Tower {
                         towers[i].chargebuild *= 1.35;
                         towers[i].speed *= 1.35;
                         towers[i].markedBySonic = true;
-                        console.log("adjada")
                     }
                 } else if (this.vertical == false && (dist(this.x, 0, towers[i].x, 0) <= this.range / 2) && dist(0, this.y, 0, towers[i].y) <= 61) {
                     if (towers[i].markedBySonic == false) {
                         towers[i].chargebuild *= 1.35;
                         towers[i].speed *= 1.35;
                         towers[i].markedBySonic = true;
-                        console.log("buffa")
                     }
 
                 } else if (towers[i].markedBySonic) {
                     towers[i].chargebuild /= 1.35;
                     towers[i].speed /= 1.35;
                     towers[i].markedBySonic = false;
-                    console.log("asdano")
                 }
 
             }
@@ -594,7 +591,7 @@ class Bitcoin extends Tower {
         super(x, y, original);
         this.damage = 1;
         this.shootcharge = 0;
-        this.primeshoot = 100;
+        this.primeshoot = 90;
         this.range = 1200;
         this.image = bitcoin;
         this.selected = false;

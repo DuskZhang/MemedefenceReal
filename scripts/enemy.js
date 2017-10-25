@@ -694,8 +694,8 @@ class Cavalry extends Enemy {
         this.x = x;
         this.y = y;
         this.pector = createVector(this.x, this.y);
-        this.hp = 100;
-        this.max = 100;
+        this.hp = 160;
+        this.max = 160;
         this.speed = 3.4; // dont go over 4 or it gets all buggy
 
         this.width = 50;
@@ -718,6 +718,7 @@ class Cavalry extends Enemy {
     //called 60fps
     move(i) {
         this.iam = i;
+        this.hp += 0.01;
         if (this.targetVec == null) {
             this.getPathNode();
         }
