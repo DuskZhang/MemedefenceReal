@@ -877,8 +877,8 @@ class BehindTheMeme extends Enemy {
         this.x = x;
         this.y = y;
         this.pector = createVector(this.x, this.y);
-        this.hp = 1000;
-        this.max = 1000;
+        this.hp = 3000;
+        this.max = 3000;
         this.speed = 1.3; // dont go over 4 or it gets all buggy
 
         this.width = 70;
