@@ -591,7 +591,7 @@ class Bitcoin extends Tower {
         super(x, y, original);
         this.damage = 1;
         this.shootcharge = 0;
-        this.primeshoot = 100;
+        this.primeshoot = 90;
         this.range = 1200;
         this.image = bitcoin;
         this.selected = false;
