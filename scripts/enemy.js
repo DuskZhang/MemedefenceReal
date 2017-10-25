@@ -878,9 +878,9 @@ class BehindTheMeme extends Enemy {
         this.x = x;
         this.y = y;
         this.pector = createVector(this.x, this.y);
-        this.hp = 3000;
+        this.hp = 2000;
         this.max = 3000;
-        this.speed = 1.3; // dont go over 4 or it gets all buggy
+        this.speed = 0.85; // dont go over 4 or it gets all buggy
 
         this.width = 70;
         this.height = 70;
@@ -891,11 +891,11 @@ class BehindTheMeme extends Enemy {
         this.distFrame;
         // once every 1/2 second if running at 60fps
         this.iam;
-        this.image = jordan;
-        this.lifedamage = 2;
-        this.gold = 11;
-        this.goldWave5 = 8;
-        this.factor = 0.75;
+        this.image = behind;
+        this.lifedamage = 4;
+        this.gold = 110;
+        this.goldWave5 = 300;
+        this.factor = 0.25;
     }
 
 
@@ -903,6 +903,10 @@ class BehindTheMeme extends Enemy {
     //called 60fps
     move(i) {
         this.iam = i;
+        if(frameCount % 300 == 0) {
+            this.newVideo();
+        }
+        
         if (this.targetVec == null) {
             this.getPathNode();
         }
@@ -921,6 +925,11 @@ class BehindTheMeme extends Enemy {
             }
 
         }
+    }
+    
+    newVideo() {
+        gold -= 100;
+        this.hp += 50;
     }
 
 }

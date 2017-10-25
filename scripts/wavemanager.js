@@ -8,6 +8,7 @@ function decideWave() {
         waveWorkers = 0;
         waveBoom = 3;
         waveTeacher = 1;
+     
         wave++;
     } else if (wave == 1) {
         waveOn = true;
@@ -92,6 +93,7 @@ function decideWave() {
         waveImprovedmus = 20;
         waveWorkers = 20
         waveCavalry = 40;
+        enemyQueue.push(new BehindTheMeme(0, 0));
         spawnrate = 27;
         wave++;
     } else if (wave == 9) {
@@ -189,8 +191,7 @@ function decideWave() {
         wave++;
     } else if (wave == 18) {
         waveOn = true;
-
-        waveBoom = 40;
+         waveEmo = 125;
         waveTeacher = 60;
         waveImprovedmus = 40;
         waveWorkers = 40
@@ -199,7 +200,7 @@ function decideWave() {
     } else if (wave == 19) {
         waveOn = true;
 
-        waveBoom = 50;
+        waveBoom = 20;
         waveTeacher = 70;
         waveImprovedmus = 50;
         waveWorkers = 40
@@ -213,11 +214,12 @@ function decideWave() {
         wave++
     } else if (wave == 20) {
         waveOn = true;
-        waveBoom = 90;
         waveTeacher = 100;
         waveImprovedmus = 70;
-        waveWorkers = 90
+        waveWorkers = 9;
         spawnrate = 7;
+        enemyQueue.push(new Philosopher(0, 0));
+        enemyQueue.push(new Philosopher(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
@@ -227,6 +229,7 @@ function decideWave() {
         enemyQueue.push(new JohnCena(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
+        enemyQueue.push(new BehindTheMeme(0, 0));
         enemyQueue.push(new Trump(0, 0));
         wave++;
     }

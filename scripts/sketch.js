@@ -153,6 +153,7 @@ function setup() {
     logical = loadImage("scripts/assets/logical.jpg");
     mindblown = loadImage("scripts/assets/mindblown.jpg");
     explosion = loadImage("scripts/assets/explosion.jpg");
+    behind = loadImage("scripts/assets/behind.jpg");
 
     meme1 = loadImage("scripts/assets/meme1.jpg");
     meme2 = loadImage("scripts/assets/meme2.jpg");

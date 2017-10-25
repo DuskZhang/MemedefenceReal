@@ -53,7 +53,7 @@ function showUpgrades(object) {
         if (keyIsDown(83) && noSpammerino > 19) {
             noSpammerino = 0;
             gold += object.sellPrice;
-            towers.splice(object.iam);
+            towers.splice(object.iam,1);
             tiles[object.originalTile].tileTaken = false;
         }
 
