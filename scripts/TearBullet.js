@@ -316,7 +316,6 @@ class MindBlown {
             for(let i = 0; i< muscles.length - 1; i++ ) {
                 if((this.position.dist(muscles[i].pector)) <= this.shrapnelRange) {
                     muscles[i].hp -= this.shrapnelDamage;
-                    console.log("asboom")
                 }
             }
             
