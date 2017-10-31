@@ -75,6 +75,7 @@ var towers = [];
 var shops = [];
 var bullets = [];
 let memes = [];
+let volume = 0.3;
 
 //make this not run first hud view and have it be the tower u  know
 
@@ -166,7 +167,7 @@ function setup() {
     meme9 = loadImage("scripts/assets/meme9.jpg");
     meme10 = loadImage("scripts/assets/meme10.jpg");
     meme11 = loadImage("scripts/assets/meme11.jpg");
-
+    
     memes.push(meme1);
     memes.push(meme2);
     memes.push(meme3);
@@ -181,7 +182,7 @@ function setup() {
 
 
 
-    mySound.setVolume(.3);
+    mySound.setVolume(volume);
     mySound.loop();
 }
 
@@ -298,6 +299,16 @@ function keyPressed() {
         clearDesire();
         noSpammerino = 0;
     }
+    
+    if (keyCode == 77 && noSpammerino >= 18) {
+        if(volume == 0.3) {
+            volume = 0;
+           mySound.setVolume(0); 
+        } else {
+            volume = 0.3;
+            mySound.setVolume(0.3); 
+        }
+    }
 
     if (waveOn == false && keyCode == 13 && roadsBuilt == roadAmount) {
         decideWave();
@@ -346,7 +357,7 @@ function help() {
         rect(0, 0, width, height);
         textSize(30);
         stroke(255);
-        text("Key Commands: \n esc for hud \n shift + s while selecting a tower to sell it \n r to rotate a tower's range\n Enter to start a new wave", 50, 50);
+        text("Key Commands: \n esc for hud \n shift + s while selecting a tower to sell it \n r to rotate a tower's range\n Enter to start a new wave\n m to toggle music", 50, 50);
         //todo more help            
 
     }
