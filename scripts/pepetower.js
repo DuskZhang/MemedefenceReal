@@ -607,6 +607,7 @@ class Bitcoin extends Tower {
         if (frameCount % this.primeshoot == 0 && waveOn) {
             this.damage = bitcoinWaveDamage;
             btcPrice += 1;
+            this.sellPrice = btcPrice * 0.9;
             bullets.push(new BitcoinFire(random(0, width), random(0, height), this.damage));
         }
 
