@@ -11,6 +11,7 @@ class Grump extends Tower {
         this.chargebuild = 30;
         this.selected = false;
         this.originalTile = original;
+        this.sellPrice = grumpPrice * 0.9;
         //amke it so that u can palce again on same tile
     }
 
