@@ -496,8 +496,8 @@ class Trump extends Enemy {
         this.x = x;
         this.y = y;
         this.pector = createVector(this.x, this.y);
-        this.hp = 2016;
-        this.max = 2024;
+        this.hp = 20160;
+        this.max = 20240;
         this.speed = 0.2; // dont go over 4 or it gets all buggy
         this.regularSpeed = 0.3;
         this.width = 90;
@@ -510,7 +510,7 @@ class Trump extends Enemy {
         // once every 1/2 second if running at 60fps
         this.iam;
         this.image = donald;
-        this.lifedamage = 6;
+        this.lifedamage = 49;
     }
 
     show() {
