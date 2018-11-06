@@ -76,9 +76,9 @@ function decideWave() {
     } else if (wave == 7) {
         waveOn = true;
         waveMuscle = 0;
-        waveBoom = 40;
+        waveBoom = 0;
         waveTeacher = 60;
-        waveImprovedmus = 40;
+        waveImprovedmus = 60;
         waveWorkers = 40;
         waveCavalry = 30;
         spawnrate = 30;
@@ -88,9 +88,9 @@ function decideWave() {
         wave++;
     } else if (wave == 8) {
         waveOn = true;
-        waveBoom = 20;
+        waveBoom = 5;
         waveTeacher = 40;
-        waveImprovedmus = 40;
+        waveImprovedmus = 80;
         waveWorkers = 20
         waveCavalry = 60;
         enemyQueue.push(new BehindTheMeme(0, 0));
@@ -98,15 +98,15 @@ function decideWave() {
         wave++;
     } else if (wave == 9) {
         waveOn = true;
-        waveBoom = 30;
+        waveBoom = 0;
         waveTeacher = 50;
-        waveImprovedmus = 20;
-        waveWorkers = 20
+        waveImprovedmus = 80;
+        waveWorkers = 100
         waveCavalry = 50;
         enemyQueue.push(new Philosopher(0, 0))
         spawnrate = 25;
 
-        wave++
+        wave++;
     } else if (wave == 10) {
         waveOn = true;
         waveMuscle = 0;
@@ -121,22 +121,23 @@ function decideWave() {
     } else if (wave == 11) {
         waveOn = true;
         waveBoom = 0;
-        waveTeacher = 30;
-        waveImprovedmus = 150;
-         enemyQueue.push(new Jordan(0, 0));
+        waveImprovedmus = 120;
+        enemyQueue.push(new Jordan(0, 0));
         spawnrate = 17;
+         waveEmo = 45;
         wave++;
     } else if (wave == 12) {
         waveOn = true;
-        waveBoom = 11;
-        waveTeacher = 50;
-        waveImprovedmus = 20;
+        waveTeacher = 30;
+        waveImprovedmus = 50;
         waveWorkers = 20
         spawnrate = 20;
         wave++;
         enemyQueue.push(new JohnCena(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
+        enemyQueue.push(new Jordan(0, 0));
+        enemyQueue.push(new Jordan(0, 0));
         //21 waves
     } else if (wave == 13) {
         waveOn = true;
@@ -182,11 +183,9 @@ function decideWave() {
         //21 waves
     } else if (wave == 17) {
         waveOn = true;
-
-        waveBoom = 40;
-        waveTeacher = 60;
-        waveImprovedmus = 40;
-        waveWorkers = 40
+        waveTeacher = 10;
+        waveImprovedmus = 100;
+        waveWorkers = 120
         spawnrate = 13;
         enemyQueue.push(new JohnCena(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
