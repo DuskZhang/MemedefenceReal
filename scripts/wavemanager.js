@@ -180,7 +180,7 @@ function decideWave() {
         enemyQueue.push(new JohnCena(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
         enemyQueue.push(new JohnCena(0, 0));
-        //21 waves
+        wave++;
     } else if (wave == 17) {
         waveOn = true;
         waveTeacher = 10;
