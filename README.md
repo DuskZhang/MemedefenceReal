@@ -4,7 +4,7 @@ Detailed instructions:
 
 Building path:
 
-The game starts with one black-star tile in the top-left corner, click either to the left or down that tile in order to build another tile of black-star, which is the "path" of the game. After building a path of 50 tiles, press enter to start the first wave. Mobs follow the path. 
+The game starts with one black-star tile in the top-left corner, click on tiles surrounding the path( to the left or down the first tile) in order to build another tile of black-star, which is the "path" of the game. After building a path of 50 tiles, press enter to start the first wave. Mobs follow the path. 
 
 Placing towers:
 
