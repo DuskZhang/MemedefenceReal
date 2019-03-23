@@ -357,7 +357,7 @@ function help() {
         rect(0, 0, width, height);
         textSize(20);
         stroke(255);
-        text("Key Commands: \n esc for hud \n shift + s while selecting a tower to sell it \n r to rotate a tower's range\n Enter to start a new wave\n m to toggle music\n Building path: The game starts with one black-star tile in the top-left corner, click on tiles surrounding the path in order to build another tile of black-star, which is the path of the game.\n After building a path of 50 tiles, press enter to start the first wave. Mobs follow the path\n Placing towers:\n One can buy towers by clicking on them on the right and clicking on any tile that is not a path tile. Keep in mind towers can only be placed after one builds the path of 50 tiles. Wave control:\n After the last enemy dies, pressing enter starts the next wave. There are 20 waves in total.", 50, 50);
+        text("Key Commands: \n esc for hud \n shift + s while selecting a tower to sell it \n r to rotate a tower's range\n Enter to start a new wave\n m to toggle music\n Building path:\n The game starts with one black-star tile in the top-left corner, click on tiles surrounding the path in order to build another tile of black-star, which is the path of the game.\n After building a path of 50 tiles, press enter to start the first wave. Mobs follow the path\n Placing towers:\n One can buy towers by clicking on them on the right and clicking on any tile that is not a path tile. Keep in mind towers can only be placed after one builds the path of 50 tiles. Wave control:\n After the last enemy dies, pressing enter starts the next wave. There are 20 waves in total.", 50, 50);
         //todo more help            
 
     }
