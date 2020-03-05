@@ -197,20 +197,18 @@ class BitcoinFire {
     }
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
-        if (muscles[0] != null && frameCount % 60 == 0) {
-            this.target = muscles[floor(random(0, muscles.length))];
-            this.damage += 3.5;
-        } else if (frameCount % 60 == 0) {
-            this.target = null;
-            bullets.splice(this.iam, 1);
-        }
-
+        this.iam = i;
         if (this.target == null) {
             if (muscles[0] != null) {
                 this.target = muscles[floor(random(0, muscles.length))];
+            } else {
+                bullets.splice(this.iam, 1);
             }
-
         }
+        if (frameCount % 60 == 0){
+            this.damage += 3;
+        }
+        
 
         if (this.target != null) {
             this.dir = p5.Vector.sub(this.target.pector, this.position);
@@ -231,9 +229,7 @@ class BitcoinFire {
             }
         }
 
-
-
-        this.iam = i;
+        
 
     }
 }
