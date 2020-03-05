@@ -251,7 +251,7 @@ if (noSpammerino < 20) {
         background(200); //todo replace with scarce
         //show and functions for the tiles including roads and whatnot
         
-        if (muscles.length == 0 && wave == 21 && enemyQueue.length == 0) {
+        if (muscles.length == 0 && wave == 19 && enemyQueue.length == 0) {
             gamemode = 3;
         }
 
