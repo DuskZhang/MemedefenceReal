@@ -417,7 +417,7 @@ class JohnCena extends Enemy {
         this.pector = createVector(this.x, this.y);
         this.hp = 690;
         this.max = 690;
-        this.speed = 0.5; // dont go over 4 or it gets all buggy
+        this.speed = 1; // dont go over 4 or it gets all buggy
         this.regularSpeed = 0.8;
         this.width = 110;
         this.height = 110;
@@ -498,8 +498,8 @@ class Trump extends Enemy {
         this.pector = createVector(this.x, this.y);
         this.hp = 20160;
         this.max = 20240;
-        this.speed = 0.2; // dont go over 4 or it gets all buggy
-        this.regularSpeed = 0.3;
+        this.speed = 1.5; // dont go over 4 or it gets all buggy
+        this.regularSpeed = 1;
         this.width = 90;
         this.height = 90;
 
@@ -583,7 +583,7 @@ class Philosopher extends Enemy {
         this.pector = createVector(this.x, this.y);
         this.hp = 300;
         this.max = 350;
-        this.speed = 0.75; // dont go over 4 or it gets all buggy
+        this.speed = 1.4; // dont go over 4 or it gets all buggy
 
         this.width = 80;
         this.height = 80;
@@ -827,7 +827,7 @@ class Jordan extends Enemy {
         this.pector = createVector(this.x, this.y);
         this.hp = 1000;
         this.max = 1000;
-        this.speed = 1.3; // dont go over 4 or it gets all buggy
+        this.speed = 2; // dont go over 4 or it gets all buggy
 
         this.width = 70;
         this.height = 70;
@@ -880,7 +880,7 @@ class BehindTheMeme extends Enemy {
         this.pector = createVector(this.x, this.y);
         this.hp = 5000;
         this.max = 5000;
-        this.speed = 0.45; // dont go over 4 or it gets all buggy
+        this.speed = 1.5; // dont go over 4 or it gets all buggy
 
         this.width = 70;
         this.height = 70;
