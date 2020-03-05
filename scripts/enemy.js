@@ -417,8 +417,8 @@ class JohnCena extends Enemy {
         this.pector = createVector(this.x, this.y);
         this.hp = 690;
         this.max = 690;
-        this.speed = 0.2; // dont go over 4 or it gets all buggy
-        this.regularSpeed = 0.25;
+        this.speed = 0.5; // dont go over 4 or it gets all buggy
+        this.regularSpeed = 0.8;
         this.width = 110;
         this.height = 110;
 
