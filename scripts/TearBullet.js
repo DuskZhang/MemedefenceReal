@@ -196,17 +196,17 @@ class BitcoinFire {
         text(floor(this.damage), this.position.x, this.position.y);
     }
     //also have the hit function built in or make it separate ,,,, called at 60fps
+    
     move(i) {
         this.iam = i;
-        if (this.target == null) {
-            if (muscles[0] != null) {
-                this.target = muscles[floor(random(0, muscles.length))];
-            } else {
-                bullets.splice(this.iam, 1);
-            }
+        if (muscles[0] != null) {
+            this.target = muscles[floor(random(0, muscles.length))];
+        } else {
+            bullets.splice(this.iam, 1);
+        }
         }
         if (frameCount % 60 == 0){
-            this.damage += 3;
+            this.damage += 3.5;
         }
         
 
