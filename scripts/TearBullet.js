@@ -198,54 +198,35 @@ class BitcoinFire {
     //also have the hit function built in or make it separate ,,,, called at 60fps
     
     move(i) {
-        this.iam = i;
+        if(this.target.hp <= 0 || this.target.nodeIndex == nodes.length) {
+            //get a new target
+            if(muscles.length >0) {
+                this.target = muscles[floor(random(0, muscles.length))];
+            } else {
+                bullets.splice(i, 1);
+                break;
+            }
+        }
         if (frameCount % 60 == 0){
             this.damage += 3.5;
-            if(muscles.length == 0) {
-                bullets.splice(this.iam, 1);
-            }
-            this.target = muscles[floor(random(0, muscles.length))];
-        }
-        
-
-        if (this.target != null) {
-            if(this.target.pector!= null) {
-                if(this.target.pector.x<-1 ) {
-                    this.target.pector.x = 0    
-                } 
-                if(this.target.pector.x>1081 ) {
-                    this.target.pector.x = 1080    
-                } 
-                if(this.target.pector.y<-1 ) {
-                    this.target.pector.y = 0    
-                } 
-                if(this.target.pector.y> 720 ) {
-                    this.target.pector.y = 720    
-                } 
-            } else { //null pector
-                this.target.pector = createVector(0,0)
-            }
-            this.dir = p5.Vector.sub(this.target.pector, this.position);
-            this.dir = this.dir.mult(this.speed / this.dir.mag());
-
-            if ((this.position.dist(this.target.pector)) <= 15) {
-                //hit
-                this.target.hp -= this.damage;
-                if (this.target.hp <= 0) {
-                    bitcoinWaveDamage += 0.20;
-                }
-                bullets.splice(this.iam, 1);
-            } else {
-                this.position.add(this.dir);
-                if (this.target.pector == null) {
-                    bullets.splice(this.iam, 1);
-                }
-            }
         }
 
-        
-
+        this.dir = p5.Vector.sub(this.target.pector, this.position);
+        this.dir = this.dir.mult(this.speed / this.dir.mag());
+        if ((this.position.dist(this.target.pector)) <= 30) {
+            this.target.hp -= this.damage;
+            if (this.target.hp <= 0) {
+                bitcoinWaveDamage += 0.20;
+            }
+            bullets.splice(i, 1);
+        } else {
+            this.position.add(this.dir);
+        }
     }
+
+        
+
+    
 }
 
 class Sanicbomb {
