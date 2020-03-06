@@ -204,7 +204,7 @@ class BitcoinFire {
         } else {
             bullets.splice(this.iam, 1);
         }
-        }
+        
         if (frameCount % 60 == 0){
             this.damage += 3.5;
         }
