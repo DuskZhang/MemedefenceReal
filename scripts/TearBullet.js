@@ -16,7 +16,7 @@ class TearBullet {
     }
 
 
-
+    //ss
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
         //movement
