@@ -211,6 +211,7 @@ class BitcoinFire {
         
 
         if (this.target != null) {
+            console.log(this.target.pector)
             this.dir = p5.Vector.sub(this.target.pector, this.position);
             this.dir = this.dir.mult(this.speed / this.dir.mag());
 
