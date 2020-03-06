@@ -219,8 +219,14 @@ class BitcoinFire {
             keepCalculating = false
         }
         if (keepCalculating) {
+            if(this.target.pector == null) {
+                this.target.pector = createVector(0,0)
+            }
             this.dir = p5.Vector.sub(this.target.pector, this.position);
             this.dir = this.dir.mult(this.speed / this.dir.mag());
+            if(this.dir.mag() > createVector(721,1081).mag()) {
+                this.dir = createVector(0,0)   
+            }
             if ((this.position.dist(this.target.pector)) <= 30) {
                 this.target.hp -= this.damage;
                 if (this.target.hp <= 0) {
