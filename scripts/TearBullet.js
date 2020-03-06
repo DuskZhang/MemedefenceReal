@@ -201,6 +201,9 @@ class BitcoinFire {
         this.iam = i;
         if (frameCount % 60 == 0){
             this.damage += 3.5;
+            if(muscles.length == 0) {
+                bullets.splice(this.iam, 1);
+            }
             this.target = muscles[floor(random(0, muscles.length))];
         }
         
