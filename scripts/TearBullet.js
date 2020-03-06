@@ -198,7 +198,7 @@ class BitcoinFire {
     //also have the hit function built in or make it separate ,,,, called at 60fps
     
     move(i) {
-        var keepCalculating = True;
+        var keepCalculating = true;
         if (frameCount % 60 == 0){
             this.damage += 3.5;
         }
@@ -208,7 +208,7 @@ class BitcoinFire {
                 this.target = muscles[floor(random(0, muscles.length))];
             } else {
                 bullets.splice(i, 1);
-                keepCalculating = False;
+                keepCalculating = false;
             }
         }
         
