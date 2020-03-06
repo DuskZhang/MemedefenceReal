@@ -199,19 +199,29 @@ class BitcoinFire {
     
     move(i) {
         this.iam = i;
-        if (muscles[0] != null) {
-            this.target = muscles[floor(random(0, muscles.length))];
-        } else {
-            bullets.splice(this.iam, 1);
-        }
-        
         if (frameCount % 60 == 0){
             this.damage += 3.5;
+            this.target = muscles[floor(random(0, muscles.length))];
         }
         
 
         if (this.target != null) {
-            console.log(this.target.pector)
+            if(this.target.pector!= null) {
+                if(this.target.pector.x<-1 ) {
+                    this.target.pector.x = 0    
+                } 
+                if(this.target.pector.x>1081 ) {
+                    this.target.pector.x = 1080    
+                } 
+                if(this.target.pector.y<-1 ) {
+                    this.target.pector.y = 0    
+                } 
+                if(this.target.pector.y> 720 ) {
+                    this.target.pector.y = 720    
+                } 
+            } else { //null pector
+                this.target.pector = createVector(0,0)
+            }
             this.dir = p5.Vector.sub(this.target.pector, this.position);
             this.dir = this.dir.mult(this.speed / this.dir.mag());
 
