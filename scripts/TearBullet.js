@@ -209,6 +209,9 @@ class BitcoinFire {
                 //get a new target
                 if(muscles.length >0) {
                     this.target = muscles[floor(random(0, muscles.length))];
+                    while(this.target.hp <= 0 || this.target.nodeIndex == nodes.length) {
+                        this.target = muscles[floor(random(0, muscles.length))];
+                    }
                 } else {
                     bullets.splice(i, 1);
                     keepCalculating = false;
