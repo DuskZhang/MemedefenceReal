@@ -120,7 +120,7 @@ function showUpgrades(object) {
             image(object.upgradeA2Image, 750, 50, 130, 100);
             text(object.upgradeA2Description, 750, 15);
             if (object.upgradeAhover(price) && mouseIsPressed && gold >= price) {
-                object.speed *= 0.10;
+                object.speed *= 0.30;
                 object.damage *= 4.20
                 object.upgradeLevelA++;
                 noSpammerino = 0;
