@@ -100,16 +100,17 @@ class Enemy {
     move(i) {
 
        
-
+        var keepGoing = true;
 
         this.iam = i;
         if (this.hp <= 0) {
             gold += 5;
             muscles.splice(this.iam, 1);
+            keepGoing = false;
         }
 
 
-        if (this.targetVec !== null) {
+        if (this.targetVec !== null && keepGoing) {
             //getting the x and y values of the target 
             this.distFrame = this.speed * (1 / 60);
             //todo improve this checking dist
