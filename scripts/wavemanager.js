@@ -110,7 +110,7 @@ function decideWave() {
         waveWorkers = 0; //removing workers
         spawnrate = 20;
         wave++;
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 2; i++) {
             enemyQueue.push(new Jordan(0, 0));
             enemyQueue.push(new Jordan(0, 0));
             enemyQueue.push(new JohnCena(0, 0));
@@ -118,7 +118,7 @@ function decideWave() {
         }
     } else if (wave == 13) {
         waveOn = true;
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 4; i++) {
             enemyQueue.push(new BehindTheMeme(0, 0));
         }
         spawnrate = 15;
@@ -136,7 +136,7 @@ function decideWave() {
         spawnrate = 17;
         waveCavalry = 30;
         waveEmo = 30;
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 10; i++) {
             enemyQueue.push(new BehindTheMeme(0, 0));
             enemyQueue.push(new Jordan(0, 0));
             enemyQueue.push(new JohnCena(0, 0));
@@ -150,7 +150,7 @@ function decideWave() {
         waveWorkers = 10;
         waveTeachers = 30
         spawnrate = 16;
-        for (i = 0; i < 40; i++) {
+        for (i = 0; i < 18; i++) {
             enemyQueue.push(new BehindTheMeme(0, 0));
             enemyQueue.push(new Jordan(0, 0));
             enemyQueue.push(new JohnCena(0, 0));
