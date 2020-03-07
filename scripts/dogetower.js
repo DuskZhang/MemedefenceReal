@@ -17,7 +17,7 @@ class Doge extends Tower {
         this.upgradeA1Image = dogea1;
         this.upgradeA1Description = "Wo: \ndmg 210%, speed 70%";
         this.upgradeA2Image = dogea2;
-        this.upgradeA2Description = "Stoned: \ndmg 420%, speed 10%";
+        this.upgradeA2Description = "Stoned: \ndmg 420%, speed 30%";
         this.upgradeB0Image = icedoge;
         this.upgradeB0Description = "Wolf: \n200%speed";
         this.upgradeB1Image = dogeb1;
