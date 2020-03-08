@@ -152,7 +152,7 @@ class SpongebobMeme {
     //also have the hit function built in or make it separate ,,,, called at 60fps
     move(i) {
         this.image = memes[this.what - 1];
-        this.damage = this.what;
+        this.damage = this.what + 3;
 
         this.dir = p5.Vector.sub(this.target.pector, this.position);
         this.dir = this.dir.mult(this.speed / this.dir.mag());
