@@ -191,7 +191,7 @@ class BitcoinFire {
     //cange based on what
 
     show() {
-        image(this.image, this.position.x, this.position.y, 130, 130);
+        image(this.image, this.position.x, this.position.y, 40, 40);
         textSize(23);
         text(floor(this.damage), this.position.x, this.position.y);
     }
