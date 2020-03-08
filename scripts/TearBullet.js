@@ -145,7 +145,7 @@ class SpongebobMeme {
 
     show() {
         if (this.target != null) {
-            image(this.image, this.position.x, this.position.y, 130, 130);
+            image(this.image, this.position.x, this.position.y, 70, 70);
         }
     }
 
