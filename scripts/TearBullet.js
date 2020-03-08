@@ -201,7 +201,7 @@ class BitcoinFire {
         var keepCalculating = true;
         
         if (frameCount % 60 == 0){
-            this.damage += 3.5;
+            this.damage *= 2;
         }
         if(this.target != null) {
             
