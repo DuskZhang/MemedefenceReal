@@ -198,48 +198,34 @@ class BitcoinFire {
     //also have the hit function built in or make it separate ,,,, called at 60fps
     
     move(i) {
-        var keepCalculating = true;
-        
-        if (frameCount % 60 == 0){
-            this.damage *= 2;
-        }
-        if(this.target != null) {
-            
-            if(this.target.hp <= 0 || this.target.nodeIndex == nodes.length) {
-                //get a new target
-                if(muscles.length >0) {
-                    this.target = muscles[floor(random(0, muscles.length))];
-                    while(this.target.hp <= 0 || this.target.nodeIndex == nodes.length) {
-                        this.target = muscles[floor(random(0, muscles.length))];
+        // if this 
+        if (muscles.length > 0) {
+            if (frameCount % 60 == 0){
+                this.damage *= 2;
+            }
+            this.target = muscles[0]
+            if(this.target.hp >= 0 && this.target.nodeIndex <= nodes.length) {
+                this.dir = p5.Vector.sub(this.target.pector, this.position);
+                this.dir = this.dir.mult(this.speed / this.dir.mag());
+                if ((this.position.dist(this.target.pector)) <= 30) {
+                    this.target.hp -= this.damage;
+                    if (this.target.hp <= 0) {
+                        bitcoinWaveDamage += 0.20;
                     }
-                } else {
                     bullets.splice(i, 1);
-                    keepCalculating = false;
+                } else if (this.target.pector != null) {
+                    if(this.target.pector.x >= 0 && this.target.pector.x <= 1080) {
+                        if (this.target.pector.y >= 0 && this.target.pector.y <=720) {
+                            this.position.add(this.dir);
+                        }
+                    }
+                    
                 }
-            }
-        } else{
-            bullets.splice(i, 1);
-            keepCalculating = false
+            }   
+        } else {
+            bullets.splice(i,1)
         }
-        if (keepCalculating) {
-            if(this.target.pector == null) {
-                this.target.pector = createVector(0,0)
-            }
-            this.dir = p5.Vector.sub(this.target.pector, this.position);
-            this.dir = this.dir.mult(this.speed / this.dir.mag());
-            if(this.dir.mag() > createVector(721,1081).mag()) {
-                this.dir = createVector(0,0)   
-            }
-            if ((this.position.dist(this.target.pector)) <= 30) {
-                this.target.hp -= this.damage;
-                if (this.target.hp <= 0) {
-                    bitcoinWaveDamage += 0.20;
-                }
-                bullets.splice(i, 1);
-            } else {
-                this.position.add(this.dir);
-            }
-        }
+            
     }    
 }
 
