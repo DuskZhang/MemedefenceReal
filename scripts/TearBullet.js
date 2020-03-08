@@ -201,7 +201,7 @@ class BitcoinFire {
         // if this 
         if (muscles.length > 0) {
             if (frameCount % 60 == 0){
-                this.damage *= 2;
+                this.damage *= 1.2 + 2;
             }
             this.target = muscles[0]
             if(this.target.hp >= 0 && this.target.nodeIndex <= nodes.length) {
