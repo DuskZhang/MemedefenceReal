@@ -26,7 +26,7 @@ class Enemy {
         this.justNoded = false;
         this.gold
         this.goldWave5
-        this.factor = 1;
+        this.factor = 0.4;
         this.markedBySonic = false;
     }
 
@@ -68,13 +68,13 @@ class Enemy {
         //hp bars
 
         fill("red");
-        rect(this.pector.x, this.pector.y + this.width, this.max * this.factor, 10);
+        rect(this.pector.x, this.pector.y + this.width, this.max * this.factor / 2, 3);
         if (this.hp > this.max) {
             fill("blue");
         } else {
             fill(30, 223, 23);
         }
-        rect(this.pector.x, this.pector.y + this.width, this.hp * this.factor, 10);
+        rect(this.pector.x, this.pector.y + this.width, this.hp * this.factor/2, 3);
     }
 
 
@@ -420,8 +420,8 @@ class JohnCena extends Enemy {
         this.max = 690;
         this.speed = 1; // dont go over 4 or it gets all buggy
         this.regularSpeed = 0.8;
-        this.width = 110;
-        this.height = 110;
+        this.width = 100;
+        this.height = 100;
 
         this.nodeIndex = 0;
         this.targetVec;
@@ -451,7 +451,7 @@ class JohnCena extends Enemy {
         //hp bars
 
         fill("red");
-        rect(this.pector.x, this.pector.y + this.width, this.max / 2, 50);
+        rect(this.pector.x, this.pector.y + this.width, this.max / 2, 10);
 
         if (this.hp > this.max) {
             fill("blue");
@@ -459,7 +459,7 @@ class JohnCena extends Enemy {
             fill(30, 223, 23);
         }
 
-        rect(this.pector.x, this.pector.y + this.width, this.hp / 2, 50);
+        rect(this.pector.x, this.pector.y + this.width, this.hp / 2, 10);
     }
 
 
@@ -586,8 +586,8 @@ class Philosopher extends Enemy {
         this.max = 350;
         this.speed = 1.4; // dont go over 4 or it gets all buggy
 
-        this.width = 80;
-        this.height = 80;
+        this.width = 60;
+        this.height = 60;
 
         this.nodeIndex = 0;
         this.targetVec;
@@ -786,13 +786,13 @@ class Emo extends Enemy {
         //hp bars
 
         fill("red");
-        rect(this.pector.x, this.pector.y + this.width, this.max * this.factor, 10);
+        rect(this.pector.x, this.pector.y + this.width, this.max * this.factor, 3);
         if (this.hp > this.max) {
             fill("black");
         } else {
             fill("purple");
         }
-        rect(this.pector.x, this.pector.y + this.width, this.hp * this.factor, 10);
+        rect(this.pector.x, this.pector.y + this.width, this.hp * this.factor, 3);
         this.hp -= 0.04;
     }
 
