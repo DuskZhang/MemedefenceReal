@@ -68,8 +68,8 @@ var lastSpawn = false;
 var enemySpawnType = 0;
 //standard public hud
 
-var lives = 50;
-var gold = 820; // standard 840
+var lives = 100;
+var gold = 1000; // standard 840
 // towers
 var towers = [];
 var shops = [];
