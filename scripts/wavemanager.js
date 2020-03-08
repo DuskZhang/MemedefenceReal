@@ -133,7 +133,7 @@ function decideWave() {
         wave++
     } else if (wave == 15) { //basic grind wave
         waveOn = true;
-        spawnrate = 18;
+        spawnrate = 22;
         waveCavalry = 30;
         waveEmo = 30;
         for (i = 0; i < 10; i++) {
@@ -165,7 +165,6 @@ function decideWave() {
         waveMuscle = 10
         waveBoom = 10
         waveImprovedmus = 10
-        spawnrate = 16;
         for (i = 0; i < 60; i++) {
             enemyQueue.push(new BehindTheMeme(0, 0));
             enemyQueue.push(new Jordan(0, 0));
@@ -182,7 +181,7 @@ function decideWave() {
         waveMuscle = 10
         waveBoom = 10
         waveImprovedmus = 10
-        spawnrate = 14;
+        spawnrate = 22;
         for (i = 0; i < 60; i++) {
             enemyQueue.push(new BehindTheMeme(0, 0));
             enemyQueue.push(new Jordan(0, 0));
