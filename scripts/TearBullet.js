@@ -180,7 +180,7 @@ class BitcoinFire {
         this.y = y;
         this.position = createVector(this.x, this.y);
         this.target = muscles[0];
-        this.speed = 6;
+        this.speed = 1;
         this.image = bitcoins;
         this.iam;
         this.dir;
@@ -202,6 +202,7 @@ class BitcoinFire {
         if (muscles.length > 0) {
             if (frameCount % 60 == 0){
                 this.damage = this.damage * 1.2 + 3;
+                this.speed += 0.5
             }
             this.target = muscles[0]
             if(this.target.hp >= 0 && this.target.nodeIndex <= nodes.length) {
