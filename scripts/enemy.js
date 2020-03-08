@@ -499,10 +499,10 @@ class Trump extends Enemy {
         this.pector = createVector(this.x, this.y);
         this.hp = 20160;
         this.max = 20240;
-        this.speed = 1.5; // dont go over 4 or it gets all buggy
+        this.speed = 1; // dont go over 4 or it gets all buggy
         this.regularSpeed = 1;
-        this.width = 90;
-        this.height = 90;
+        this.width = 200;
+        this.height = 140;
 
         this.nodeIndex = 0;
         this.targetVec;
