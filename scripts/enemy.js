@@ -26,7 +26,7 @@ class Enemy {
         this.justNoded = false;
         this.gold
         this.goldWave5
-        this.factor = 0.5;
+        this.factor = 1;
         this.markedBySonic = false;
     }
 
@@ -532,7 +532,7 @@ class Trump extends Enemy {
         //hp bars
 
         fill("red");
-        rect(this.pector.x, this.pector.y + this.width, this.max / 2, 50);
+        rect(this.pector.x, this.pector.y + this.width, this.max / 10, 50);
 
         if (this.hp > this.max) {
             fill("blue");
@@ -540,7 +540,7 @@ class Trump extends Enemy {
             fill(30, 223, 23);
         }
 
-        rect(this.pector.x, this.pector.y + this.width, this.hp / 2, 50);
+        rect(this.pector.x, this.pector.y + this.width, this.hp / 10, 50);
     }
 
 
@@ -896,7 +896,7 @@ class BehindTheMeme extends Enemy {
         this.lifedamage = 4;
         this.gold = 110;
         this.goldWave5 = 300;
-        this.factor = 0.1;
+        this.factor = 0.05;
     }
 
 
