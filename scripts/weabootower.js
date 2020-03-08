@@ -7,11 +7,11 @@ class AngryWeaboo extends Tower {
         this.position = createVector(this.x, this.y);
         this.neutralPositionx = this.x;
         this.neutralPositiony = this.y;
-        this.damage = 0.6;
+        this.damage = 1.2;
         this.shootcharge = 0;
         this.chargebuild = 8
         this.primeshoot = 100;
-        this.range = 130;
+        this.range = 160;
         this.image = angryweab;
         this.dir;
         this.speed = 10;
