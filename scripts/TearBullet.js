@@ -180,7 +180,7 @@ class BitcoinFire {
         this.y = y;
         this.position = createVector(this.x, this.y);
         this.target = muscles[0];
-        this.speed = 3.5;
+        this.speed = 6;
         this.image = bitcoins;
         this.iam;
         this.dir;
