@@ -5,8 +5,8 @@ class Enemy {
         this.max = 3;
         this.speed = 2; // dont go over 4 or it gets all buggy
 
-        this.width = 50;
-        this.height = 50;
+        this.width = 40;
+        this.height = 40;
 
         this.nodeIndex = 0;
         this.targetVec;
@@ -26,7 +26,7 @@ class Enemy {
         this.justNoded = false;
         this.gold
         this.goldWave5
-        this.factor = 0.4;
+        this.factor = 0.5;
         this.markedBySonic = false;
     }
 
@@ -68,13 +68,13 @@ class Enemy {
         //hp bars
 
         fill("red");
-        rect(this.pector.x, this.pector.y + this.width, this.max * this.factor / 2, 3);
+        rect(this.pector.x, this.pector.y + this.width, this.max * this.factor, 4);
         if (this.hp > this.max) {
             fill("blue");
         } else {
             fill(30, 223, 23);
         }
-        rect(this.pector.x, this.pector.y + this.width, this.hp * this.factor/2, 3);
+        rect(this.pector.x, this.pector.y + this.width, this.hp * this.factor, 4);
     }
 
 
