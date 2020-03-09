@@ -211,6 +211,7 @@ class BitcoinFire {
                 for (j = 0; j < muscles.length; j++) {
                     if(muscles[j].hp>=0 && muscles[j].nodeIndex <= nodes.length ){
                        this.target = muscles[j];
+                       break;
                     }
                 }
             }
