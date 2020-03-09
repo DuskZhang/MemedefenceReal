@@ -214,8 +214,7 @@ class BitcoinFire {
                        break;
                     }
                 }
-            }
-            if(this.target.hp<= 0 || this.target.nodeIndex <= nodes.length) {
+            } else if(this.target.hp<= 0 || this.target.nodeIndex <= nodes.length) {
                 var j = 0;
                 for (j = 0; j < muscles.length; j++) {
                     if(muscles[j].hp>=0 && muscles[j].nodeIndex <= nodes.length ){
@@ -224,27 +223,30 @@ class BitcoinFire {
                     }
                 }
             }
+            
             //if target is valid
-            if(this.target.hp >= 0 && this.target.nodeIndex <= nodes.length) {
-                this.dir = p5.Vector.sub(this.target.pector, this.position);
-                this.dir = this.dir.mult(this.speed / this.dir.mag());
-                if ((this.position.dist(this.target.pector)) <= 20) {
-                    this.target.hp -= this.damage;
-                    if (this.target.hp <= 0) {
-                        bitcoinWaveDamage += 0.20;
-                    }
-                    print("target hit");
-                    bullets.splice(i, 1);
-                } else if (this.target.pector != null) {
-                    if(this.target.pector.x >= 0 && this.target.pector.x <= 1080) {
-                        if (this.target.pector.y >= 0 && this.target.pector.y <=720) {
-                            print(this.dir.mag()); // brute force checking if the speed is too insane
-                            if(this.dir.mag() <= 100) {
-                                this.position.add(this.dir);
+            if (this.target != null) {
+                if(this.target.hp >= 0 && this.target.nodeIndex <= nodes.length) {
+                    this.dir = p5.Vector.sub(this.target.pector, this.position);
+                    this.dir = this.dir.mult(this.speed / this.dir.mag());
+                    if ((this.position.dist(this.target.pector)) <= 20) {
+                        this.target.hp -= this.damage;
+                        if (this.target.hp <= 0) {
+                            bitcoinWaveDamage += 0.20;
+                        }
+                        print("target hit");
+                        bullets.splice(i, 1);
+                    } else if (this.target.pector != null) {
+                        if(this.target.pector.x >= 0 && this.target.pector.x <= 1080) {
+                            if (this.target.pector.y >= 0 && this.target.pector.y <=720) {
+                                print(this.dir.mag()); // brute force checking if the speed is too insane
+                                if(this.dir.mag() <= 100) {
+                                    this.position.add(this.dir);
+                                }
                             }
                         }
+
                     }
-                    
                 }
             }   
         //no valid targets
