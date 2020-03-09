@@ -204,7 +204,17 @@ class BitcoinFire {
                 this.damage = this.damage * 1.2 + 3;
                 this.speed += 0.5;
             }
-            this.target = muscles[0]
+            
+            //get a new target
+            if(this.target.hp<= 0 || this.target.nodeIndex <= nodes.length) {
+                var j = 0;
+                for (j = 0; j < muscles.length; j++) {
+                    if(muscles[j].hp>=0 && muscles[j].nodeIndex <= nodes.length ){
+                       this.target = muscles[j];
+                    }
+                }
+            }
+            //if target is valid
             if(this.target.hp >= 0 && this.target.nodeIndex <= nodes.length) {
                 this.dir = p5.Vector.sub(this.target.pector, this.position);
                 this.dir = this.dir.mult(this.speed / this.dir.mag());
@@ -218,7 +228,7 @@ class BitcoinFire {
                 } else if (this.target.pector != null) {
                     if(this.target.pector.x >= 0 && this.target.pector.x <= 1080) {
                         if (this.target.pector.y >= 0 && this.target.pector.y <=720) {
-                            print(this.dir.mag());
+                            print(this.dir.mag()); // brute force checking if the speed is too insane
                             if(this.dir.mag() <= 100) {
                                 this.position.add(this.dir);
                             }
@@ -227,6 +237,7 @@ class BitcoinFire {
                     
                 }
             }   
+        //no valid targets
         } else {
             bullets.splice(i,1)
         }
