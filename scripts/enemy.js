@@ -929,8 +929,7 @@ class BehindTheMeme extends Enemy {
     }
     
     newVideo() {
-        gold -= 50;
-        this.hp += 50;
+        this.hp += 40;
     }
 
 }
